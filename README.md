@@ -44,6 +44,10 @@ The Contact form and product quote modal validate the entered details and open W
 
 The homepage campaign video is stored at `public/videos/svm-traders-ad.mp4` and served at `/videos/svm-traders-ad.mp4`. It uses native playback controls and loads metadata until a visitor chooses to play it. Keep a single canonical copy of the video in `public/videos/`.
 
+## Navigation and footer
+
+On mobile, the menu toggle sits on the right side of the header. The fixed bottom Call/WhatsApp bar has been removed; the header call link and floating WhatsApp button remain available. The footer includes the business subheading, navigation, contact numbers, and subtle motion that respects reduced-motion preferences.
+
 ## Images and visibility
 
 Static site images live in `public/images/` and are referenced using absolute `/images/...` paths. The optimized `svm-traders-logo.webp` is used in the navbar and footer. The homepage hero layers three distinct optimized photos: `areca-leaf-plates.webp` sits behind `hero-areca-plates.webp`, with `areca-plates-in-use.webp` in front. The Areca Leaf Plates cards reuse the canonical `hero-areca-plates.webp` asset. Keep one file for each distinct photo rather than adding duplicate copies. The test suite checks image-file hashes and ensures product, gallery, and hero image lists contain no repeated paths. The separate homepage gallery highlights a selected set of tableware photos.

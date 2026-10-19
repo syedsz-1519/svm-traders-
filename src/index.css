@@ -104,6 +104,44 @@
   box-shadow: 0 10px 24px -4px rgba(0, 0, 0, 0.5);
 }
 
+.site-footer::before {
+  position: absolute;
+  top: -12rem;
+  right: -8rem;
+  width: 30rem;
+  height: 30rem;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(154, 205, 50, 0.2), rgba(154, 205, 50, 0) 68%);
+  content: "";
+  pointer-events: none;
+  animation: footer-glow 12s ease-in-out infinite alternate;
+}
+
+.footer-logo,
+.footer-link {
+  transition: transform 180ms ease, color 180ms ease;
+}
+
+.footer-logo:hover {
+  transform: translateY(-2px);
+}
+
+.footer-link:hover {
+  transform: translateX(3px);
+}
+
+@keyframes footer-glow {
+  from {
+    opacity: 0.55;
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(-1rem, 1rem, 0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

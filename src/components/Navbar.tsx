@@ -38,25 +38,12 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header className="sticky top-0 z-50 bg-white dark:bg-[#102216] shadow-[0_2px_12px_rgba(15,77,38,0.06)] dark:shadow-[0_2px_12px_rgba(0,0,0,0.4)] border-b border-[#E3EDE1] dark:border-[#1c3825] transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        {/* Mobile: Hamburger left */}
-        <div className="flex lg:hidden items-center shrink-0 w-10">
-          <button
-            type="button"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 -ml-2 rounded-lg text-[#0F4D26] dark:text-[#a2f0b5] hover:bg-[#F6FAEA] dark:hover:bg-[#183321] transition-colors"
-            aria-label="Toggle mobile menu"
-            aria-expanded={mobileMenuOpen}
-            aria-controls="mobile-navigation"
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
 
         {/* Brand Logo & Name */}
         <button
           type="button"
           onClick={() => handleNavClick('home')}
-          className="mr-auto flex h-16 w-28 shrink-0 items-center text-left sm:h-[4.5rem] sm:w-36"
+          className="flex h-16 w-28 shrink-0 items-center text-left sm:h-[4.5rem] sm:w-36"
           aria-label={`${CONTACT_INFO.business} home`}
         >
           <img
@@ -122,6 +109,17 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="hidden min-h-11 items-center justify-center rounded-xl bg-[#1F7A3A] px-4 text-sm font-bold text-white shadow-sm transition-colors hover:bg-[#17632E] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1F7A3A] sm:inline-flex"
           >
             Request a Quote
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="flex h-11 w-11 items-center justify-center rounded-xl text-[#0F4D26] transition-colors hover:bg-[#F6FAEA] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1F7A3A] dark:text-[#a2f0b5] dark:hover:bg-[#183321] lg:hidden"
+            aria-label={mobileMenuOpen ? 'Close mobile menu' : 'Open mobile menu'}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation"
+          >
+            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
       </div>
