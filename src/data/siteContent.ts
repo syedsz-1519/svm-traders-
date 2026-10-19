@@ -103,10 +103,10 @@ export const SITE_CONTENT = {
   campaign: {
     eyebrow: 'SVM Traders Campaign',
     title: 'Choose natural plates for your next gathering',
-    text: 'Watch our short video, explore the Areca leaf plate range, and request a quote for your event or business.',
+    text: 'Watch our short video, explore our Areca and Sal leaf tableware, and request a quote for your event or business.',
     quoteCta: 'Request a Quote',
     videoSrc: '/videos/svm-traders-ad.mp4',
-    videoLabel: 'SVM Traders campaign video for natural Areca leaf plates',
+    videoLabel: 'SVM Traders campaign video for natural leaf tableware',
   },
   products: {
     title: 'Our Range',
