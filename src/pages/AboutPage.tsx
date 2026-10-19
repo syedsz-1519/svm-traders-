@@ -1,25 +1,10 @@
 import React from 'react';
-import { Phone, MessageCircle, Leaf, Scissors, PackageCheck, Target, Sparkles } from 'lucide-react';
-import { CONTACT_INFO, createDirectWhatsAppChatUrl } from '../utils/enquiry';
+import { Phone, MessageCircle, Leaf, Droplets, PackageCheck, Target, Sparkles } from 'lucide-react';
+import { CONTACT_INFO, SITE_CONTENT } from '../data/siteContent';
+import { createDirectWhatsAppChatUrl } from '../utils/enquiry';
 
 export const AboutPage: React.FC = () => {
-  const steps = [
-    {
-      title: '1. Natural Leaves',
-      desc: 'Collected and cleaned with natural water without synthetic washes or chemicals.',
-      icon: Leaf,
-    },
-    {
-      title: '2. Hand-Stitched',
-      desc: 'Leaves joined with tiny sticks, zero chemicals or glue, maintaining natural biological integrity.',
-      icon: Scissors,
-    },
-    {
-      title: '3. Checked & Packed',
-      desc: 'Carefully inspected, sorted, and packed clean for prompt wholesale dispatch.',
-      icon: PackageCheck,
-    },
-  ];
+  const stepIcons = [Leaf, Droplets, PackageCheck];
 
   return (
     <div className="w-full relative">
@@ -37,7 +22,7 @@ export const AboutPage: React.FC = () => {
             About SVM Traders
           </h1>
           <p className="text-base text-[#1F2A22]/80 dark:text-[#c4d6c8]">
-            Supplying natural eco-friendly leaf plates from Hyderabad, Telangana.
+            Natural leaf plates, supplied from {CONTACT_INFO.location}.
           </p>
         </div>
 
@@ -51,7 +36,7 @@ export const AboutPage: React.FC = () => {
                 Our Story
               </h2>
               <p className="text-base text-[#1F2A22] dark:text-[#d0dfd3] leading-relaxed">
-                SVM Traders, led by owner S. Pradeep Reddy, supplies natural leaf plates from Hyderabad as an alternative to plastic and paper plates.
+                {SITE_CONTENT.about.text}
               </p>
             </div>
 
@@ -66,7 +51,7 @@ export const AboutPage: React.FC = () => {
                 </h3>
               </div>
               <p className="text-base sm:text-lg font-medium text-[#0F4D26] dark:text-[#d7f9dc] italic leading-relaxed">
-                &ldquo;To offer natural, chemical-free tableware that is safe for people and the environment.&rdquo;
+                &ldquo;{SITE_CONTENT.about.mission}&rdquo;
               </p>
             </div>
           </div>
@@ -74,11 +59,11 @@ export const AboutPage: React.FC = () => {
           {/* Right Column: How Our Plates Are Made */}
           <div className="lg:col-span-6 flex flex-col space-y-4">
             <h2 className="font-serif-brand text-2xl font-bold text-[#0F4D26] dark:text-[#d7f9dc] mb-2">
-              How Our Plates Are Made
+              How It&apos;s Made
             </h2>
 
-            {steps.map((step) => {
-              const Icon = step.icon;
+            {SITE_CONTENT.process.map((step, index) => {
+              const Icon = stepIcons[index];
               return (
                 <div
                   key={step.title}
@@ -89,7 +74,7 @@ export const AboutPage: React.FC = () => {
                   </div>
                   <div className="flex flex-col">
                     <h3 className="font-serif-brand text-lg font-bold text-[#0F4D26] dark:text-[#d7f9dc] mb-1">
-                      {step.title}
+                      {index + 1}. {step.title}
                     </h3>
                     <p className="text-sm text-[#1F2A22]/85 dark:text-[#c4d6c8] leading-relaxed">
                       {step.desc}
@@ -113,7 +98,7 @@ export const AboutPage: React.FC = () => {
                 {CONTACT_INFO.owner}
               </h3>
               <p className="text-sm font-semibold text-[#1F7A3A] dark:text-[#88d982]">
-                Owner, SVM Traders
+                Proprietor, SVM Traders
               </p>
               <p className="text-xs text-stone-500 dark:text-stone-400 mt-0.5">
                 {CONTACT_INFO.location}

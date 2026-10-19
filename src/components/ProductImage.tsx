@@ -10,7 +10,7 @@ interface ProductImageProps {
   fetchPriority?: 'high' | 'low' | 'auto';
 }
 
-const FALLBACK_IMAGE = '/images/areca-leaf-plates.webp';
+const FALLBACK_IMAGE = '/images/neutral-placeholder.svg';
 
 export const ProductImage: React.FC<ProductImageProps> = ({
   src,
@@ -33,11 +33,15 @@ export const ProductImage: React.FC<ProductImageProps> = ({
     return (
       <div
         className={`flex items-center justify-center bg-[#EBF5EC] text-sm font-medium text-[#0F4D26] dark:bg-[#183622] dark:text-[#d7f9dc] ${className}`}
-        role="img"
-        aria-label={`${alt} (image unavailable)`}
+        role={alt ? 'img' : undefined}
+        aria-label={alt ? `${alt} (image unavailable)` : undefined}
+        aria-hidden={!alt}
         style={{ aspectRatio: `${width} / ${height}` }}
       >
-        Image unavailable
+        <svg aria-hidden="true" viewBox="0 0 120 90" className="h-1/2 w-1/2 text-[#78956b]" fill="none">
+          <ellipse cx="60" cy="56" rx="44" ry="14" stroke="currentColor" strokeWidth="3" />
+          <path d="M17 55c5 15 20 23 43 23s38-8 43-23M31 53c2 7 12 12 29 12s27-5 29-12M60 65V25m0 25C42 50 33 39 36 27c14-1 24 7 24 23Zm0-8c1-15 10-23 24-22 1 12-8 22-24 23Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
       </div>
     );
   }

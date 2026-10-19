@@ -2,6 +2,10 @@
  * Pure helper logic for SVM Traders bulk inquiries and product catalog.
  */
 
+import { CONTACT_INFO, PRODUCTS, TRUST_BADGES } from '../data/siteContent';
+
+export { CONTACT_INFO, PRODUCTS, TRUST_BADGES } from '../data/siteContent';
+
 export interface EnquiryData {
   name: string;
   phone: string;
@@ -14,79 +18,6 @@ export interface ValidationResult {
   isValid: boolean;
   errors: Record<string, string>;
 }
-
-export const PRODUCTS = [
-  {
-    id: 'areca-leaf-plates',
-    name: 'Areca Leaf Plates',
-    subtitle: 'Classic Handcrafted Areca Palm Plates',
-    sizeSpec: 'Standard Dimensions',
-    bestFor: 'Events, Catering & Daily Use',
-    image: '/images/areca-leaf-plates.webp',
-    imageAlt: 'Stack of natural areca leaf plates on a table',
-    description: 'Natural hand-stitched leaf plates made by SVM Traders in Hyderabad. A plastic-free choice for events, catering, temples and daily use.',
-  },
-  {
-    id: '14-inch-sitting-plate',
-    name: '14-Inch Sitting Plate',
-    subtitle: 'For sit-down meals & traditional banquets',
-    sizeSpec: '14-Inch (35.5 cm) Diameter',
-    bestFor: 'Sit-down meals, wedding banquets & temple feasts',
-    image: '/images/sitting-plate-14in.webp',
-    imageAlt: '14-inch natural leaf plate displayed upright',
-    description: 'Generous 14-inch dining plate designed for traditional sit-down meals, allowing comfortable serving of multiple curries and rice.',
-  },
-  {
-    id: '12-inch-buffet-plate',
-    name: '12-Inch Buffet Plate',
-    subtitle: 'For catering buffets & large dinners',
-    sizeSpec: '12-Inch (30.5 cm) Diameter',
-    bestFor: 'Buffets, caterers, parties & functions',
-    image: '/images/buffet-plate-12in.webp',
-    imageAlt: 'Natural leaf plate set for a buffet meal',
-    description: 'Robust 12-inch buffet plate with elevated rims, ideal for standing buffet spreads with hot gravies and dry items.',
-  },
-  {
-    id: '8-inch-tiffin-plate',
-    name: '8-Inch Tiffin Plate',
-    subtitle: 'For snacks, breakfast, tiffin & desserts',
-    sizeSpec: '8-Inch (20.3 cm) Diameter',
-    bestFor: 'Tiffin, breakfast, snacks, sweets & appetizers',
-    image: '/images/tiffin-plate-8in.webp',
-    imageAlt: 'Natural leaf plate for tiffin and snacks',
-    description: 'Handy 8-inch plate tailored for morning tiffin, idli-dosa, snacks, desserts, or corporate high-tea gatherings.',
-  },
-  {
-    id: '4-5-inch-bowl',
-    name: '4.5-Inch Bowl',
-    subtitle: 'For curries, sambar, chutneys & desserts',
-    sizeSpec: '4.5-Inch (11.4 cm) Diameter',
-    bestFor: 'Curries, gravies, prasadam, payasam & condiments',
-    image: '/images/leaf-bowl-4-5in.webp',
-    imageAlt: 'Natural leaf bowl filled with food',
-    description: 'Deep, leak-proof 4.5-inch natural leaf bowl designed specifically for liquid gravies, sambar, rasam, chutneys, and desserts.',
-  },
-] as const;
-
-export const TRUST_BADGES = [
-  '100% Natural',
-  'Biodegradable',
-  'Chemical Free',
-  'Safe for Environment',
-] as const;
-
-export const CONTACT_INFO = {
-  business: 'SVM Traders',
-  tagline: 'Eco Friendly Leaf Plates',
-  owner: 'S. Pradeep Reddy',
-  primaryPhone: '9985812721',
-  secondaryPhone: '8186801206',
-  city: 'Hyderabad',
-  state: 'Telangana',
-  location: 'Hyderabad, Telangana',
-  priceNote: 'Price: On Request',
-  moqNote: 'Minimum order: On Request',
-} as const;
 
 export function validateEnquiryForm(data: EnquiryData): ValidationResult {
   const errors: Record<string, string> = {};
@@ -143,6 +74,29 @@ export function createDirectWhatsAppChatUrl(customText?: string): string {
   return `https://wa.me/91${CONTACT_INFO.primaryPhone}?text=${encodeURIComponent(customText || defaultText)}`;
 }
 
-export function createMapsSearchUrl(): string {
-  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${CONTACT_INFO.business}, ${CONTACT_INFO.location}`)}`;
+export async function submitEnquiry(data: EnquiryData): Promise<void> {
+  const formId = import.meta.env.VITE_FORMSPREE_FORM_ID?.trim();
+  if (!formId || formId === 'your_form_id_here') {
+    throw new Error('The enquiry form is not configured yet. Please call or WhatsApp us instead.');
+  }
+
+  const response = await fetch(`https://formspree.io/f/${encodeURIComponent(formId)}`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      name: data.name.trim(),
+      phone: data.phone.trim(),
+      product: data.product.trim(),
+      quantity: data.quantity.trim(),
+      message: data.message?.trim() || '',
+      _subject: `Website enquiry: ${data.product.trim()}`,
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`We could not send your enquiry (error ${response.status}). Please try again or call us.`);
+  }
 }
