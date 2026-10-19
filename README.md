@@ -42,7 +42,7 @@ The Contact form and product quote modal validate the entered details and open W
 
 ## Product categories
 
-Product cards, gallery captions, and enquiry dropdowns identify Areca leaf plates separately from Sal leaf plates and bowls. Product cards include selectable photo strips using clean photos only. Photos containing the embedded sparkle mark have been deleted from `public/images` and removed from the site galleries.
+Product cards, gallery captions, and enquiry dropdowns identify Areca leaf plates separately from Sal leaf plates and bowls. Each product card has carousel arrows and selectable thumbnails. The photo order is single product, food-serving view, then a stack/bunch where clean matching photos are available. The recently supplied bowl-stack photo had the embedded sparkle mark, so it was omitted; the bowl card uses the clean single-bowl and food-serving photos instead. No Areca food photo was included in the recent uploads, so the Areca carousel uses only matching clean Areca plate photos.
 
 ## Campaign video
 
@@ -54,6 +54,6 @@ On mobile, the menu toggle sits on the right side of the header. The fixed botto
 
 ## Images and visibility
 
-Static site images live in `public/images/` and are referenced using absolute `/images/...` paths. The optimized `svm-traders-logo.webp` is used in the navbar and footer. Product cards include selectable photo strips with clean product photos. Photos with the embedded sparkle mark have been deleted; until clean replacement Areca photos are supplied, the hero uses the remaining clean Areca plate photo. Bowl photos are reserved for Sal leaf products. Keep one file for each distinct photo rather than adding duplicate copies. The test suite checks image-file hashes, verifies known marked files are absent, and ensures product, gallery, and hero image lists contain no repeated paths.
+Static site images live in `public/images/` and are referenced using absolute `/images/...` paths. The optimized `svm-traders-logo.webp` is used in the navbar and footer. Product cards use interactive carousels with clean product photos. Photos with the embedded sparkle mark have been deleted or omitted; the hero uses the newly supplied single Areca plate image. Bowl photos are reserved for Sal leaf products. Keep one file for each distinct photo rather than adding duplicate copies. The test suite checks image-file hashes, verifies known marked files are absent, and ensures product, gallery, and hero image lists contain no repeated paths.
 
 The home gallery lists only the distinct supplied images selected for it. Additional gallery subjects such as packed orders or local delivery should be added only when matching photos are supplied. Scroll-reveal and page fade animations are intentionally not used, so content is not hidden while waiting for an observer or animation.

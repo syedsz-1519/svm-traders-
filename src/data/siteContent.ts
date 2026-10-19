@@ -15,7 +15,9 @@ export const PRODUCTS = [
     name: 'Areca Leaf Plates',
     categoryLabel: 'Areca leaf',
     images: [
-      { src: '/images/areca-leaf-plates.webp', alt: 'A natural Areca leaf plate viewed from above', width: 768, height: 1024 },
+      { src: '/images/areca-leaf-plate-single.jpeg', alt: 'A single Areca leaf plate presented by hand', width: 1600, height: 1062 },
+      { src: '/images/areca-leaf-plates.webp', alt: 'A close-up of the natural Areca leaf plate surface', width: 768, height: 1024 },
+      { src: '/images/areca-leaf-plates-stack.png', alt: 'A stack of natural Areca leaf plates', width: 1024, height: 765 },
     ],
   },
   {
@@ -23,9 +25,9 @@ export const PRODUCTS = [
     name: '14-Inch Sitting Plate',
     categoryLabel: 'Sal leaf',
     images: [
-      { src: '/images/sal-sitting-plate-with-food.webp', alt: 'Sal leaf sitting plates arranged for serving', width: 1024, height: 765 },
-      { src: '/images/sal-sitting-plates-served.webp', alt: 'A Sal leaf sitting plate served with a meal', width: 1024, height: 765 },
-      { src: '/images/sitting-plate-14in.webp', alt: 'A 14-inch Sal leaf plate holding a full meal', width: 1200, height: 896 },
+      { src: '/images/sal-sitting-plate-single.png', alt: 'A single empty Sal leaf sitting plate', width: 1024, height: 765 },
+      { src: '/images/sal-sitting-plate-with-food.png', alt: 'A Sal leaf sitting plate filled with a meal', width: 1024, height: 765 },
+      { src: '/images/sal-sitting-plates-stack.png', alt: 'A stack of Sal leaf sitting plates', width: 1024, height: 765 },
     ],
   },
   {
@@ -33,7 +35,9 @@ export const PRODUCTS = [
     name: '12-Inch Buffet Plate',
     categoryLabel: 'Sal leaf',
     images: [
-      { src: '/images/sal-buffet-plate-with-food.webp', alt: 'A Sal leaf plate set with a meal', width: 1024, height: 765 },
+      { src: '/images/sal-buffet-plates-stack.png', alt: 'A stack of Sal leaf buffet plates', width: 1024, height: 765 },
+      { src: '/images/sal-buffet-plate-with-food.png', alt: 'A Sal leaf buffet plate set with food', width: 1024, height: 765 },
+      { src: '/images/sal-buffet-plate-served.png', alt: 'A Sal leaf buffet plate holding a full meal', width: 1200, height: 896 },
     ],
   },
   {
@@ -41,8 +45,9 @@ export const PRODUCTS = [
     name: '8-Inch Tiffin Plate',
     categoryLabel: 'Sal leaf',
     images: [
-      { src: '/images/tiffin-plate-8in.webp', alt: 'A clean stack of 8-inch Sal leaf tiffin plates', width: 1200, height: 896 },
-      { src: '/images/sal-tiffin-plate-served.webp', alt: 'A Sal leaf tiffin plate served with food', width: 1024, height: 765 },
+      { src: '/images/sal-tiffin-plate-single.jpeg', alt: 'A single empty Sal leaf tiffin plate', width: 1200, height: 896 },
+      { src: '/images/sal-tiffin-plate-with-food.jpeg', alt: 'A Sal leaf tiffin plate served with food', width: 1600, height: 1194 },
+      { src: '/images/sal-tiffin-plates-stack.png', alt: 'A stack of Sal leaf tiffin plates', width: 1600, height: 1194 },
     ],
   },
   {
@@ -50,7 +55,8 @@ export const PRODUCTS = [
     name: '4.5-Inch Bowl',
     categoryLabel: 'Sal leaf',
     images: [
-      { src: '/images/leaf-bowl-4-5in.webp', alt: '4.5-inch Sal leaf bowl for serving food', width: 1200, height: 896 },
+      { src: '/images/sal-bowl-single.png', alt: 'A single empty Sal leaf bowl', width: 1024, height: 764 },
+      { src: '/images/leaf-bowl-4-5in.webp', alt: 'A Sal leaf bowl filled with curry', width: 1200, height: 896 },
     ],
   },
 ] as const;
@@ -188,13 +194,14 @@ export const SITE_CONTENT = {
     },
   ],
   galleryImages: [
-    { src: '/images/sal-sitting-plates-stack.webp', alt: 'A clean stack of Sal leaf sitting plates', categoryLabel: 'Sal leaf', width: 1024, height: 765 },
-    { src: '/images/tiffin-plate-8in.webp', alt: 'Green Sal leaf plate with snacks', categoryLabel: 'Sal leaf', width: 1200, height: 896 },
+    { src: '/images/sal-sitting-plates-stack.png', alt: 'A stack of Sal leaf sitting plates', categoryLabel: 'Sal leaf', width: 1024, height: 765 },
+    { src: '/images/sal-tiffin-plate-with-food.jpeg', alt: 'A Sal leaf tiffin plate served with food', categoryLabel: 'Sal leaf', width: 1600, height: 1194 },
     { src: '/images/leaf-bowl-4-5in.webp', alt: 'Green Sal leaf bowl prepared for serving food', categoryLabel: 'Sal leaf', width: 1200, height: 896 },
     { src: '/images/leaf-plate-detail.webp', alt: 'Close-up detail of a green Sal leaf plate', categoryLabel: 'Sal leaf', width: 1024, height: 1024 },
   ],
   testimonials: TESTIMONIALS,
   imageRequirements: [
-    { file: 'areca-leaf-plates.webp', width: 768, height: 1024, subject: 'An Areca leaf plate viewed from above' },
+    { file: 'areca-leaf-plate-single.jpeg', width: 1600, height: 1062, subject: 'A single Areca leaf plate' },
+    { file: 'areca-leaf-plates-stack.png', width: 1024, height: 765, subject: 'A stack of Areca leaf plates' },
   ],
 } as const;

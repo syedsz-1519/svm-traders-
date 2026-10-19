@@ -85,22 +85,33 @@ test('has the exact product range and trust strip provided by SVM Traders', () =
   assert.equal(PRODUCTS[4].name, '4.5-Inch Bowl');
   assert.equal(PRODUCTS[0].images[0].src, SITE_CONTENT.hero.image.src);
   assert.doesNotMatch(PRODUCTS[0].images.map((image) => image.alt).join(' '), /bowl/i);
-  assert.deepEqual(PRODUCTS.map((product) => product.images.length), [1, 3, 1, 2, 1]);
+  assert.deepEqual(PRODUCTS.map((product) => product.images.length), [3, 3, 3, 3, 2]);
   assert.deepEqual(
-    PRODUCTS.slice(1, 4).map((product) => product.images.map((image) => image.src)),
+    PRODUCTS.map((product) => product.images.map((image) => image.src)),
     [
       [
-        '/images/sal-sitting-plate-with-food.webp',
-        '/images/sal-sitting-plates-served.webp',
-        '/images/sitting-plate-14in.webp',
+        '/images/areca-leaf-plate-single.jpeg',
+        '/images/areca-leaf-plates.webp',
+        '/images/areca-leaf-plates-stack.png',
       ],
-      ['/images/sal-buffet-plate-with-food.webp'],
       [
-        '/images/tiffin-plate-8in.webp',
-        '/images/sal-tiffin-plate-served.webp',
+        '/images/sal-sitting-plate-single.png',
+        '/images/sal-sitting-plate-with-food.png',
+        '/images/sal-sitting-plates-stack.png',
       ],
+      [
+        '/images/sal-buffet-plates-stack.png',
+        '/images/sal-buffet-plate-with-food.png',
+        '/images/sal-buffet-plate-served.png',
+      ],
+      [
+        '/images/sal-tiffin-plate-single.jpeg',
+        '/images/sal-tiffin-plate-with-food.jpeg',
+        '/images/sal-tiffin-plates-stack.png',
+      ],
+      ['/images/sal-bowl-single.png', '/images/leaf-bowl-4-5in.webp'],
     ],
-    'plate galleries should include clean photos only',
+    'each product carousel should show matching photos in single, served, and stack order where available',
   );
   assert.deepEqual(
     PRODUCTS.map((product) => product.categoryLabel),
@@ -139,6 +150,7 @@ test('keeps product and gallery image references unique and all public image fil
     .map((entry) => entry.name);
   const watermarkedImages = [
     'areca-plates-stack.webp',
+    'bunch of bowls.png',
     'sal-bowl-single.webp',
     'sal-bowls-stack.webp',
     'buffet-plate-12in.webp',
