@@ -1,7 +1,8 @@
 import React from 'react';
 import { MessageCircle, Phone, Sparkles } from 'lucide-react';
-import { PRODUCTS, CONTACT_INFO, createWhatsAppEnquiryUrl } from '../utils/enquiry';
+import { PRODUCTS, CONTACT_INFO, createDirectWhatsAppChatUrl } from '../utils/enquiry';
 import { TrustBadgesRow } from '../components/TrustBadgesRow';
+import { ProductImage } from '../components/ProductImage';
 
 interface ProductsPageProps {
   openEnquiryModal: (productName?: string) => void;
@@ -9,13 +10,9 @@ interface ProductsPageProps {
 
 export const ProductsPage: React.FC<ProductsPageProps> = ({ openEnquiryModal }) => {
   const handleProductWhatsApp = (productName: string) => {
-    const url = createWhatsAppEnquiryUrl({
-      name: 'Customer',
-      phone: '',
-      product: productName,
-      quantity: 'On Request',
-      message: `I would like to enquire about bulk pricing for ${productName}.`,
-    });
+    const url = createDirectWhatsAppChatUrl(
+      `Hello SVM Traders,\n\nI would like to enquire about ${productName} and your bulk pricing.\n\nPlease share availability and details. Thank you.`
+    );
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
@@ -50,9 +47,11 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ openEnquiryModal }) 
             >
               {/* Product Photo */}
               <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-[#EBF5EC] dark:bg-[#183622] mb-4">
-                <img
+                <ProductImage
                   src={product.image}
-                  alt={product.name}
+                  alt={product.imageAlt}
+                  width={1200}
+                  height={900}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
@@ -112,9 +111,11 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ openEnquiryModal }) 
                 className="w-full sm:max-w-[390px] bg-white dark:bg-[#13271A] rounded-2xl overflow-hidden border border-[#D5E6D3] dark:border-[#224e2f] shadow-xs card-hover flex flex-col p-6 group"
               >
                 <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-[#EBF5EC] dark:bg-[#183622] mb-4">
-                  <img
+                  <ProductImage
                     src={product.image}
-                    alt={product.name}
+                    alt={product.imageAlt}
+                    width={1200}
+                    height={900}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>

@@ -3,7 +3,7 @@ import { Phone, ArrowRight, ShieldCheck, Check, Sparkles, MessageCircle, Truck }
 import { PRODUCTS, CONTACT_INFO, createDirectWhatsAppChatUrl } from '../utils/enquiry';
 import { TrustBadgesRow } from '../components/TrustBadgesRow';
 import { FaqSection } from '../components/FaqSection';
-import { TestimonialsCarousel } from '../components/TestimonialsCarousel';
+import { ProductImage } from '../components/ProductImage';
 import { PageId } from '../components/Navbar';
 
 interface HomePageProps {
@@ -12,10 +12,14 @@ interface HomePageProps {
 }
 
 export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryModal }) => {
-  const heroPlateImg = '/src/assets/images/hero_leaf_plates_1792384289533.jpg';
-  const detailPlateImg = '/src/assets/images/leaf_plate_detail_1792384290338.jpg';
-
-
+  const galleryImages = [
+    { src: '/images/leaf-plates-for-dining.webp', alt: 'Natural leaf plate prepared for a traditional meal' },
+    { src: '/images/natural-leaf-plate.webp', alt: 'Upright natural leaf plate and a stack of plates' },
+    { src: '/images/leaf-plate-bowl.webp', alt: 'Natural leaf bowl for serving food' },
+    { src: '/images/leaf-plate-craft.webp', alt: 'Close-up of the hand-stitched leaf plate texture' },
+    { src: '/images/leaf-plate-setting.webp', alt: 'Leaf plate arranged for a meal' },
+    { src: '/images/leaf-plate-snacks.webp', alt: 'Natural leaf plate used to serve snacks' },
+  ];
   return (
     <div className="w-full relative">
       {/* Decorative leaf watermarks */}
@@ -113,9 +117,13 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
           {/* Right Column: Visual Product Photo with Overlap */}
           <div className="lg:col-span-5 relative w-full flex justify-center lg:justify-end">
             <div className="relative w-full max-w-[480px] aspect-[4/5] rounded-3xl overflow-hidden shadow-xl border border-[#D5E6D3] dark:border-[#204a2d] bg-white dark:bg-[#142a1b]">
-              <img
-                src={heroPlateImg}
-                alt="Stack of authentic natural hand-stitched leaf plates by SVM Traders"
+              <ProductImage
+                src={PRODUCTS[0].image}
+                alt="Stack of natural areca leaf plates supplied by SVM Traders"
+                width={1200}
+                height={1500}
+                loading="eager"
+                fetchPriority="high"
                 className="w-full h-full object-cover object-center"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0F4D26]/70 via-transparent to-transparent" />
@@ -136,9 +144,11 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
             {/* Overlapping Detail Card */}
             <div className="absolute -bottom-6 -left-2 sm:left-4 max-w-[220px] bg-white dark:bg-[#13271A] p-3 rounded-2xl shadow-xl border border-[#D5E6D3] dark:border-[#204a2d] flex items-center gap-3">
               <div className="w-12 h-12 rounded-xl overflow-hidden shrink-0 bg-[#EBF5EC] dark:bg-[#183622]">
-                <img
-                  src={detailPlateImg}
-                  alt="Close-up detail of leaf veins and texture"
+                <ProductImage
+                  src="/images/leaf-plate-detail.webp"
+                  alt="Close-up of the natural leaf plate veins and stitched texture"
+                  width={700}
+                  height={700}
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -184,9 +194,11 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
               className="bg-white dark:bg-[#13271A] rounded-2xl overflow-hidden border border-[#D5E6D3] dark:border-[#224e2f] shadow-xs card-hover flex flex-col p-5 group"
             >
               <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-[#EBF5EC] dark:bg-[#183622] mb-4">
-                <img
+                <ProductImage
                   src={product.image}
-                  alt={product.name}
+                  alt={product.imageAlt}
+                  width={1200}
+                  height={900}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
@@ -225,9 +237,11 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
                 className="w-full sm:max-w-[380px] bg-white dark:bg-[#13271A] rounded-2xl overflow-hidden border border-[#D5E6D3] dark:border-[#224e2f] shadow-xs card-hover flex flex-col p-5 group"
               >
                 <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-[#EBF5EC] dark:bg-[#183622] mb-4">
-                  <img
+                  <ProductImage
                     src={product.image}
-                    alt={product.name}
+                    alt={product.imageAlt}
+                    width={1200}
+                    height={900}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
@@ -342,8 +356,32 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
         </div>
       </section>
 
-      {/* VERIFIED CUSTOMER TESTIMONIALS CAROUSEL */}
-      <TestimonialsCarousel />
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24" aria-labelledby="gallery-title">
+        <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
+          <span className="inline-flex px-3.5 py-1 rounded-full bg-[#DCEFE1] dark:bg-[#183a24] text-[#0F4D26] dark:text-[#a2f0b5] text-xs font-bold uppercase tracking-wider">
+            Product Gallery
+          </span>
+          <h2 id="gallery-title" className="font-serif-brand text-3xl sm:text-4xl font-bold text-[#0F4D26] dark:text-[#d7f9dc] tracking-tight">
+            A closer look at leaf tableware
+          </h2>
+          <p className="text-base text-[#1F2A22]/80 dark:text-[#c4d6c8]">
+            Browse the natural textures, serving styles, and product range.
+          </p>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-5">
+          {galleryImages.map((image) => (
+            <div key={image.src} className="aspect-[4/3] overflow-hidden rounded-2xl border border-[#D5E6D3] dark:border-[#224e2f] bg-[#EBF5EC] dark:bg-[#183622]">
+              <ProductImage
+                src={image.src}
+                alt={image.alt}
+                width={1200}
+                height={900}
+                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+              />
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* FREQUENTLY ASKED QUESTIONS ACCORDION */}
       <FaqSection openEnquiryModal={openEnquiryModal} />
