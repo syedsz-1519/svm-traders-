@@ -42,7 +42,7 @@ The Contact form and product quote modal validate the entered details and open W
 
 ## Product categories
 
-Product cards, gallery captions, and enquiry dropdowns identify the cream-coloured plates as Areca leaf and the green plates and bowl as Sal leaf.
+Product cards, gallery captions, and enquiry dropdowns identify Areca leaf plates separately from Sal leaf plates and bowls.
 
 ## Campaign video
 
@@ -54,6 +54,6 @@ On mobile, the menu toggle sits on the right side of the header. The fixed botto
 
 ## Images and visibility
 
-Static site images live in `public/images/` and are referenced using absolute `/images/...` paths. The optimized `svm-traders-logo.webp` is used in the navbar and footer. The homepage hero layers three distinct optimized photos: `areca-leaf-plates.webp` sits behind `hero-areca-plates.webp`, with `areca-plates-in-use.webp` in front. The Areca Leaf Plates cards reuse the canonical `hero-areca-plates.webp` asset. Keep one file for each distinct photo rather than adding duplicate copies. The test suite checks image-file hashes and ensures product, gallery, and hero image lists contain no repeated paths. The separate homepage gallery highlights a selected set of tableware photos.
+Static site images live in `public/images/` and are referenced using absolute `/images/...` paths. The optimized `svm-traders-logo.webp` is used in the navbar and footer. The homepage hero and Areca Leaf Plates card currently use the plate-only `areca-leaf-plates.webp` photo; bowl photos are reserved for Sal leaf products. Replace the temporary hero photo when new Areca plate photos are supplied. Keep one file for each distinct photo rather than adding duplicate copies. The test suite checks image-file hashes and ensures product, gallery, and hero image lists contain no repeated paths. The separate homepage gallery highlights a selected set of tableware photos.
 
 The home gallery lists only the distinct supplied images selected for it. Additional gallery subjects such as packed orders or local delivery should be added only when matching photos are supplied. Scroll-reveal and page fade animations are intentionally not used, so content is not hidden while waiting for an observer or animation.

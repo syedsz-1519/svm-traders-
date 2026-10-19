@@ -52,38 +52,16 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
       </div>
 
       <div className="relative mx-auto w-full max-w-xl">
-        <div className="relative aspect-[4/3] w-full">
-          <div className="absolute left-[4%] top-[6%] z-0 h-[82%] w-[90%] overflow-hidden rounded-[2rem] border-[6px] border-white bg-[#F5F1E7] shadow-2xl dark:border-[#1b3322]">
-            <ProductImage
-              src={SITE_CONTENT.hero.images.back.src}
-              alt={SITE_CONTENT.hero.images.back.alt}
-              width={SITE_CONTENT.hero.images.back.width}
-              height={SITE_CONTENT.hero.images.back.height}
-              loading="eager"
-              className="h-full w-full object-cover"
-            />
-          </div>
-          <div className="absolute right-0 top-0 z-20 h-[40%] w-[36%] overflow-hidden rounded-3xl border-[5px] border-white bg-[#F5F1E7] shadow-xl dark:border-[#1b3322]">
-            <ProductImage
-              src={SITE_CONTENT.hero.images.middle.src}
-              alt={SITE_CONTENT.hero.images.middle.alt}
-              width={SITE_CONTENT.hero.images.middle.width}
-              height={SITE_CONTENT.hero.images.middle.height}
-              loading="eager"
-              fetchPriority="high"
-              className="h-full w-full object-cover"
-            />
-          </div>
-          <div className="absolute bottom-0 left-0 z-30 h-[38%] w-[42%] overflow-hidden rounded-3xl border-[5px] border-white bg-[#F5F1E7] shadow-xl dark:border-[#1b3322]">
-            <ProductImage
-              src={SITE_CONTENT.hero.images.front.src}
-              alt={SITE_CONTENT.hero.images.front.alt}
-              width={SITE_CONTENT.hero.images.front.width}
-              height={SITE_CONTENT.hero.images.front.height}
-              loading="eager"
-              className="h-full w-full object-cover"
-            />
-          </div>
+        <div className="overflow-hidden rounded-[2rem] border-[6px] border-white bg-[#F5F1E7] shadow-2xl dark:border-[#1b3322]">
+          <ProductImage
+            src={SITE_CONTENT.hero.image.src}
+            alt={SITE_CONTENT.hero.image.alt}
+            width={SITE_CONTENT.hero.image.width}
+            height={SITE_CONTENT.hero.image.height}
+            loading="eager"
+            fetchPriority="high"
+            className="h-auto max-h-[34rem] w-full object-contain"
+          />
         </div>
         <div className="mx-auto mt-4 flex max-w-sm items-center gap-3 rounded-2xl border border-[#D5E6D3] bg-white/95 p-4 shadow-lg backdrop-blur dark:border-[#224e2f] dark:bg-[#13271A]/95">
           <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#EBF5EC] text-[#1F7A3A] dark:bg-[#1a3824] dark:text-[#52d274]">
@@ -184,7 +162,7 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
             controls
             playsInline
             preload="metadata"
-            poster="/images/hero-areca-plates.webp"
+            poster={SITE_CONTENT.hero.image.src}
             aria-label={SITE_CONTENT.campaign.videoLabel}
             className="absolute inset-0 h-full w-full object-cover"
           >

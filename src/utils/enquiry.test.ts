@@ -83,18 +83,20 @@ test('has the exact product range and trust strip provided by SVM Traders', () =
   assert.equal(PRODUCTS[2].name, '12-Inch Buffet Plate');
   assert.equal(PRODUCTS[3].name, '8-Inch Tiffin Plate');
   assert.equal(PRODUCTS[4].name, '4.5-Inch Bowl');
-  assert.equal(PRODUCTS[0].image, SITE_CONTENT.hero.images.middle.src);
+  assert.equal(PRODUCTS[0].image, SITE_CONTENT.hero.image.src);
+  assert.doesNotMatch(PRODUCTS[0].imageAlt, /bowl/i);
   assert.deepEqual(
     PRODUCTS.map((product) => product.categoryLabel),
     [
-      'Cream-coloured · Areca leaf',
-      'Green · Sal leaf',
-      'Green · Sal leaf',
-      'Green · Sal leaf',
-      'Green · Sal leaf',
+      'Areca leaf',
+      'Sal leaf',
+      'Sal leaf',
+      'Sal leaf',
+      'Sal leaf',
     ],
   );
-  assert.match(SITE_CONTENT.products.subtitle, /Cream-coloured.*Areca.*green.*Sal/);
+  assert.match(SITE_CONTENT.products.subtitle, /Areca leaf plates and Sal leaf plates and bowls/);
+  assert.equal(SITE_CONTENT.faq[0].answer, 'Areca leaf products are plates. Our green plates and bowls are Sal leaf products.');
 
   assert.deepEqual([...TRUST_BADGES], [
     '100% Natural',
@@ -114,7 +116,7 @@ test('keeps product and gallery image references unique and all public image fil
   const logoImage = new URL('../../public/images/svm-traders-logo.webp', import.meta.url);
   const productImages = PRODUCTS.map((product) => product.image);
   const galleryImages = SITE_CONTENT.galleryImages.map((image) => image.src);
-  const heroImages = Object.values(SITE_CONTENT.hero.images).map((image) => image.src);
+  const heroImages = [SITE_CONTENT.hero.image.src];
   const imageFiles = readdirSync(imageDirectory, { withFileTypes: true })
     .filter((entry) => entry.isFile())
     .map((entry) => entry.name);
@@ -133,6 +135,7 @@ test('keeps product and gallery image references unique and all public image fil
     [...productImages, ...galleryImages, ...heroImages].every((image) => imageFiles.includes(image.split('/').at(-1) ?? '')),
     'product and gallery references must exist in public/images',
   );
+  assert.ok(heroImages.every((image) => !/bowl/i.test(image)), 'the Areca hero must not reference bowl imagery');
 });
 
 test('includes the configured promotional video asset', () => {

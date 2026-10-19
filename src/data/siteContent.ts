@@ -13,16 +13,16 @@ export const PRODUCTS = [
   {
     id: 'areca-leaf-plates',
     name: 'Areca Leaf Plates',
-    categoryLabel: 'Cream-coloured · Areca leaf',
-    image: '/images/hero-areca-plates.webp',
-    imageAlt: 'Natural Areca leaf plates and a bowl arranged on a wooden table',
-    width: 1165,
-    height: 768,
+    categoryLabel: 'Areca leaf',
+    image: '/images/areca-leaf-plates.webp',
+    imageAlt: 'Natural Areca leaf plates stacked on a wooden table',
+    width: 768,
+    height: 1024,
   },
   {
     id: '14-inch-sitting-plate',
     name: '14-Inch Sitting Plate',
-    categoryLabel: 'Green · Sal leaf',
+    categoryLabel: 'Sal leaf',
     image: '/images/sitting-plate-14in.webp',
     imageAlt: 'Green Sal leaf 14-inch sitting plate displayed upright',
     width: 1200,
@@ -31,7 +31,7 @@ export const PRODUCTS = [
   {
     id: '12-inch-buffet-plate',
     name: '12-Inch Buffet Plate',
-    categoryLabel: 'Green · Sal leaf',
+    categoryLabel: 'Sal leaf',
     image: '/images/buffet-plate-12in.webp',
     imageAlt: 'Green Sal leaf 12-inch buffet plate arranged for food service',
     width: 1200,
@@ -40,7 +40,7 @@ export const PRODUCTS = [
   {
     id: '8-inch-tiffin-plate',
     name: '8-Inch Tiffin Plate',
-    categoryLabel: 'Green · Sal leaf',
+    categoryLabel: 'Sal leaf',
     image: '/images/tiffin-plate-8in.webp',
     imageAlt: 'Green Sal leaf 8-inch tiffin plate prepared for serving snacks',
     width: 1200,
@@ -49,7 +49,7 @@ export const PRODUCTS = [
   {
     id: '4-5-inch-bowl',
     name: '4.5-Inch Bowl',
-    categoryLabel: 'Green · Sal leaf',
+    categoryLabel: 'Sal leaf',
     image: '/images/leaf-bowl-4-5in.webp',
     imageAlt: 'Green Sal leaf 4.5-inch bowl for serving food',
     width: 1200,
@@ -79,25 +79,11 @@ export const SITE_CONTENT = {
       'Hand-crafted, chemical-free and fully biodegradable. A plastic-free choice for weddings, catering, temples and everyday use.',
     quoteCta: 'Request a Quote',
     productsCta: 'View Products',
-    images: {
-      back: {
-        src: '/images/areca-leaf-plates.webp',
-        alt: 'Natural areca leaf plates stacked on a wooden table',
-        width: 768,
-        height: 1024,
-      },
-      middle: {
-        src: '/images/hero-areca-plates.webp',
-        alt: 'Natural areca leaf plates and a bowl arranged on a wooden table',
-        width: 1165,
-        height: 768,
-      },
-      front: {
-        src: '/images/areca-plates-in-use.webp',
-        alt: 'A natural areca leaf plate being placed above a stack of plates',
-        width: 1600,
-        height: 1062,
-      },
+    image: {
+      src: '/images/areca-leaf-plates.webp',
+      alt: 'Natural Areca leaf plates stacked on a wooden table',
+      width: 768,
+      height: 1024,
     },
   },
   campaign: {
@@ -110,7 +96,7 @@ export const SITE_CONTENT = {
   },
   products: {
     title: 'Our Range',
-    subtitle: 'Cream-coloured plates are Areca leaf plates; green plates and bowls are Sal leaf products. Bulk supply for caterers, event planners, temples and retailers.',
+    subtitle: 'Areca leaf plates and Sal leaf plates and bowls for caterers, event planners, temples and retailers.',
     pricingNote: 'Pricing and minimum order quantities are shared on request.',
     cardCta: 'Enquire Now',
     quoteCta: 'Request a Quote',
@@ -119,7 +105,7 @@ export const SITE_CONTENT = {
   reasons: [
     {
       title: 'Natural',
-      text: 'Our cream-coloured Areca leaf plates are made from fallen areca palm leaves. No trees are cut, and no dyes or chemicals are used.',
+      text: 'Our Areca leaf plates are made from fallen areca palm leaves. No trees are cut, and no dyes or chemicals are used.',
     },
     {
       title: 'Safe',
@@ -177,7 +163,7 @@ export const SITE_CONTENT = {
   faq: [
     {
       question: 'What are the plates made from?',
-      answer: 'Cream-coloured plates are Areca leaf plates; green plates and bowls are Sal leaf products.',
+      answer: 'Areca leaf products are plates. Our green plates and bowls are Sal leaf products.',
     },
     {
       question: 'Can they hold hot and oily food?',
@@ -209,16 +195,14 @@ export const SITE_CONTENT = {
     },
   ],
   galleryImages: [
-    { src: '/images/buffet-plate-12in.webp', alt: 'Green Sal leaf plate arranged for food service', categoryLabel: 'Green · Sal leaf', width: 1200, height: 896 },
-    { src: '/images/tiffin-plate-8in.webp', alt: 'Green Sal leaf plate with snacks', categoryLabel: 'Green · Sal leaf', width: 1200, height: 896 },
-    { src: '/images/leaf-bowl-4-5in.webp', alt: 'Green Sal leaf bowl prepared for serving food', categoryLabel: 'Green · Sal leaf', width: 1200, height: 896 },
-    { src: '/images/leaf-plate-detail.webp', alt: 'Close-up detail of the cream-coloured Areca leaf plate texture', categoryLabel: 'Cream-coloured · Areca leaf', width: 1024, height: 1024 },
+    { src: '/images/buffet-plate-12in.webp', alt: 'Green Sal leaf plate arranged for food service', categoryLabel: 'Sal leaf', width: 1200, height: 896 },
+    { src: '/images/tiffin-plate-8in.webp', alt: 'Green Sal leaf plate with snacks', categoryLabel: 'Sal leaf', width: 1200, height: 896 },
+    { src: '/images/leaf-bowl-4-5in.webp', alt: 'Green Sal leaf bowl prepared for serving food', categoryLabel: 'Sal leaf', width: 1200, height: 896 },
+    { src: '/images/leaf-plate-detail.webp', alt: 'Close-up detail of a green Sal leaf plate', categoryLabel: 'Sal leaf', width: 1024, height: 1024 },
   ],
   testimonials: TESTIMONIALS,
   imageRequirements: [
-    { file: 'hero-areca-plates.webp', width: 1165, height: 768, subject: 'Natural areca leaf plates and a bowl arranged on a wooden table for the homepage hero' },
-    { file: 'areca-leaf-plates.webp', width: 768, height: 1024, subject: 'Natural Areca leaf plates on a wooden table used as the layered hero background' },
-    { file: 'areca-plates-in-use.webp', width: 1600, height: 1062, subject: 'A natural areca leaf plate being placed above a stack of plates' },
+    { file: 'areca-leaf-plates.webp', width: 768, height: 1024, subject: 'Natural Areca leaf plates on a wooden table used as the homepage hero' },
     { file: 'leaf-plate-detail.webp', width: 1200, height: 900, subject: 'A close-up of the natural areca leaf plate texture' },
     { file: 'sitting-plate-14in.webp', width: 1200, height: 900, subject: 'The 14-inch sitting plate' },
     { file: 'buffet-plate-12in.webp', width: 1200, height: 900, subject: 'The 12-inch buffet plate' },
