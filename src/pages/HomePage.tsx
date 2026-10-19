@@ -54,8 +54,8 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
       <div className="relative mx-auto w-full max-w-xl">
         <div className="aspect-[4/3] overflow-hidden rounded-[2rem] border border-[#D5E6D3] bg-[#F5F1E7] shadow-xl dark:border-[#224e2f]">
           <ProductImage
-            src="/images/hero-leaf-plates.webp"
-            alt="Stack of natural areca leaf plates"
+            src="/images/areca-leaf-plates.webp"
+            alt="Natural Areca leaf plates stacked and displayed upright"
             width={1200}
             height={896}
             loading="eager"
@@ -121,6 +121,49 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
         >
           {SITE_CONTENT.products.quoteCta}
         </button>
+      </div>
+    </section>
+
+    <section
+      aria-labelledby="campaign-heading"
+      className="border-y border-[#D5E6D3] bg-[#F5F1E7] px-4 py-16 dark:border-[#224e2f] dark:bg-[#17261a] sm:px-6 sm:py-20 lg:px-8"
+    >
+      <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1fr_auto] lg:gap-16">
+        <div className="max-w-2xl">
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-[#1F7A3A] dark:text-[#82d991]">
+            {SITE_CONTENT.campaign.eyebrow}
+          </p>
+          <h2
+            id="campaign-heading"
+            className="font-serif-brand text-3xl font-bold tracking-tight text-[#0F4D26] dark:text-[#d7f9dc] sm:text-4xl"
+          >
+            {SITE_CONTENT.campaign.title}
+          </h2>
+          <p className="mt-4 max-w-xl text-base leading-relaxed text-[#1F2A22]/85 dark:text-[#d0dfd3] sm:text-lg">
+            {SITE_CONTENT.campaign.text}
+          </p>
+          <button
+            type="button"
+            onClick={() => openEnquiryModal()}
+            className="mt-7 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#1F7A3A] px-6 font-bold text-white shadow-md transition-colors hover:bg-[#17632E] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1F7A3A]"
+          >
+            {SITE_CONTENT.campaign.quoteCta}
+            <ArrowRight aria-hidden="true" className="h-4 w-4" />
+          </button>
+        </div>
+        <div className="mx-auto w-full max-w-xs overflow-hidden rounded-3xl border border-[#D5E6D3] bg-black shadow-xl dark:border-[#2b5435]">
+          <video
+            controls
+            playsInline
+            preload="metadata"
+            poster="/images/areca-leaf-plates.webp"
+            aria-label={SITE_CONTENT.campaign.videoLabel}
+            className="aspect-[9/16] w-full object-contain"
+          >
+            <source src={SITE_CONTENT.campaign.videoSrc} type="video/mp4" />
+            Your browser does not support embedded video. Please use the quote button to contact SVM Traders.
+          </video>
+        </div>
       </div>
     </section>
 

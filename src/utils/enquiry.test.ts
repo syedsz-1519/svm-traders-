@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { readdirSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SITE_CONTENT } from '../data/siteContent.ts';
@@ -117,4 +117,10 @@ test('keeps product and gallery image references unique and all public image fil
     [...productImages, ...galleryImages].every((image) => imageFiles.includes(image.split('/').at(-1) ?? '')),
     'product and gallery references must exist in public/images',
   );
+});
+
+test('includes the configured promotional video asset', () => {
+  const campaignVideo = new URL('../../public/videos/svm-traders-ad.mp4', import.meta.url);
+  assert.equal(SITE_CONTENT.campaign.videoSrc, '/videos/svm-traders-ad.mp4');
+  assert.equal(existsSync(campaignVideo), true);
 });

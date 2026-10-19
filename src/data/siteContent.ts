@@ -13,10 +13,10 @@ export const PRODUCTS = [
   {
     id: 'areca-leaf-plates',
     name: 'Areca Leaf Plates',
-    image: '/images/leaf-plate-detail.webp',
-    imageAlt: 'Close-up of the natural areca leaf plate texture',
-    width: 1024,
-    height: 1024,
+    image: '/images/areca-leaf-plates.webp',
+    imageAlt: 'Natural Areca leaf plates stacked and displayed upright',
+    width: 1200,
+    height: 896,
   },
   {
     id: '14-inch-sitting-plate',
@@ -74,6 +74,14 @@ export const SITE_CONTENT = {
       'Hand-crafted, chemical-free and fully biodegradable. A plastic-free choice for weddings, catering, temples and everyday use.',
     quoteCta: 'Request a Quote',
     productsCta: 'View Products',
+  },
+  campaign: {
+    eyebrow: 'SVM Traders Campaign',
+    title: 'Choose natural plates for your next gathering',
+    text: 'Watch our short video, explore the Areca leaf plate range, and request a quote for your event or business.',
+    quoteCta: 'Request a Quote',
+    videoSrc: '/videos/svm-traders-ad.mp4',
+    videoLabel: 'SVM Traders campaign video for natural Areca leaf plates',
   },
   products: {
     title: 'Our Range',
@@ -183,7 +191,7 @@ export const SITE_CONTENT = {
   ],
   testimonials: TESTIMONIALS,
   imageRequirements: [
-    { file: 'hero-leaf-plates.webp', width: 1600, height: 1200, subject: 'A stack of leaf plates for the hero image' },
+    { file: 'areca-leaf-plates.webp', width: 1200, height: 900, subject: 'Natural Areca leaf plates stacked and displayed upright for the hero image' },
     { file: 'leaf-plate-detail.webp', width: 1200, height: 900, subject: 'A close-up of the natural areca leaf plate texture' },
     { file: 'sitting-plate-14in.webp', width: 1200, height: 900, subject: 'The 14-inch sitting plate' },
     { file: 'buffet-plate-12in.webp', width: 1200, height: 900, subject: 'The 12-inch buffet plate' },

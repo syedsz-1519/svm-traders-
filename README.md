@@ -40,8 +40,12 @@ Push changes to the connected deployment branch to trigger a deployment. The pro
 
 The Contact form and product quote modal validate the entered details and open WhatsApp addressed to **+91 99858 12721** with a prefilled enquiry. The visitor reviews the message and taps Send in WhatsApp; the website does not send messages automatically.
 
+## Campaign video
+
+The homepage campaign video is stored at `public/videos/svm-traders-ad.mp4` and served at `/videos/svm-traders-ad.mp4`. It uses native playback controls and loads metadata until a visitor chooses to play it. Keep a single canonical copy of the video in `public/videos/`.
+
 ## Images and visibility
 
-Static site images live in `public/images/` and are referenced using absolute `/images/...` paths. Keep one canonical file per unique image; reference that file instead of copying it under a second name. The test suite checks file hashes and ensures product and gallery image lists contain no repeated paths. Product photos appear on the Products page; the homepage uses a text-based product preview and a separate gallery so an image is not repeated on that page.
+Static site images live in `public/images/` and are referenced using absolute `/images/...` paths. The hero and Areca product card use the same canonical `areca-leaf-plates.webp` file; do not add another copy under a second name. The test suite checks image-file hashes and ensures product and gallery image lists contain no repeated paths. Product photos appear on the Products page; the homepage uses a text-based product preview and a separate gallery so a product photo is not repeated in both sections on that page.
 
 The home gallery lists only the distinct supplied images selected for it. Additional gallery subjects such as packed orders or local delivery should be added only when matching photos are supplied. Scroll-reveal and page fade animations are intentionally not used, so content is not hidden while waiting for an observer or animation.
