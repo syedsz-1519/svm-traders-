@@ -100,6 +100,7 @@ test('has the exact product range and trust strip provided by SVM Traders', () =
 
 test('keeps product and gallery image references unique and all public image files distinct', () => {
   const imageDirectory = new URL('../../public/images/', import.meta.url);
+  const logoImage = new URL('../../public/images/svm-traders-logo.webp', import.meta.url);
   const productImages = PRODUCTS.map((product) => product.image);
   const galleryImages = SITE_CONTENT.galleryImages.map((image) => image.src);
   const heroImages = Object.values(SITE_CONTENT.hero.images).map((image) => image.src);
@@ -116,6 +117,7 @@ test('keeps product and gallery image references unique and all public image fil
   assert.equal(new Set(galleryImages).size, galleryImages.length, 'gallery images must not repeat');
   assert.equal(new Set(heroImages).size, heroImages.length, 'hero collage images must not repeat');
   assert.equal(new Set(fileHashes).size, fileHashes.length, 'public image files must not contain duplicates');
+  assert.equal(existsSync(logoImage), true, 'SVM Traders brand logo must exist in public/images');
   assert.ok(
     [...productImages, ...galleryImages, ...heroImages].every((image) => imageFiles.includes(image.split('/').at(-1) ?? '')),
     'product and gallery references must exist in public/images',

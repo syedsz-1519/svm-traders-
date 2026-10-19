@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Phone, Menu, X } from 'lucide-react';
-import { ThreeLeafIcon } from './ThreeLeafIcon';
 import { CONTACT_INFO } from '../data/siteContent';
 
 export type PageId = 'home' | 'products' | 'about' | 'contact';
@@ -57,19 +56,17 @@ export const Navbar: React.FC<NavbarProps> = ({
         <button
           type="button"
           onClick={() => handleNavClick('home')}
-          className="flex items-center gap-2 sm:gap-3 text-left group cursor-pointer mr-auto"
+          className="mr-auto flex h-16 w-28 shrink-0 items-center text-left sm:h-[4.5rem] sm:w-36"
+          aria-label={`${CONTACT_INFO.business} home`}
         >
-          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#EBF5EC] dark:bg-[#1a3824] flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
-            <ThreeLeafIcon size={26} className="text-[#1F7A3A] dark:text-[#52d274]" />
-          </div>
-          <div className="flex flex-col">
-            <span className="font-serif-brand text-xl sm:text-2xl md:text-[26px] font-bold tracking-tight text-[#0F4D26] dark:text-[#d7f9dc] leading-tight">
-              {CONTACT_INFO.business}
-            </span>
-            <span className="hidden text-[11px] font-semibold text-[#1F7A3A] dark:text-[#88d982] tracking-normal -mt-0.5 sm:block">
-              {CONTACT_INFO.tagline}
-            </span>
-          </div>
+          <img
+            src="/images/svm-traders-logo.webp"
+            alt="SVM Traders"
+            width={1024}
+            height={765}
+            fetchPriority="high"
+            className="h-full w-full object-contain"
+          />
         </button>
 
         {/* Desktop Navigation */}

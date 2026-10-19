@@ -20,7 +20,14 @@ export const Footer: React.FC<FooterProps> = ({ setActivePage }) => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 border-b border-white/15 pb-10 md:grid-cols-3">
           <div>
-            <h2 className="font-serif-brand text-2xl font-bold">{CONTACT_INFO.business}</h2>
+            <img
+              src="/images/svm-traders-logo.webp"
+              alt="SVM Traders"
+              width={1024}
+              height={765}
+              loading="lazy"
+              className="h-auto w-36 rounded-xl"
+            />
             <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/80">
               {CONTACT_INFO.tagline}
             </p>
