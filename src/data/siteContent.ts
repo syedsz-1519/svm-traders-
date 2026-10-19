@@ -74,6 +74,26 @@ export const SITE_CONTENT = {
       'Hand-crafted, chemical-free and fully biodegradable. A plastic-free choice for weddings, catering, temples and everyday use.',
     quoteCta: 'Request a Quote',
     productsCta: 'View Products',
+    images: {
+      main: {
+        src: '/images/hero-areca-plates.webp',
+        alt: 'Natural areca leaf plates and a bowl arranged on a wooden table',
+        width: 1165,
+        height: 768,
+      },
+      upper: {
+        src: '/images/areca-leaf-plates.webp',
+        alt: 'Natural areca leaf plates stacked on a wooden table',
+        width: 768,
+        height: 1024,
+      },
+      lower: {
+        src: '/images/areca-plates-in-use.webp',
+        alt: 'A natural areca leaf plate being placed above a stack of plates',
+        width: 1600,
+        height: 1062,
+      },
+    },
   },
   campaign: {
     eyebrow: 'SVM Traders Campaign',
@@ -193,6 +213,7 @@ export const SITE_CONTENT = {
   imageRequirements: [
     { file: 'hero-areca-plates.webp', width: 1165, height: 768, subject: 'Natural areca leaf plates and a bowl arranged on a wooden table for the homepage hero' },
     { file: 'areca-leaf-plates.webp', width: 768, height: 1024, subject: 'Natural Areca leaf plates stacked on a wooden table for product cards' },
+    { file: 'areca-plates-in-use.webp', width: 1600, height: 1062, subject: 'A natural areca leaf plate being placed above a stack of plates' },
     { file: 'leaf-plate-detail.webp', width: 1200, height: 900, subject: 'A close-up of the natural areca leaf plate texture' },
     { file: 'sitting-plate-14in.webp', width: 1200, height: 900, subject: 'The 14-inch sitting plate' },
     { file: 'buffet-plate-12in.webp', width: 1200, height: 900, subject: 'The 12-inch buffet plate' },

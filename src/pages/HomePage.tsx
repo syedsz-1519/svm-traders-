@@ -52,18 +52,40 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
       </div>
 
       <div className="relative mx-auto w-full max-w-xl">
-        <div className="aspect-[3/2] overflow-hidden rounded-[2rem] border border-[#D5E6D3] bg-[#F5F1E7] shadow-xl dark:border-[#224e2f]">
-          <ProductImage
-            src="/images/hero-areca-plates.webp"
-            alt="Natural areca leaf plates and a bowl arranged on a wooden table"
-            width={1165}
-            height={768}
-            loading="eager"
-            fetchPriority="high"
-            className="h-full w-full object-cover"
-          />
+        <div className="relative aspect-[5/4] w-full">
+          <div className="absolute right-[3%] top-[4%] z-0 h-[82%] w-[82%] overflow-hidden rounded-[2rem] border-[6px] border-white bg-[#F5F1E7] shadow-2xl dark:border-[#1b3322]">
+            <ProductImage
+              src={SITE_CONTENT.hero.images.main.src}
+              alt={SITE_CONTENT.hero.images.main.alt}
+              width={SITE_CONTENT.hero.images.main.width}
+              height={SITE_CONTENT.hero.images.main.height}
+              loading="eager"
+              fetchPriority="high"
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <div className="absolute right-0 top-0 z-20 h-[49%] w-[48%] overflow-hidden rounded-3xl border-[6px] border-white bg-[#F5F1E7] shadow-xl dark:border-[#1b3322]">
+            <ProductImage
+              src={SITE_CONTENT.hero.images.upper.src}
+              alt={SITE_CONTENT.hero.images.upper.alt}
+              width={SITE_CONTENT.hero.images.upper.width}
+              height={SITE_CONTENT.hero.images.upper.height}
+              loading="eager"
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <div className="absolute bottom-0 left-0 z-30 h-[49%] w-[55%] overflow-hidden rounded-3xl border-[6px] border-white bg-[#F5F1E7] shadow-xl dark:border-[#1b3322]">
+            <ProductImage
+              src={SITE_CONTENT.hero.images.lower.src}
+              alt={SITE_CONTENT.hero.images.lower.alt}
+              width={SITE_CONTENT.hero.images.lower.width}
+              height={SITE_CONTENT.hero.images.lower.height}
+              loading="eager"
+              className="h-full w-full object-cover"
+            />
+          </div>
         </div>
-        <div className="absolute -bottom-5 left-4 right-4 flex items-center gap-3 rounded-2xl border border-[#D5E6D3] bg-white/95 p-4 shadow-lg backdrop-blur dark:border-[#224e2f] dark:bg-[#13271A]/95 sm:left-8 sm:right-8">
+        <div className="mx-auto mt-4 flex max-w-sm items-center gap-3 rounded-2xl border border-[#D5E6D3] bg-white/95 p-4 shadow-lg backdrop-blur dark:border-[#224e2f] dark:bg-[#13271A]/95">
           <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#EBF5EC] text-[#1F7A3A] dark:bg-[#1a3824] dark:text-[#52d274]">
             <PackageCheck aria-hidden="true" className="h-6 w-6" />
           </span>
