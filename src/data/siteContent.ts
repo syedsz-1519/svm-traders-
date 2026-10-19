@@ -191,7 +191,8 @@ export const SITE_CONTENT = {
   ],
   testimonials: TESTIMONIALS,
   imageRequirements: [
-    { file: 'areca-leaf-plates.webp', width: 768, height: 1024, subject: 'Natural Areca leaf plates stacked on a wooden table for the hero image' },
+    { file: 'hero-areca-plates.webp', width: 1165, height: 768, subject: 'Natural areca leaf plates and a bowl arranged on a wooden table for the homepage hero' },
+    { file: 'areca-leaf-plates.webp', width: 768, height: 1024, subject: 'Natural Areca leaf plates stacked on a wooden table for product cards' },
     { file: 'leaf-plate-detail.webp', width: 1200, height: 900, subject: 'A close-up of the natural areca leaf plate texture' },
     { file: 'sitting-plate-14in.webp', width: 1200, height: 900, subject: 'The 14-inch sitting plate' },
     { file: 'buffet-plate-12in.webp', width: 1200, height: 900, subject: 'The 12-inch buffet plate' },

@@ -52,15 +52,15 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
       </div>
 
       <div className="relative mx-auto w-full max-w-xl">
-        <div className="aspect-[4/3] overflow-hidden rounded-[2rem] border border-[#D5E6D3] bg-[#F5F1E7] shadow-xl dark:border-[#224e2f]">
+        <div className="aspect-[3/2] overflow-hidden rounded-[2rem] border border-[#D5E6D3] bg-[#F5F1E7] shadow-xl dark:border-[#224e2f]">
           <ProductImage
-            src="/images/areca-leaf-plates.webp"
-            alt="Natural Areca leaf plates stacked on a wooden table"
-            width={768}
-            height={1024}
+            src="/images/hero-areca-plates.webp"
+            alt="Natural areca leaf plates and a bowl arranged on a wooden table"
+            width={1165}
+            height={768}
             loading="eager"
             fetchPriority="high"
-            className="h-full w-full object-contain"
+            className="h-full w-full object-cover"
           />
         </div>
         <div className="absolute -bottom-5 left-4 right-4 flex items-center gap-3 rounded-2xl border border-[#D5E6D3] bg-white/95 p-4 shadow-lg backdrop-blur dark:border-[#224e2f] dark:bg-[#13271A]/95 sm:left-8 sm:right-8">
@@ -159,7 +159,7 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
             controls
             playsInline
             preload="metadata"
-            poster="/images/areca-leaf-plates.webp"
+            poster="/images/hero-areca-plates.webp"
             aria-label={SITE_CONTENT.campaign.videoLabel}
             className="aspect-[9/16] w-full object-contain"
           >

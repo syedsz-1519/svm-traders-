@@ -101,6 +101,7 @@ test('keeps product and gallery image references unique and all public image fil
   const imageDirectory = new URL('../../public/images/', import.meta.url);
   const productImages = PRODUCTS.map((product) => product.image);
   const galleryImages = SITE_CONTENT.galleryImages.map((image) => image.src);
+  const heroImage = new URL('../../public/images/hero-areca-plates.webp', import.meta.url);
   const imageFiles = readdirSync(imageDirectory, { withFileTypes: true })
     .filter((entry) => entry.isFile())
     .map((entry) => entry.name);
@@ -117,6 +118,7 @@ test('keeps product and gallery image references unique and all public image fil
     [...productImages, ...galleryImages].every((image) => imageFiles.includes(image.split('/').at(-1) ?? '')),
     'product and gallery references must exist in public/images',
   );
+  assert.equal(existsSync(heroImage), true, 'homepage hero image must exist in public/images');
 });
 
 test('includes the configured promotional video asset', () => {
