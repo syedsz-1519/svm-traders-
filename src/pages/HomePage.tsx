@@ -52,8 +52,8 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
       </div>
 
       <div className="relative mx-auto w-full max-w-xl">
-        <div className="relative aspect-[5/4] w-full">
-          <div className="absolute right-0 top-0 z-0 h-[74%] w-[48%] overflow-hidden rounded-3xl border-[6px] border-white bg-[#F5F1E7] shadow-xl dark:border-[#1b3322]">
+        <div className="relative aspect-[4/3] w-full">
+          <div className="absolute left-[4%] top-[6%] z-0 h-[82%] w-[90%] overflow-hidden rounded-[2rem] border-[6px] border-white bg-[#F5F1E7] shadow-2xl dark:border-[#1b3322]">
             <ProductImage
               src={SITE_CONTENT.hero.images.back.src}
               alt={SITE_CONTENT.hero.images.back.alt}
@@ -63,7 +63,7 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
               className="h-full w-full object-cover"
             />
           </div>
-          <div className="absolute left-[2%] top-[12%] z-10 h-[74%] w-[82%] overflow-hidden rounded-[2rem] border-[6px] border-white bg-[#F5F1E7] shadow-2xl dark:border-[#1b3322]">
+          <div className="absolute right-0 top-0 z-20 h-[40%] w-[36%] overflow-hidden rounded-3xl border-[5px] border-white bg-[#F5F1E7] shadow-xl dark:border-[#1b3322]">
             <ProductImage
               src={SITE_CONTENT.hero.images.middle.src}
               alt={SITE_CONTENT.hero.images.middle.alt}
@@ -74,7 +74,7 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
               className="h-full w-full object-cover"
             />
           </div>
-          <div className="absolute bottom-0 right-0 z-30 h-[46%] w-[57%] overflow-hidden rounded-3xl border-[6px] border-white bg-[#F5F1E7] shadow-xl dark:border-[#1b3322]">
+          <div className="absolute bottom-0 left-0 z-30 h-[38%] w-[42%] overflow-hidden rounded-3xl border-[5px] border-white bg-[#F5F1E7] shadow-xl dark:border-[#1b3322]">
             <ProductImage
               src={SITE_CONTENT.hero.images.front.src}
               alt={SITE_CONTENT.hero.images.front.alt}
