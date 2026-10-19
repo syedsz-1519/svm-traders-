@@ -80,6 +80,19 @@ export const Footer: React.FC<FooterProps> = ({ setActivePage }) => {
               >
                 Contact &amp; Bulk Orders
               </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setActivePage('home');
+                  setTimeout(() => {
+                    const el = document.getElementById('faq');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }, 100);
+                }}
+                className="text-left hover:text-[#9ACD32] transition-colors cursor-pointer"
+              >
+                Frequently Asked Questions
+              </button>
             </div>
           </div>
 

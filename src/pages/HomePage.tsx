@@ -2,6 +2,7 @@ import React from 'react';
 import { Phone, ArrowRight, ShieldCheck, Check, Sparkles, MessageCircle, Truck } from 'lucide-react';
 import { PRODUCTS, CONTACT_INFO, createDirectWhatsAppChatUrl } from '../utils/enquiry';
 import { TrustBadgesRow } from '../components/TrustBadgesRow';
+import { FaqSection } from '../components/FaqSection';
 import { PageId } from '../components/Navbar';
 
 interface HomePageProps {
@@ -339,6 +340,9 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
           </div>
         </div>
       </section>
+
+      {/* FREQUENTLY ASKED QUESTIONS ACCORDION */}
+      <FaqSection openEnquiryModal={openEnquiryModal} />
 
       {/* CLOSING BAND ON DEEP GREEN */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
