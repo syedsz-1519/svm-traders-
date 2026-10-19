@@ -91,11 +91,14 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
       <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {PRODUCTS.map((product) => (
           <article key={product.id} className="card-hover flex h-full flex-col overflow-hidden rounded-2xl border border-[#D5E6D3] bg-white p-4 shadow-sm dark:border-[#224e2f] dark:bg-[#13271A]">
-            <div className="flex min-h-24 items-center gap-4 rounded-xl bg-[#F5F1E7] p-5 dark:bg-[#183622]">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#EBF5EC] text-[#1F7A3A] dark:bg-[#1a3824] dark:text-[#52d274]">
-                <Leaf aria-hidden="true" className="h-6 w-6" />
-              </span>
-              <p className="text-sm font-semibold text-[#0F4D26] dark:text-[#d7f9dc]">Natural areca leaf tableware</p>
+            <div className="aspect-[4/3] overflow-hidden rounded-xl bg-[#F5F1E7] dark:bg-[#183622]">
+              <ProductImage
+                src={product.image}
+                alt={product.imageAlt}
+                width={product.width}
+                height={product.height}
+                className="h-full w-full object-cover"
+              />
             </div>
             <h3 className="mt-5 font-serif-brand text-xl font-bold text-[#0F4D26] dark:text-[#d7f9dc]">
               {product.name}
