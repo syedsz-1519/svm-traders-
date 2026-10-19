@@ -84,6 +84,17 @@ test('has the exact product range and trust strip provided by SVM Traders', () =
   assert.equal(PRODUCTS[3].name, '8-Inch Tiffin Plate');
   assert.equal(PRODUCTS[4].name, '4.5-Inch Bowl');
   assert.equal(PRODUCTS[0].image, SITE_CONTENT.hero.images.middle.src);
+  assert.deepEqual(
+    PRODUCTS.map((product) => product.categoryLabel),
+    [
+      'Cream-coloured · Areca leaf',
+      'Green · Sal leaf',
+      'Green · Sal leaf',
+      'Green · Sal leaf',
+      'Green · Sal leaf',
+    ],
+  );
+  assert.match(SITE_CONTENT.products.subtitle, /Cream-coloured.*Areca.*green.*Sal/);
 
   assert.deepEqual([...TRUST_BADGES], [
     '100% Natural',

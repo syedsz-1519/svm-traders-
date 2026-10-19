@@ -35,6 +35,9 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ openEnquiryModal }) 
             <h2 className="mt-5 font-serif-brand text-xl font-bold text-[#0F4D26] dark:text-[#d7f9dc]">
               {product.name}
             </h2>
+            <p className="mt-2 text-sm font-semibold text-[#8A5A32] dark:text-[#d6a879]">
+              {product.categoryLabel}
+            </p>
             <button
               type="button"
               onClick={() => openEnquiryModal(product.name)}

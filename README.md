@@ -40,6 +40,10 @@ Push changes to the connected deployment branch to trigger a deployment. The pro
 
 The Contact form and product quote modal validate the entered details and open WhatsApp addressed to **+91 99858 12721** with a prefilled enquiry. The visitor reviews the message and taps Send in WhatsApp; the website does not send messages automatically.
 
+## Product categories
+
+Product cards, gallery captions, and enquiry dropdowns identify the cream-coloured plates as Areca leaf and the green plates and bowl as Sal leaf.
+
 ## Campaign video
 
 The homepage campaign video is stored at `public/videos/svm-traders-ad.mp4` and served at `/videos/svm-traders-ad.mp4`. The portrait clip is displayed in a horizontal 16:9 frame using a centered cover crop, so some content at the top and bottom is cropped. The player sits beside its campaign text on tablet and desktop, and stacks below it on smaller screens. It uses native playback controls and loads metadata until a visitor chooses to play it. Keep a single canonical copy of the video in `public/videos/`.

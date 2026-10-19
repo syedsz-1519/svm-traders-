@@ -165,7 +165,7 @@ export const ContactPage: React.FC = () => {
                   aria-describedby={errors.product ? 'contact-product-error' : undefined}
                 >
                   {PRODUCTS.map((product) => (
-                    <option key={product.id} value={product.name}>{product.name}</option>
+                    <option key={product.id} value={product.name}>{product.name} — {product.categoryLabel}</option>
                   ))}
                 </select>
               </FormField>

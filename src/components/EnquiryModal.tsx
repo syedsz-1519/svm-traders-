@@ -165,7 +165,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                 >
                   {PRODUCTS.map((p) => (
                     <option key={p.id} value={p.name} className="dark:bg-[#13271A]">
-                      {p.name}
+                      {p.name} — {p.categoryLabel}
                     </option>
                   ))}
                 </select>
