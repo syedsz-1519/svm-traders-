@@ -24,7 +24,7 @@ export const PRODUCTS = [
     name: '14-Inch Sitting Plate',
     categoryLabel: 'Sal leaf',
     images: [
-      { src: '/images/sal-sitting-plate-single.webp', alt: 'A single Sal leaf sitting plate', width: 1024, height: 765 },
+      { src: '/images/sal-sitting-plate-with-food.webp', alt: 'Sal leaf sitting plates arranged for serving', width: 1024, height: 765 },
       { src: '/images/sal-sitting-plates-served.webp', alt: 'A Sal leaf sitting plate served with a meal', width: 1024, height: 765 },
       { src: '/images/sitting-plate-14in.webp', alt: 'A 14-inch Sal leaf plate holding a full meal', width: 1200, height: 896 },
     ],
@@ -34,8 +34,6 @@ export const PRODUCTS = [
     name: '12-Inch Buffet Plate',
     categoryLabel: 'Sal leaf',
     images: [
-      { src: '/images/buffet-plate-12in.webp', alt: '12-inch Sal leaf buffet plates stacked for service', width: 1200, height: 896 },
-      { src: '/images/sal-buffet-plate-served.webp', alt: 'A Sal leaf buffet plate served with food', width: 1024, height: 765 },
       { src: '/images/sal-buffet-plate-with-food.webp', alt: 'A Sal leaf plate set with a meal', width: 1024, height: 765 },
     ],
   },
@@ -191,7 +189,7 @@ export const SITE_CONTENT = {
     },
   ],
   galleryImages: [
-    { src: '/images/buffet-plate-12in.webp', alt: 'Green Sal leaf plate arranged for food service', categoryLabel: 'Sal leaf', width: 1200, height: 896 },
+    { src: '/images/sal-sitting-plates-stack.webp', alt: 'A clean stack of Sal leaf sitting plates', categoryLabel: 'Sal leaf', width: 1024, height: 765 },
     { src: '/images/tiffin-plate-8in.webp', alt: 'Green Sal leaf plate with snacks', categoryLabel: 'Sal leaf', width: 1200, height: 896 },
     { src: '/images/leaf-bowl-4-5in.webp', alt: 'Green Sal leaf bowl prepared for serving food', categoryLabel: 'Sal leaf', width: 1200, height: 896 },
     { src: '/images/leaf-plate-detail.webp', alt: 'Close-up detail of a green Sal leaf plate', categoryLabel: 'Sal leaf', width: 1024, height: 1024 },

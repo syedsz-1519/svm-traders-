@@ -85,26 +85,22 @@ test('has the exact product range and trust strip provided by SVM Traders', () =
   assert.equal(PRODUCTS[4].name, '4.5-Inch Bowl');
   assert.equal(PRODUCTS[0].images[0].src, SITE_CONTENT.hero.image.src);
   assert.doesNotMatch(PRODUCTS[0].images.map((image) => image.alt).join(' '), /bowl/i);
-  assert.deepEqual(PRODUCTS.map((product) => product.images.length), [2, 3, 3, 2, 1]);
+  assert.deepEqual(PRODUCTS.map((product) => product.images.length), [2, 3, 1, 2, 1]);
   assert.deepEqual(
     PRODUCTS.slice(1, 4).map((product) => product.images.map((image) => image.src)),
     [
       [
-        '/images/sal-sitting-plate-single.webp',
+        '/images/sal-sitting-plate-with-food.webp',
         '/images/sal-sitting-plates-served.webp',
         '/images/sitting-plate-14in.webp',
       ],
-      [
-        '/images/buffet-plate-12in.webp',
-        '/images/sal-buffet-plate-served.webp',
-        '/images/sal-buffet-plate-with-food.webp',
-      ],
+      ['/images/sal-buffet-plate-with-food.webp'],
       [
         '/images/tiffin-plate-8in.webp',
         '/images/sal-tiffin-plate-served.webp',
       ],
     ],
-    'plate galleries should start with an empty product view, followed by food-serving photos',
+    'plate galleries should include clean photos only',
   );
   assert.deepEqual(
     PRODUCTS.map((product) => product.categoryLabel),
@@ -141,6 +137,17 @@ test('keeps product and gallery image references unique and all public image fil
   const imageFiles = readdirSync(imageDirectory, { withFileTypes: true })
     .filter((entry) => entry.isFile())
     .map((entry) => entry.name);
+  const watermarkedImages = [
+    'sal-bowl-single.webp',
+    'sal-bowls-stack.webp',
+    'buffet-plate-12in.webp',
+    'sal-buffet-plate-served.webp',
+    'sal-buffet-plate-single.webp',
+    'sal-leaf-plates-stack.webp',
+    'sal-sitting-plate-meal.webp',
+    'sal-sitting-plate-single.webp',
+    'sal-tiffin-plate-single.webp',
+  ];
   const fileHashes = imageFiles.map((file) =>
     createHash('sha256')
       .update(readFileSync(join(fileURLToPath(imageDirectory), file)))
@@ -159,9 +166,13 @@ test('keeps product and gallery image references unique and all public image fil
   assert.ok(heroImages.every((image) => !/bowl/i.test(image)), 'the Areca hero must not reference bowl imagery');
   assert.ok(
     [...productImages, ...galleryImages, ...heroImages].every((image) =>
-      !/sal-leaf-plates-stack|sal-bowls-stack|sal-bowl-single|sal-tiffin-plate-single|sal-sitting-plate-meal|sal-buffet-plate-single/i.test(image),
+      !watermarkedImages.some((file) => image.endsWith(file)),
     ),
     'watermarked product photos must not be referenced by the site',
+  );
+  assert.ok(
+    watermarkedImages.every((file) => !imageFiles.includes(file)),
+    'watermarked product photos must be deleted from public/images',
   );
 });
 

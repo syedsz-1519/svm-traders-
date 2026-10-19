@@ -42,7 +42,7 @@ The Contact form and product quote modal validate the entered details and open W
 
 ## Product categories
 
-Product cards, gallery captions, and enquiry dropdowns identify Areca leaf plates separately from Sal leaf plates and bowls. Product cards include selectable photo strips with a clean empty-plate image first, followed by food-serving photos for each plate size. Photos containing the embedded sparkle mark are hidden until clean originals are supplied.
+Product cards, gallery captions, and enquiry dropdowns identify Areca leaf plates separately from Sal leaf plates and bowls. Product cards include selectable photo strips using clean photos only. Photos containing the embedded sparkle mark have been deleted from `public/images` and removed from the site galleries.
 
 ## Campaign video
 
@@ -54,6 +54,6 @@ On mobile, the menu toggle sits on the right side of the header. The fixed botto
 
 ## Images and visibility
 
-Static site images live in `public/images/` and are referenced using absolute `/images/...` paths. The optimized `svm-traders-logo.webp` is used in the navbar and footer. Product cards include selectable photo strips that start with a clean empty-plate view and continue with food-serving photos for the same product. Photos with the embedded sparkle mark are not used on the site; the hero uses the clean Areca leaf plate stack. Bowl photos are reserved for Sal leaf products. Keep one file for each distinct photo rather than adding duplicate copies. The test suite checks image-file hashes and ensures product, gallery, and hero image lists contain no repeated paths.
+Static site images live in `public/images/` and are referenced using absolute `/images/...` paths. The optimized `svm-traders-logo.webp` is used in the navbar and footer. Product cards include selectable photo strips with clean product photos. Photos with the embedded sparkle mark have been deleted; the hero uses the clean Areca leaf plate stack. Bowl photos are reserved for Sal leaf products. Keep one file for each distinct photo rather than adding duplicate copies. The test suite checks image-file hashes, verifies known marked files are absent, and ensures product, gallery, and hero image lists contain no repeated paths.
 
 The home gallery lists only the distinct supplied images selected for it. Additional gallery subjects such as packed orders or local delivery should be added only when matching photos are supplied. Scroll-reveal and page fade animations are intentionally not used, so content is not hidden while waiting for an observer or animation.
