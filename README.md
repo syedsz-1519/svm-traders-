@@ -42,6 +42,6 @@ The Contact form and product quote modal validate the entered details and open W
 
 ## Images and visibility
 
-Static site images live in `public/images/` and are referenced using absolute `/images/...` paths. Keep one canonical file per unique image; reference that file instead of copying it under a second name. Product image paths and gallery paths are checked for duplicates in the test suite.
+Static site images live in `public/images/` and are referenced using absolute `/images/...` paths. Keep one canonical file per unique image; reference that file instead of copying it under a second name. The test suite checks file hashes and ensures product and gallery image lists contain no repeated paths. Product photos appear on the Products page; the homepage uses a text-based product preview and a separate gallery so an image is not repeated on that page.
 
 The home gallery lists only the distinct supplied images selected for it. Additional gallery subjects such as packed orders or local delivery should be added only when matching photos are supplied. Scroll-reveal and page fade animations are intentionally not used, so content is not hidden while waiting for an observer or animation.
