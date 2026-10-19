@@ -85,7 +85,7 @@ test('has the exact product range and trust strip provided by SVM Traders', () =
   assert.equal(PRODUCTS[4].name, '4.5-Inch Bowl');
   assert.equal(PRODUCTS[0].images[0].src, SITE_CONTENT.hero.image.src);
   assert.doesNotMatch(PRODUCTS[0].images.map((image) => image.alt).join(' '), /bowl/i);
-  assert.deepEqual(PRODUCTS.map((product) => product.images.length), [2, 3, 1, 2, 1]);
+  assert.deepEqual(PRODUCTS.map((product) => product.images.length), [1, 3, 1, 2, 1]);
   assert.deepEqual(
     PRODUCTS.slice(1, 4).map((product) => product.images.map((image) => image.src)),
     [
@@ -138,6 +138,7 @@ test('keeps product and gallery image references unique and all public image fil
     .filter((entry) => entry.isFile())
     .map((entry) => entry.name);
   const watermarkedImages = [
+    'areca-plates-stack.webp',
     'sal-bowl-single.webp',
     'sal-bowls-stack.webp',
     'buffet-plate-12in.webp',

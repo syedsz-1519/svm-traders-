@@ -15,7 +15,6 @@ export const PRODUCTS = [
     name: 'Areca Leaf Plates',
     categoryLabel: 'Areca leaf',
     images: [
-      { src: '/images/areca-plates-stack.webp', alt: 'A stack of natural Areca leaf plates', width: 1024, height: 765 },
       { src: '/images/areca-leaf-plates.webp', alt: 'A natural Areca leaf plate viewed from above', width: 768, height: 1024 },
     ],
   },
@@ -196,7 +195,6 @@ export const SITE_CONTENT = {
   ],
   testimonials: TESTIMONIALS,
   imageRequirements: [
-    { file: 'areca-plates-stack.webp', width: 1024, height: 765, subject: 'A clean stack of natural Areca leaf plates' },
     { file: 'areca-leaf-plates.webp', width: 768, height: 1024, subject: 'An Areca leaf plate viewed from above' },
   ],
 } as const;
