@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, ArrowRight, ShieldCheck, Check, Sparkles, MessageCircle, Truck } from 'lucide-react';
+import { Phone, ArrowRight, ShieldCheck, Check, Sparkles, MessageCircle, Truck, BadgePercent, MapPin, CheckCircle2, Clock, Building2 } from 'lucide-react';
 import { PRODUCTS, CONTACT_INFO, createDirectWhatsAppChatUrl } from '../utils/enquiry';
 import { TrustBadgesRow } from '../components/TrustBadgesRow';
 import { FaqSection } from '../components/FaqSection';
@@ -348,92 +348,244 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
       {/* FREQUENTLY ASKED QUESTIONS ACCORDION */}
       <FaqSection openEnquiryModal={openEnquiryModal} />
 
-      {/* IMPROVISED CLOSING ACTION SECTION */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full" id="contact-cta">
-        <div className="w-full bg-[#0F4D26] text-white rounded-3xl p-8 sm:p-12 shadow-xl relative overflow-hidden border border-[#1b6b38] flex flex-col items-center text-center">
+      {/* HIGH-CONTRAST BENTO GRID: DIRECT HYDERABAD WHOLESALE SUPPLY */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 w-full" id="contact-cta">
+        <div className="w-full bg-[#0A1D11] text-white rounded-3xl p-6 sm:p-10 lg:p-12 shadow-2xl relative overflow-hidden border border-[#1e582f]">
           {/* Subtle botanical glow background */}
-          <div className="absolute inset-0 bg-radial from-[#1F7A3A]/25 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#1F7A3A]/20 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#9ACD32]/10 rounded-full blur-3xl pointer-events-none" />
 
-          {/* Heading block */}
-          <div className="relative z-10 max-w-2xl mx-auto space-y-3 mb-10">
-            <span className="inline-block text-xs font-bold uppercase tracking-wider text-[#9ACD32] bg-white/10 px-3.5 py-1 rounded-full">
-              Direct Hyderabad Wholesale Supply
-            </span>
-            <h2 className="font-serif-brand text-3xl sm:text-4xl font-bold leading-tight">
-              Need Plates for an Event? Connect With Us Today
+          {/* Marquee Header */}
+          <div className="relative z-10 max-w-3xl mb-10 text-left">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#183d23] border border-[#276b3c] text-[#9ACD32] text-xs font-bold uppercase tracking-wider mb-3">
+              <Building2 className="w-3.5 h-3.5" />
+              <span>Direct Factory Wholesale • Greater Hyderabad Supply</span>
+            </div>
+            <h2 className="font-serif-brand text-3xl sm:text-4xl lg:text-[42px] font-bold tracking-tight text-white leading-tight mb-3">
+              Direct Hyderabad Wholesale Supply &amp; Bulk Tableware
             </h2>
-            <p className="text-sm sm:text-base text-white/80 max-w-xl mx-auto">
-              Direct manufacturer pricing for caterers, wedding banquets, temples, restaurants, and wholesalers across Hyderabad.
+            <p className="text-base sm:text-lg text-white/85 leading-relaxed">
+              Supplying Telugu wedding caterers, banquet halls, temple Annadanam trusts, and wholesale dealers across Hyderabad with 100% natural, leak-proof Areca palm leaf plates.
             </p>
           </div>
 
-          {/* 2 Clear Helpline Cards */}
-          <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-3xl">
-            {/* Card 1: Primary Call */}
-            <a
-              href={`tel:${CONTACT_INFO.primaryPhone}`}
-              className="bg-white/10 hover:bg-white/15 border border-white/20 rounded-2xl p-6 sm:p-7 flex flex-col items-center justify-center text-center transition-all hover:scale-[1.02] active:scale-[0.98] group shadow-md"
-            >
-              <div className="w-14 h-14 rounded-full bg-white text-[#0F4D26] flex items-center justify-center mb-3.5 shadow-sm group-hover:scale-110 transition-transform">
-                <Phone className="w-6 h-6 fill-current" />
-              </div>
-              <span className="text-xs uppercase tracking-wider font-bold text-[#9ACD32] mb-1">
-                Primary Helpline • Direct Owner
-              </span>
-              <span className="text-xl sm:text-2xl font-extrabold text-white tracking-tight mb-1">
-                +91 {CONTACT_INFO.primaryPhone}
-              </span>
-              <span className="text-sm font-semibold text-white/90">
-                Contact: {CONTACT_INFO.owner}
-              </span>
-              <span className="text-xs text-white/70 mt-1">
-                Instant bulk quotes for weddings, caterers &amp; temples
-              </span>
-            </a>
+          {/* Bento Grid: 2 Large Modules */}
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 mb-6">
+            {/* Bento Card 1: Bulk Tiers & Volume Savings (7 cols) */}
+            <div className="lg:col-span-7 bg-[#112918] border border-[#235833] rounded-2xl p-6 sm:p-7 flex flex-col justify-between shadow-lg text-left">
+              <div>
+                <div className="flex items-center justify-between gap-3 mb-5">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-9 h-9 rounded-lg bg-[#1a4425] text-[#9ACD32] flex items-center justify-center shrink-0">
+                      <BadgePercent className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-lg text-white">Tiered Bulk Ordering &amp; Discounts</h3>
+                      <p className="text-xs text-[#9ACD32]">Competitive factory pricing scaled to your event size</p>
+                    </div>
+                  </div>
+                  <span className="hidden sm:inline-block text-[11px] font-bold bg-[#1a4425] text-[#a2f0b5] px-2.5 py-1 rounded-md border border-[#2c6e3d]">
+                    Factory-Direct
+                  </span>
+                </div>
 
-            {/* Card 2: Secondary Call */}
-            <a
-              href={`tel:${CONTACT_INFO.secondaryPhone}`}
-              className="bg-white/10 hover:bg-white/15 border border-white/20 rounded-2xl p-6 sm:p-7 flex flex-col items-center justify-center text-center transition-all hover:scale-[1.02] active:scale-[0.98] group shadow-md"
-            >
-              <div className="w-14 h-14 rounded-full bg-white text-[#0F4D26] flex items-center justify-center mb-3.5 shadow-sm group-hover:scale-110 transition-transform">
-                <Phone className="w-6 h-6 fill-current" />
+                {/* 3 Tier Cards */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+                  {/* Tier 1 */}
+                  <div className="bg-[#0b1f12] p-4 rounded-xl border border-[#1e4e2a] flex flex-col justify-between">
+                    <div>
+                      <span className="text-[11px] font-extrabold text-[#9ACD32] uppercase tracking-wider block mb-1">
+                        Event Pack
+                      </span>
+                      <h4 className="text-base font-bold text-white mb-1">100 – 500 pcs</h4>
+                      <p className="text-xs text-stone-300 leading-snug">
+                        For birthdays, home poojas &amp; intimate gatherings.
+                      </p>
+                    </div>
+                    <span className="text-[11px] font-semibold text-[#a2f0b5] mt-3 block pt-2 border-t border-white/10">
+                      Mixed Size Cartons
+                    </span>
+                  </div>
+
+                  {/* Tier 2: Highlighted */}
+                  <div className="bg-[#173e21] p-4 rounded-xl border border-[#2d8045] flex flex-col justify-between relative shadow-sm">
+                    <span className="absolute -top-2.5 right-3 text-[10px] font-black uppercase tracking-wider bg-[#9ACD32] text-[#0A1D11] px-2 py-0.5 rounded-full">
+                      Caterer Choice
+                    </span>
+                    <div>
+                      <span className="text-[11px] font-extrabold text-[#9ACD32] uppercase tracking-wider block mb-1">
+                        Banquet Tier
+                      </span>
+                      <h4 className="text-base font-bold text-white mb-1">1,000 – 5,000 pcs</h4>
+                      <p className="text-xs text-stone-200 leading-snug">
+                        For wedding feasts, buffets &amp; convention dinners.
+                      </p>
+                    </div>
+                    <span className="text-[11px] font-semibold text-[#9ACD32] mt-3 block pt-2 border-t border-white/10">
+                      Volume Discount Rates
+                    </span>
+                  </div>
+
+                  {/* Tier 3 */}
+                  <div className="bg-[#0b1f12] p-4 rounded-xl border border-[#1e4e2a] flex flex-col justify-between">
+                    <div>
+                      <span className="text-[11px] font-extrabold text-[#9ACD32] uppercase tracking-wider block mb-1">
+                        Mega &amp; Temple
+                      </span>
+                      <h4 className="text-base font-bold text-white mb-1">10,000+ pcs</h4>
+                      <p className="text-xs text-stone-300 leading-snug">
+                        For temple Annadanam &amp; regional wholesale re-sellers.
+                      </p>
+                    </div>
+                    <span className="text-[11px] font-semibold text-[#a2f0b5] mt-3 block pt-2 border-t border-white/10">
+                      Maximum Factory Margins
+                    </span>
+                  </div>
+                </div>
               </div>
-              <span className="text-xs uppercase tracking-wider font-bold text-[#9ACD32] mb-1">
-                Secondary Helpline • Dispatches
-              </span>
-              <span className="text-xl sm:text-2xl font-extrabold text-white tracking-tight mb-1">
-                +91 {CONTACT_INFO.secondaryPhone}
-              </span>
-              <span className="text-sm font-semibold text-white/90">
-                Bulk Dispatch &amp; Logistics Desk
-              </span>
-              <span className="text-xs text-white/70 mt-1">
-                Transport scheduling &amp; warehouse pickup across Telangana
-              </span>
-            </a>
+
+              {/* Quality Guarantee Strip */}
+              <div className="pt-3 border-t border-[#1e4e2a] flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-stone-300">
+                <span className="flex items-center gap-1.5 text-white font-medium">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#9ACD32]" />
+                  Steam-Pressed Food Grade
+                </span>
+                <span className="flex items-center gap-1.5 text-white font-medium">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#9ACD32]" />
+                  Zero Chemical Coatings
+                </span>
+                <span className="flex items-center gap-1.5 text-white font-medium">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#9ACD32]" />
+                  Zero Breakage Guarantee
+                </span>
+              </div>
+            </div>
+
+            {/* Bento Card 2: Hyper-Local Dispatch Hub (5 cols) */}
+            <div className="lg:col-span-5 bg-[#112918] border border-[#235833] rounded-2xl p-6 sm:p-7 flex flex-col justify-between shadow-lg text-left">
+              <div>
+                <div className="flex items-center gap-2.5 mb-4">
+                  <div className="w-9 h-9 rounded-lg bg-[#1a4425] text-[#9ACD32] flex items-center justify-center shrink-0">
+                    <Truck className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg text-white">Hyper-Local Dispatch Hub</h3>
+                    <p className="text-xs text-[#9ACD32]">Express delivery across Greater Hyderabad</p>
+                  </div>
+                </div>
+
+                <p className="text-xs text-stone-300 mb-4 leading-relaxed">
+                  Fast fulfillment for event organizers and caterers. Same-day emergency delivery or convenient warehouse self-pickup:
+                </p>
+
+                {/* Local Area Badges */}
+                <div className="flex flex-wrap gap-1.5 mb-5">
+                  {[
+                    'Madhapur',
+                    'Gachibowli',
+                    'Kukatpally',
+                    'Secunderabad',
+                    'Banjara Hills',
+                    'Jubilee Hills',
+                    'Shamshabad',
+                    'Uppal',
+                    'Begumpet',
+                    'Kompally',
+                    'Miyapur',
+                    'Dilsukhnagar',
+                  ].map((loc) => (
+                    <span
+                      key={loc}
+                      className="px-2.5 py-1 rounded-md bg-[#0a1e12] border border-[#1b4b27] text-stone-200 text-xs font-medium flex items-center gap-1"
+                    >
+                      <MapPin className="w-2.5 h-2.5 text-[#9ACD32]" />
+                      {loc}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Dispatch badges */}
+              <div className="pt-3 border-t border-[#1e4e2a] flex items-center justify-between text-xs text-stone-300">
+                <span className="flex items-center gap-1.5 font-medium text-white">
+                  <Clock className="w-3.5 h-3.5 text-[#9ACD32]" />
+                  Same-Day Delivery
+                </span>
+                <span className="flex items-center gap-1.5 font-medium text-white">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#9ACD32]" />
+                  Moisture-Proof Shrink Packs
+                </span>
+              </div>
+            </div>
           </div>
 
-          {/* Quick Quote Trigger & Clear SEO Badges */}
-          <div className="relative z-10 mt-9 flex flex-col items-center justify-center gap-4 w-full">
-            <button
-              type="button"
-              onClick={() => openEnquiryModal()}
-              className="h-13 px-8 rounded-xl bg-white text-[#0F4D26] hover:bg-[#F6FAEA] font-extrabold text-base inline-flex items-center justify-center gap-2.5 transition-transform hover:scale-[1.02] active:scale-[0.98] shadow-lg cursor-pointer"
-            >
-              <span>Request Custom Bulk Price Quote</span>
-              <ArrowRight className="w-5 h-5" />
-            </button>
+          {/* Bento Card 3: Action & Direct Helpline Command Bar */}
+          <div className="relative z-10 bg-[#112918] border border-[#235833] rounded-2xl p-6 sm:p-7 shadow-lg">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-5 items-center">
+              {/* Primary Call Action (4 cols) */}
+              <a
+                href={`tel:${CONTACT_INFO.primaryPhone}`}
+                className="md:col-span-4 bg-[#0a1e12] hover:bg-[#153a20] border border-[#235833] rounded-xl p-4 flex items-center gap-3.5 transition-all hover:scale-[1.02] active:scale-[0.98] group text-left"
+              >
+                <div className="w-12 h-12 rounded-xl bg-white text-[#0F4D26] flex items-center justify-center shrink-0 shadow-sm group-hover:scale-110 transition-transform">
+                  <Phone className="w-5 h-5 fill-current" />
+                </div>
+                <div>
+                  <span className="text-[11px] uppercase tracking-wider font-bold text-[#9ACD32] block">
+                    Owner Direct Helpline
+                  </span>
+                  <span className="text-lg font-extrabold text-white tracking-tight block">
+                    +91 {CONTACT_INFO.primaryPhone}
+                  </span>
+                  <span className="text-xs text-stone-400">
+                    S. Pradeep Reddy • Instant Quote
+                  </span>
+                </div>
+              </a>
 
-            {/* Clear SEO Words & Service Coverage */}
-            <div className="pt-2 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-white/80 max-w-2xl text-center">
-              <span>✓ Eco-Friendly Leaf Plates in Hyderabad</span>
-              <span aria-hidden="true">·</span>
-              <span>✓ 100% Natural Areca Palm Tableware</span>
-              <span aria-hidden="true">·</span>
-              <span>✓ Chemical Free &amp; Biodegradable</span>
-              <span aria-hidden="true">·</span>
-              <span>✓ Greater Hyderabad Delivery</span>
+              {/* Secondary Call Action (4 cols) */}
+              <a
+                href={`tel:${CONTACT_INFO.secondaryPhone}`}
+                className="md:col-span-4 bg-[#0a1e12] hover:bg-[#153a20] border border-[#235833] rounded-xl p-4 flex items-center gap-3.5 transition-all hover:scale-[1.02] active:scale-[0.98] group text-left"
+              >
+                <div className="w-12 h-12 rounded-xl bg-white text-[#0F4D26] flex items-center justify-center shrink-0 shadow-sm group-hover:scale-110 transition-transform">
+                  <Phone className="w-5 h-5 fill-current" />
+                </div>
+                <div>
+                  <span className="text-[11px] uppercase tracking-wider font-bold text-[#9ACD32] block">
+                    Bulk Dispatches &amp; Transit
+                  </span>
+                  <span className="text-lg font-extrabold text-white tracking-tight block">
+                    +91 {CONTACT_INFO.secondaryPhone}
+                  </span>
+                  <span className="text-xs text-stone-400">
+                    Logistics &amp; Warehouse Desk
+                  </span>
+                </div>
+              </a>
+
+              {/* Modal Trigger CTA (4 cols) */}
+              <div className="md:col-span-4 flex flex-col gap-2">
+                <button
+                  type="button"
+                  onClick={() => openEnquiryModal()}
+                  className="w-full h-12 px-6 rounded-xl bg-[#9ACD32] hover:bg-[#88bd2b] text-[#0A1D11] font-extrabold text-sm flex items-center justify-center gap-2 transition-transform hover:scale-[1.02] active:scale-[0.98] shadow-md cursor-pointer"
+                >
+                  <span>Request Wholesale Rate Card</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+                <a
+                  href={createDirectWhatsAppChatUrl(
+                    'Hello SVM Traders, I would like to enquire about wholesale leaf plates for an event in Hyderabad.'
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full h-10 px-4 rounded-xl bg-[#163a21] hover:bg-[#1d4c2b] text-[#a2f0b5] font-semibold text-xs flex items-center justify-center gap-2 transition-colors border border-[#29683c]"
+                >
+                  <MessageCircle className="w-3.5 h-3.5 fill-current" />
+                  <span>Chat on WhatsApp for Photo Samples</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -441,3 +593,4 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
     </div>
   );
 };
+

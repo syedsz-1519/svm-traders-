@@ -20,13 +20,27 @@ export const SITEMAP_ENTRIES: SitemapUrlEntry[] = [
     lastmod: new Date().toISOString().split('T')[0],
     changefreq: 'weekly',
     priority: 1.0,
-    title: 'SVM Traders | Eco-Friendly Leaf Plates in Hyderabad',
+    title: 'SVM Traders | Hyderabad Wholesale Eco-Friendly Leaf Plates',
     keywords: [
+      'hyderabad wholesale leaf plates',
       'eco friendly leaf plates in hyderabad',
       'areca leaf plates hyderabad',
       'biodegradable disposable plates hyderabad',
       'natural leaf plates supplier hyderabad',
       'svm traders hyderabad',
+    ],
+  },
+  {
+    loc: '/#wholesale',
+    lastmod: new Date().toISOString().split('T')[0],
+    changefreq: 'weekly',
+    priority: 0.95,
+    title: 'Hyderabad Wholesale Areca Leaf Plates & Bulk Catering Supply',
+    keywords: [
+      'hyderabad wholesale leaf plates',
+      'bulk areca palm plates hyderabad',
+      'wedding caterers tableware hyderabad',
+      'temple annadanam plates bulk',
     ],
   },
   {
