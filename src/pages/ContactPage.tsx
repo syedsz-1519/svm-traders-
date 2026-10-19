@@ -308,19 +308,8 @@ export const ContactPage: React.FC = () => {
                   </button>
 
                   <p className="text-xs text-center text-stone-600 dark:text-stone-300 font-medium">
-                    We respond within a few hours on business days.
+                    WhatsApp will open with your message ready for you to review and send.
                   </p>
-
-                  <div className="pt-1 flex items-center justify-center">
-                    <button
-                      type="button"
-                      onClick={handleSendViaWhatsApp}
-                      className="text-xs font-semibold text-[#1F7A3A] dark:text-[#52d274] hover:underline inline-flex items-center gap-1.5 cursor-pointer"
-                    >
-                      <MessageCircle className="w-4 h-4 fill-current text-[#25D366]" />
-                      <span>Prefer instant reply? Chat directly on WhatsApp</span>
-                    </button>
-                  </div>
                 </div>
               </form>
             ) : (
@@ -329,12 +318,11 @@ export const ContactPage: React.FC = () => {
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
                 <h4 className="font-serif-brand text-2xl font-bold text-[#0F4D26] dark:text-[#d7f9dc]">
-                  Enquiry Submitted!
+                  WhatsApp message is ready
                 </h4>
                 <p className="text-sm text-stone-600 dark:text-stone-300 max-w-sm mx-auto">
-                  Thank you, <span className="font-bold">{formData.name}</span>. Your enquiry for{' '}
-                  <span className="font-bold">{formData.product}</span> has been logged. Owner S. Pradeep Reddy will contact you shortly at{' '}
-                  <span className="font-bold">{formData.phone}</span>.
+                  Review the message opened in WhatsApp and tap Send to share your enquiry for{' '}
+                  <span className="font-bold">{formData.product}</span>. It has not been sent yet.
                 </p>
 
                 <div className="pt-4 flex flex-col gap-3">
@@ -344,7 +332,7 @@ export const ContactPage: React.FC = () => {
                     className="w-full h-12 rounded-xl bg-[#25D366] hover:bg-[#1ebe5d] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-xs transition-colors cursor-pointer"
                   >
                     <MessageCircle className="w-5 h-5 fill-current" />
-                    <span>Also Send to WhatsApp (Instant Reply)</span>
+                    <span>Open WhatsApp again</span>
                   </button>
 
                   <button

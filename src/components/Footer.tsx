@@ -1,8 +1,8 @@
 import React from 'react';
-import { Phone, MapPin, User, CheckCircle2 } from 'lucide-react';
+import { Phone, MapPin, User, CheckCircle2, MessageCircle } from 'lucide-react';
 import { ThreeLeafIcon } from './ThreeLeafIcon';
 import { TrustBadgesRow } from './TrustBadgesRow';
-import { CONTACT_INFO } from '../utils/enquiry';
+import { CONTACT_INFO, createDirectWhatsAppChatUrl, createMapsSearchUrl } from '../utils/enquiry';
 import { PageId } from './Navbar';
 
 interface FooterProps {
@@ -45,6 +45,14 @@ export const Footer: React.FC<FooterProps> = ({ setActivePage, openEnquiryModal 
               <MapPin className="w-3.5 h-3.5 text-[#9ACD32]" />
               <span>{CONTACT_INFO.location}</span>
             </div>
+            <a
+              href={createMapsSearchUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-white/85 underline-offset-4 hover:text-[#9ACD32] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            >
+              Find SVM Traders on Google Maps
+            </a>
           </div>
 
           {/* Col 2: Navigation Links */}
@@ -134,6 +142,15 @@ export const Footer: React.FC<FooterProps> = ({ setActivePage, openEnquiryModal 
                 <Phone className="w-4 h-4 text-[#9ACD32] fill-current" />
                 <span>+91 {CONTACT_INFO.secondaryPhone}</span>
               </a>
+              <a
+                href={createDirectWhatsAppChatUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-[#25D366] hover:bg-[#1ebe5d] text-white font-semibold text-sm transition-all"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>Message on WhatsApp</span>
+              </a>
             </div>
 
             {/* Prominent Contact Us Trigger */}
@@ -166,7 +183,7 @@ export const Footer: React.FC<FooterProps> = ({ setActivePage, openEnquiryModal 
 
         {/* Bottom Section */}
         <div className="pt-6 border-t border-white/15 flex flex-col sm:flex-row items-center justify-between text-xs text-white/70 gap-3">
-          <p>© 2026 {CONTACT_INFO.business}. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} {CONTACT_INFO.business}. All rights reserved.</p>
           <p className="text-white/60">
             {CONTACT_INFO.location} • Owner: {CONTACT_INFO.owner}
           </p>
