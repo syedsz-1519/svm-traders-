@@ -85,7 +85,27 @@ test('has the exact product range and trust strip provided by SVM Traders', () =
   assert.equal(PRODUCTS[4].name, '4.5-Inch Bowl');
   assert.equal(PRODUCTS[0].images[0].src, SITE_CONTENT.hero.image.src);
   assert.doesNotMatch(PRODUCTS[0].images.map((image) => image.alt).join(' '), /bowl/i);
-  assert.deepEqual(PRODUCTS.map((product) => product.images.length), [2, 6, 5, 3, 3]);
+  assert.deepEqual(PRODUCTS.map((product) => product.images.length), [2, 3, 3, 2, 1]);
+  assert.deepEqual(
+    PRODUCTS.slice(1, 4).map((product) => product.images.map((image) => image.src)),
+    [
+      [
+        '/images/sal-sitting-plate-single.webp',
+        '/images/sal-sitting-plates-served.webp',
+        '/images/sitting-plate-14in.webp',
+      ],
+      [
+        '/images/buffet-plate-12in.webp',
+        '/images/sal-buffet-plate-served.webp',
+        '/images/sal-buffet-plate-with-food.webp',
+      ],
+      [
+        '/images/tiffin-plate-8in.webp',
+        '/images/sal-tiffin-plate-served.webp',
+      ],
+    ],
+    'plate galleries should start with an empty product view, followed by food-serving photos',
+  );
   assert.deepEqual(
     PRODUCTS.map((product) => product.categoryLabel),
     [
@@ -137,6 +157,12 @@ test('keeps product and gallery image references unique and all public image fil
     'product and gallery references must exist in public/images',
   );
   assert.ok(heroImages.every((image) => !/bowl/i.test(image)), 'the Areca hero must not reference bowl imagery');
+  assert.ok(
+    [...productImages, ...galleryImages, ...heroImages].every((image) =>
+      !/sal-leaf-plates-stack|sal-bowls-stack|sal-bowl-single|sal-tiffin-plate-single|sal-sitting-plate-meal|sal-buffet-plate-single/i.test(image),
+    ),
+    'watermarked product photos must not be referenced by the site',
+  );
 });
 
 test('includes the configured promotional video asset', () => {
