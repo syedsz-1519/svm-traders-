@@ -13,6 +13,7 @@ export const PRODUCTS = [
   {
     id: 'areca-leaf-plates',
     name: 'Areca Leaf Plates',
+    categoryLabel: 'Cream-coloured · Areca leaf',
     image: '/images/hero-areca-plates.webp',
     imageAlt: 'Natural Areca leaf plates and a bowl arranged on a wooden table',
     width: 1165,
@@ -21,32 +22,36 @@ export const PRODUCTS = [
   {
     id: '14-inch-sitting-plate',
     name: '14-Inch Sitting Plate',
+    categoryLabel: 'Green · Sal leaf',
     image: '/images/sitting-plate-14in.webp',
-    imageAlt: 'Natural 14-inch leaf plate displayed upright',
+    imageAlt: 'Green Sal leaf 14-inch sitting plate displayed upright',
     width: 1200,
     height: 896,
   },
   {
     id: '12-inch-buffet-plate',
     name: '12-Inch Buffet Plate',
+    categoryLabel: 'Green · Sal leaf',
     image: '/images/buffet-plate-12in.webp',
-    imageAlt: 'Natural leaf plate arranged for buffet service',
+    imageAlt: 'Green Sal leaf 12-inch buffet plate arranged for food service',
     width: 1200,
     height: 896,
   },
   {
     id: '8-inch-tiffin-plate',
     name: '8-Inch Tiffin Plate',
+    categoryLabel: 'Green · Sal leaf',
     image: '/images/tiffin-plate-8in.webp',
-    imageAlt: 'Natural leaf plate prepared for serving snacks',
+    imageAlt: 'Green Sal leaf 8-inch tiffin plate prepared for serving snacks',
     width: 1200,
     height: 896,
   },
   {
     id: '4-5-inch-bowl',
     name: '4.5-Inch Bowl',
+    categoryLabel: 'Green · Sal leaf',
     image: '/images/leaf-bowl-4-5in.webp',
-    imageAlt: 'Natural leaf bowl for serving food',
+    imageAlt: 'Green Sal leaf 4.5-inch bowl for serving food',
     width: 1200,
     height: 896,
   },
@@ -105,7 +110,7 @@ export const SITE_CONTENT = {
   },
   products: {
     title: 'Our Range',
-    subtitle: 'Bulk supply for caterers, event planners, temples and retailers.',
+    subtitle: 'Cream-coloured plates are Areca leaf plates; green plates and bowls are Sal leaf products. Bulk supply for caterers, event planners, temples and retailers.',
     pricingNote: 'Pricing and minimum order quantities are shared on request.',
     cardCta: 'Enquire Now',
     quoteCta: 'Request a Quote',
@@ -114,7 +119,7 @@ export const SITE_CONTENT = {
   reasons: [
     {
       title: 'Natural',
-      text: 'Made from fallen areca palm leaves. No trees are cut, and no dyes or chemicals are used.',
+      text: 'Our cream-coloured Areca leaf plates are made from fallen areca palm leaves. No trees are cut, and no dyes or chemicals are used.',
     },
     {
       title: 'Safe',
@@ -172,7 +177,7 @@ export const SITE_CONTENT = {
   faq: [
     {
       question: 'What are the plates made from?',
-      answer: 'Naturally fallen areca palm leaves, cleaned with water, shaped without chemicals or glue.',
+      answer: 'Cream-coloured plates are Areca leaf plates; green plates and bowls are Sal leaf products.',
     },
     {
       question: 'Can they hold hot and oily food?',
@@ -204,10 +209,10 @@ export const SITE_CONTENT = {
     },
   ],
   galleryImages: [
-    { src: '/images/buffet-plate-12in.webp', alt: 'Natural leaf tableware arranged for food service', width: 1200, height: 896 },
-    { src: '/images/tiffin-plate-8in.webp', alt: 'Natural leaf plate with snacks', width: 1200, height: 896 },
-    { src: '/images/leaf-bowl-4-5in.webp', alt: 'Leaf bowl prepared for serving food', width: 1200, height: 896 },
-    { src: '/images/leaf-plate-detail.webp', alt: 'Close-up detail of the natural leaf plate texture', width: 1024, height: 1024 },
+    { src: '/images/buffet-plate-12in.webp', alt: 'Green Sal leaf plate arranged for food service', categoryLabel: 'Green · Sal leaf', width: 1200, height: 896 },
+    { src: '/images/tiffin-plate-8in.webp', alt: 'Green Sal leaf plate with snacks', categoryLabel: 'Green · Sal leaf', width: 1200, height: 896 },
+    { src: '/images/leaf-bowl-4-5in.webp', alt: 'Green Sal leaf bowl prepared for serving food', categoryLabel: 'Green · Sal leaf', width: 1200, height: 896 },
+    { src: '/images/leaf-plate-detail.webp', alt: 'Close-up detail of the cream-coloured Areca leaf plate texture', categoryLabel: 'Cream-coloured · Areca leaf', width: 1024, height: 1024 },
   ],
   testimonials: TESTIMONIALS,
   imageRequirements: [

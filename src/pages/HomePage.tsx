@@ -125,6 +125,9 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
             <h3 className="mt-5 font-serif-brand text-xl font-bold text-[#0F4D26] dark:text-[#d7f9dc]">
               {product.name}
             </h3>
+            <p className="mt-2 text-sm font-semibold text-[#8A5A32] dark:text-[#d6a879]">
+              {product.categoryLabel}
+            </p>
             <button
               type="button"
               onClick={() => openEnquiryModal(product.name)}
@@ -253,9 +256,14 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
       <SectionHeading title={SITE_CONTENT.sectionTitles.gallery} subtitle={SITE_CONTENT.sectionTitles.gallerySubtitle} />
       <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5">
         {SITE_CONTENT.galleryImages.map((image) => (
-          <div key={image.src} className="aspect-[4/3] overflow-hidden rounded-2xl border border-[#D5E6D3] bg-[#F5F1E7] dark:border-[#224e2f]">
-            <ProductImage src={image.src} alt={image.alt} width={image.width} height={image.height} className="h-full w-full object-cover" />
-          </div>
+          <figure key={image.src} className="overflow-hidden rounded-2xl border border-[#D5E6D3] bg-white dark:border-[#224e2f] dark:bg-[#13271A]">
+            <div className="aspect-[4/3] bg-[#F5F1E7] dark:bg-[#183622]">
+              <ProductImage src={image.src} alt={image.alt} width={image.width} height={image.height} className="h-full w-full object-cover" />
+            </div>
+            <figcaption className="px-4 py-3 text-sm font-semibold text-[#8A5A32] dark:text-[#d6a879]">
+              {image.categoryLabel}
+            </figcaption>
+          </figure>
         ))}
       </div>
     </section>
