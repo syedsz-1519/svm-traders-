@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { X, CheckCircle, Send } from 'lucide-react';
-import { PRODUCTS, validateEnquiryForm, submitEnquiry, EnquiryData } from '../utils/enquiry';
+import { X, Send } from 'lucide-react';
+import { PRODUCTS, createEnquiryWhatsAppUrl, validateEnquiryForm, EnquiryData } from '../utils/enquiry';
 
 interface EnquiryModalProps {
   isOpen: boolean;
@@ -22,8 +22,6 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     if (initialProduct) {
@@ -33,7 +31,6 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
 
   useEffect(() => {
     if (isOpen) {
-      setIsSubmitted(false);
       setErrors({});
     }
   }, [isOpen]);
@@ -54,7 +51,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const result = validateEnquiryForm(formData);
     if (!result.isValid) {
@@ -62,20 +59,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
       return;
     }
 
-    setIsSubmitting(true);
-    try {
-      await submitEnquiry(formData);
-      setErrors({});
-      setIsSubmitted(true);
-    } catch (error) {
-      setErrors({
-        form: error instanceof Error
-          ? error.message
-          : 'We could not send your enquiry. Please call or WhatsApp us instead.',
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+    window.location.assign(createEnquiryWhatsAppUrl(formData));
   };
 
   return (
@@ -96,8 +80,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
           <X className="w-5 h-5" />
         </button>
 
-        {!isSubmitted ? (
-          <>
+        <>
             <div className="mb-6">
               <span className="inline-block text-xs font-bold uppercase tracking-wider text-[#1F7A3A] dark:text-[#a2f0b5] bg-[#DCEFE1] dark:bg-[#1a3d27] px-3 py-1 rounded-full mb-2">
                 Bulk enquiry
@@ -114,11 +97,6 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
-              {errors.form && (
-                <p className="text-sm font-medium text-red-700 dark:text-red-300" role="alert">
-                  {errors.form}
-                </p>
-              )}
               <div>
                 <label
                   htmlFor="modal-name"
@@ -130,6 +108,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                   id="modal-name"
                   name="name"
                   type="text"
+                  maxLength={100}
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Enter your name"
@@ -155,6 +134,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                   id="modal-phone"
                   name="phone"
                   type="tel"
+                  maxLength={16}
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="e.g. 9985812721"
@@ -202,6 +182,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                   id="modal-quantity"
                   name="quantity"
                   type="text"
+                  maxLength={100}
                   value={formData.quantity}
                   onChange={handleChange}
                   placeholder="e.g. 500 plates / 1000 plates"
@@ -227,49 +208,31 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                   id="modal-message"
                   name="message"
                   rows={2}
+                  maxLength={1000}
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="Event date, delivery notes, or special requirements..."
                   className="w-full p-3 rounded-xl border border-[#D5E6D3] dark:border-[#265334] bg-white dark:bg-[#163321] text-stone-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1F7A3A]/30 focus:border-[#1F7A3A] transition-all"
                 />
+                {errors.message && (
+                  <p className="text-red-500 text-xs mt-1 font-medium" role="alert">{errors.message}</p>
+                )}
               </div>
 
               <div className="pt-2">
+                <p className="mb-3 text-xs leading-relaxed text-stone-600 dark:text-stone-300">
+                  This opens WhatsApp with your enquiry addressed to +91 99858 12721. Review the message and tap Send in WhatsApp.
+                </p>
                 <button
                   type="submit"
-                  disabled={isSubmitting}
-                  className="w-full h-12 rounded-xl bg-[#1F7A3A] hover:bg-[#17632E] text-white font-bold text-sm shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer active:scale-98 disabled:cursor-wait disabled:opacity-70"
+                  className="w-full h-12 rounded-xl bg-[#1F7A3A] hover:bg-[#17632E] text-white font-bold text-sm shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer active:scale-98"
                 >
                   <Send className="w-4 h-4" />
-                  <span>{isSubmitting ? 'Sending…' : 'Send Enquiry'}</span>
+                  <span>Send Enquiry</span>
                 </button>
               </div>
             </form>
-          </>
-        ) : (
-          <div className="text-center py-6 space-y-4">
-            <div className="w-14 h-14 rounded-full bg-[#DCEFE1] dark:bg-[#1b432a] text-[#1F7A3A] dark:text-[#a2f0b5] flex items-center justify-center mx-auto">
-              <CheckCircle className="w-8 h-8" />
-            </div>
-            <h3 className="font-serif-brand text-2xl font-bold text-[#0F4D26] dark:text-[#d7f9dc]">
-              Enquiry sent
-            </h3>
-            <p className="text-sm text-stone-600 dark:text-stone-300 max-w-sm mx-auto">
-              Thank you, <span className="font-bold">{formData.name}</span>. Your enquiry for{' '}
-              <span className="font-bold">{formData.product}</span> has been sent.
-            </p>
-            <div className="pt-4 flex flex-col gap-2">
-              <button
-                type="button"
-                onClick={onClose}
-                className="w-full h-11 rounded-xl bg-[#1F7A3A] hover:bg-[#17632E] text-white font-bold text-sm flex items-center justify-center gap-2 transition-all cursor-pointer"
-              >
-                <CheckCircle className="w-4 h-4" />
-                <span>Close</span>
-              </button>
-            </div>
-          </div>
-        )}
+        </>
       </div>
     </div>
   );

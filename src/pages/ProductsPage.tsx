@@ -10,7 +10,7 @@ interface ProductsPageProps {
 export const ProductsPage: React.FC<ProductsPageProps> = ({ openEnquiryModal }) => (
   <div className="relative w-full">
     <div className="leaf-watermark-tr" aria-hidden="true" />
-    <main className="relative z-10 mx-auto max-w-7xl px-4 pb-24 pt-10 sm:px-6 sm:pt-14 lg:px-8">
+    <div className="relative z-10 mx-auto max-w-7xl px-4 pb-24 pt-10 sm:px-6 sm:pt-14 lg:px-8">
       <header className="mx-auto mb-12 max-w-2xl space-y-3 text-center">
         <h1 className="font-serif-brand text-4xl font-bold tracking-tight text-[#0F4D26] dark:text-[#d7f9dc] sm:text-5xl">
           {SITE_CONTENT.products.title}
@@ -27,8 +27,8 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ openEnquiryModal }) 
               <ProductImage
                 src={product.image}
                 alt={product.imageAlt}
-                width={1200}
-                height={900}
+                width={product.width}
+                height={product.height}
                 className="h-full w-full object-cover"
               />
             </div>
@@ -65,6 +65,6 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ openEnquiryModal }) 
           <ArrowRight aria-hidden="true" className="h-4 w-4" />
         </button>
       </section>
-    </main>
+    </div>
   </div>
 );

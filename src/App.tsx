@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import { Navbar, PageId } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { WhatsAppBubble } from './components/WhatsAppBubble';
 import { MobileStickyBar } from './components/MobileStickyBar';
 import { EnquiryModal } from './components/EnquiryModal';
-import { HomePage } from './pages/HomePage';
-import { ProductsPage } from './pages/ProductsPage';
-import { AboutPage } from './pages/AboutPage';
-import { ContactPage } from './pages/ContactPage';
+
+const HomePage = lazy(() => import('./pages/HomePage').then((module) => ({ default: module.HomePage })));
+const ProductsPage = lazy(() => import('./pages/ProductsPage').then((module) => ({ default: module.ProductsPage })));
+const AboutPage = lazy(() => import('./pages/AboutPage').then((module) => ({ default: module.AboutPage })));
+const ContactPage = lazy(() => import('./pages/ContactPage').then((module) => ({ default: module.ContactPage })));
 
 export default function App() {
   const [activePage, setActivePage] = useState<PageId>('home');
@@ -45,21 +46,22 @@ export default function App() {
       {/* Main Content Area with Smooth Page Transitions */}
       <main className="flex-1 w-full pb-16 sm:pb-0" id="main-content">
         <div key={activePage} className="w-full page-transition">
-          {activePage === 'home' && (
-            <HomePage
-              setActivePage={setActivePage}
-              openEnquiryModal={openEnquiryModal}
-            />
-          )}
-          {activePage === 'products' && (
-            <ProductsPage openEnquiryModal={openEnquiryModal} />
-          )}
-          {activePage === 'about' && <AboutPage />}
-          {activePage === 'contact' && <ContactPage />}
+          <Suspense fallback={<div className="mx-auto max-w-7xl px-4 py-16 text-center text-[#0F4D26]" role="status">Loading…</div>}>
+            {activePage === 'home' && (
+              <HomePage
+                setActivePage={setActivePage}
+                openEnquiryModal={openEnquiryModal}
+              />
+            )}
+            {activePage === 'products' && (
+              <ProductsPage openEnquiryModal={openEnquiryModal} />
+            )}
+            {activePage === 'about' && <AboutPage />}
+            {activePage === 'contact' && <ContactPage />}
+          </Suspense>
         </div>
       </main>
 
-      {/* Footer with prominent Contact Us modal trigger */}
       <Footer setActivePage={setActivePage} />
 
       {/* Floating WhatsApp Bubble Action Button on Right Side */}

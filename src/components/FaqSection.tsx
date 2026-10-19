@@ -10,7 +10,7 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ openEnquiryModal }) => (
     <div className="mx-auto max-w-4xl">
       <header className="mx-auto mb-10 max-w-2xl space-y-3 text-center">
         <h2 className="font-serif-brand text-3xl font-bold tracking-tight text-[#0F4D26] dark:text-[#d7f9dc] sm:text-4xl">
-          Frequently Asked Questions
+          {SITE_CONTENT.sectionTitles.faq}
         </h2>
       </header>
 

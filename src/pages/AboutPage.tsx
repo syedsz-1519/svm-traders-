@@ -19,7 +19,7 @@ export const AboutPage: React.FC = () => {
             <span>OUR BACKGROUND &amp; CRAFT</span>
           </div>
           <h1 className="font-serif-brand text-4xl sm:text-5xl font-bold text-[#0F4D26] dark:text-[#d7f9dc] tracking-tight">
-            About SVM Traders
+            {SITE_CONTENT.about.title}
           </h1>
           <p className="text-base text-[#1F2A22]/80 dark:text-[#c4d6c8]">
             Natural leaf plates, supplied from {CONTACT_INFO.location}.
@@ -77,7 +77,7 @@ export const AboutPage: React.FC = () => {
                       {index + 1}. {step.title}
                     </h3>
                     <p className="text-sm text-[#1F2A22]/85 dark:text-[#c4d6c8] leading-relaxed">
-                      {step.desc}
+                      {step.text}
                     </p>
                   </div>
                 </div>
@@ -118,7 +118,7 @@ export const AboutPage: React.FC = () => {
               href={createDirectWhatsAppChatUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 sm:flex-initial h-12 px-6 rounded-xl bg-[#25D366] hover:bg-[#1ebe5d] text-white font-bold text-sm inline-flex items-center justify-center gap-2 transition-all shadow-xs"
+              className="flex-1 sm:flex-initial h-12 px-6 rounded-xl bg-[#166534] hover:bg-[#14532D] text-white font-bold text-sm inline-flex items-center justify-center gap-2 transition-all shadow-xs"
             >
               <MessageCircle className="w-4 h-4 fill-current" />
               <span>WhatsApp</span>

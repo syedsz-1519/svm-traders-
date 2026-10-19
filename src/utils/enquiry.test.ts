@@ -2,8 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
   validateEnquiryForm,
-  createWhatsAppEnquiryUrl,
   createDirectWhatsAppChatUrl,
+  createEnquiryWhatsAppUrl,
   PRODUCTS,
   TRUST_BADGES,
   CONTACT_INFO,
@@ -37,31 +37,41 @@ test('catches missing required fields in enquiry form', () => {
   assert.ok(result.errors.quantity);
 });
 
-test('creates properly formatted WhatsApp enquiry URL with product details', () => {
-  const url = createWhatsAppEnquiryUrl({
-    name: 'Anand Rao',
-    phone: '9123456789',
-    product: '14-Inch Sitting Plate',
-    quantity: '500 plates',
-    message: 'For temple festival',
-  });
-
-  assert.ok(url.startsWith('https://wa.me/919985812721?text='));
-  const decoded = decodeURIComponent(url);
-  assert.ok(decoded.includes('Anand Rao'));
-  assert.ok(decoded.includes('14-Inch Sitting Plate'));
-  assert.ok(decoded.includes('500 plates'));
-  assert.ok(decoded.includes('For temple festival'));
-});
-
 test('creates default direct WhatsApp chat URL', () => {
   const url = createDirectWhatsAppChatUrl();
-  assert.ok(url.includes('wa.me/919985812721'));
+  assert.equal(
+    url,
+    'https://wa.me/919985812721?text=Hello%20SVM%20Traders%2C%20I%20am%20interested%20in%20your%20eco%20friendly%20leaf%20plates%20in%20Hyderabad.',
+  );
   const decoded = decodeURIComponent(url);
   assert.ok(decoded.includes('SVM Traders'));
 });
 
-test('has the exact 5 products and 4 trust badges specified by SVM Traders', () => {
+test('creates a WhatsApp enquiry URL with the submitted form details', () => {
+  const url = new URL(createEnquiryWhatsAppUrl({
+    name: 'Suresh Kumar',
+    phone: '+91 98765 43210',
+    product: '12-Inch Buffet Plate',
+    quantity: '1,000 plates',
+    message: 'Please call after 5pm & share delivery details.',
+  }));
+
+  assert.equal(url.origin + url.pathname, 'https://wa.me/919985812721');
+  assert.equal(
+    url.searchParams.get('text'),
+    [
+      'Hello SVM Traders, I would like to enquire about your products.',
+      '',
+      'Name: Suresh Kumar',
+      'Phone: +91 98765 43210',
+      'Product: 12-Inch Buffet Plate',
+      'Quantity: 1,000 plates',
+      'Message: Please call after 5pm & share delivery details.',
+    ].join('\n'),
+  );
+});
+
+test('has the exact product range and trust strip provided by SVM Traders', () => {
   assert.equal(PRODUCTS.length, 5);
   assert.equal(PRODUCTS[0].name, 'Areca Leaf Plates');
   assert.equal(PRODUCTS[1].name, '14-Inch Sitting Plate');
@@ -71,9 +81,9 @@ test('has the exact 5 products and 4 trust badges specified by SVM Traders', () 
 
   assert.deepEqual([...TRUST_BADGES], [
     '100% Natural',
-    'Biodegradable',
     'Chemical Free',
-    'Safe for Environment',
+    'Biodegradable',
+    'Plastic-Free',
   ]);
 
   assert.equal(CONTACT_INFO.primaryPhone, '9985812721');

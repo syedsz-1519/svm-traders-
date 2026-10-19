@@ -13,37 +13,42 @@ export const PRODUCTS = [
   {
     id: 'areca-leaf-plates',
     name: 'Areca Leaf Plates',
-    image: '/images/neutral-placeholder.svg',
-    imageAlt: '',
-    imageFile: 'areca-leaf-plates.webp',
+    image: '/images/areca-leaf-plates.webp',
+    imageAlt: 'Stack of natural areca leaf plates',
+    width: 1200,
+    height: 896,
   },
   {
     id: '14-inch-sitting-plate',
     name: '14-Inch Sitting Plate',
-    image: '/images/neutral-placeholder.svg',
-    imageAlt: '',
-    imageFile: 'sitting-plate-14in.webp',
+    image: '/images/sitting-plate-14in.webp',
+    imageAlt: 'Natural 14-inch leaf plate displayed upright',
+    width: 1200,
+    height: 896,
   },
   {
     id: '12-inch-buffet-plate',
     name: '12-Inch Buffet Plate',
-    image: '/images/neutral-placeholder.svg',
-    imageAlt: '',
-    imageFile: 'buffet-plate-12in.webp',
+    image: '/images/buffet-plate-12in.webp',
+    imageAlt: 'Natural leaf plate arranged for buffet service',
+    width: 1200,
+    height: 896,
   },
   {
     id: '8-inch-tiffin-plate',
     name: '8-Inch Tiffin Plate',
-    image: '/images/neutral-placeholder.svg',
-    imageAlt: '',
-    imageFile: 'tiffin-plate-8in.webp',
+    image: '/images/tiffin-plate-8in.webp',
+    imageAlt: 'Natural leaf plate prepared for serving snacks',
+    width: 1200,
+    height: 896,
   },
   {
     id: '4-5-inch-bowl',
     name: '4.5-Inch Bowl',
-    image: '/images/neutral-placeholder.svg',
-    imageAlt: '',
-    imageFile: 'leaf-bowl-4-5in.webp',
+    image: '/images/leaf-bowl-4-5in.webp',
+    imageAlt: 'Natural leaf bowl for serving food',
+    width: 1200,
+    height: 896,
   },
 ] as const;
 
@@ -53,6 +58,14 @@ export const TRUST_BADGES = [
   'Biodegradable',
   'Plastic-Free',
 ] as const;
+
+export interface Testimonial {
+  name: string;
+  role: string;
+  quote: string;
+}
+
+export const TESTIMONIALS: Testimonial[] = [];
 
 export const SITE_CONTENT = {
   hero: {
@@ -67,7 +80,7 @@ export const SITE_CONTENT = {
     subtitle: 'Bulk supply for caterers, event planners, temples and retailers.',
     pricingNote: 'Pricing and minimum order quantities are shared on request.',
     cardCta: 'Enquire Now',
-    quoteCta: 'Get a Quote',
+    quoteCta: 'Request a Quote',
     bulkHeading: 'Need a custom size or bulk rate?',
   },
   reasons: [
@@ -163,18 +176,20 @@ export const SITE_CONTENT = {
     },
   ],
   galleryImages: [
-    { src: '/images/neutral-placeholder.svg', alt: '' },
-    { src: '/images/neutral-placeholder.svg', alt: '' },
-    { src: '/images/neutral-placeholder.svg', alt: '' },
-    { src: '/images/neutral-placeholder.svg', alt: '' },
-    { src: '/images/neutral-placeholder.svg', alt: '' },
-    { src: '/images/neutral-placeholder.svg', alt: '' },
+    { src: '/images/hero-leaf-plates.webp', alt: 'Stack of natural leaf plates ready for a gathering', width: 1200, height: 896 },
+    { src: '/images/sitting-plate-14in.webp', alt: 'Natural leaf plate displayed upright', width: 1200, height: 896 },
+    { src: '/images/leaf-plate-setting.webp', alt: 'Meal arranged on a natural leaf serving plate', width: 1200, height: 896 },
+    { src: '/images/buffet-plate-12in.webp', alt: 'Natural leaf tableware arranged for food service', width: 1200, height: 896 },
+    { src: '/images/tiffin-plate-8in.webp', alt: 'Natural leaf plate with snacks', width: 1200, height: 896 },
+    { src: '/images/leaf-bowl-4-5in.webp', alt: 'Leaf bowl prepared for serving food', width: 1200, height: 896 },
+    { src: '/images/leaf-plate-detail.webp', alt: 'Close-up detail of the natural leaf plate texture', width: 1024, height: 1024 },
   ],
-  testimonials: [],
+  testimonials: TESTIMONIALS,
   imageRequirements: [
     { file: 'hero-leaf-plates.webp', width: 1600, height: 1200, subject: 'A stack of leaf plates for the hero image' },
     { file: 'areca-leaf-plates.webp', width: 1200, height: 900, subject: 'The standard areca leaf plate' },
     { file: 'sitting-plate-14in.webp', width: 1200, height: 900, subject: 'The 14-inch sitting plate' },
+    { file: 'leaf-plate-setting.webp', width: 1200, height: 900, subject: 'A table setting featuring natural leaf tableware with food' },
     { file: 'buffet-plate-12in.webp', width: 1200, height: 900, subject: 'The 12-inch buffet plate' },
     { file: 'tiffin-plate-8in.webp', width: 1200, height: 900, subject: 'The 8-inch tiffin plate' },
     { file: 'leaf-bowl-4-5in.webp', width: 1200, height: 900, subject: 'The 4.5-inch leaf bowl' },

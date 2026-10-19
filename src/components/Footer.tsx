@@ -12,7 +12,7 @@ export const Footer: React.FC<FooterProps> = ({ setActivePage }) => {
     setActivePage('home');
     window.setTimeout(() => {
       document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' });
-    }, 0);
+    }, 100);
   };
 
   return (
@@ -22,7 +22,7 @@ export const Footer: React.FC<FooterProps> = ({ setActivePage }) => {
           <div>
             <h2 className="font-serif-brand text-2xl font-bold">{CONTACT_INFO.business}</h2>
             <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/80">
-              Natural leaf plates, supplied from Hyderabad.
+              {CONTACT_INFO.tagline}
             </p>
           </div>
 

@@ -47,6 +47,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="p-2 -ml-2 rounded-lg text-[#0F4D26] dark:text-[#a2f0b5] hover:bg-[#F6FAEA] dark:hover:bg-[#183321] transition-colors"
             aria-label="Toggle mobile menu"
             aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -130,7 +131,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-[#E3EDE1] dark:border-[#1c3825] bg-white dark:bg-[#102216] px-5 py-4 space-y-2 shadow-lg animate-in slide-in-from-top duration-200">
+        <div id="mobile-navigation" className="lg:hidden border-t border-[#E3EDE1] dark:border-[#1c3825] bg-white dark:bg-[#102216] px-5 py-4 space-y-2 shadow-lg animate-in slide-in-from-top duration-200">
           {navLinks.map((link) => {
             const isActive = activePage === link.id;
             return (
@@ -155,6 +156,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <a
               href={`tel:${CONTACT_INFO.primaryPhone}`}
               className="w-full h-12 flex items-center justify-center gap-2 rounded-xl bg-[#1F7A3A] text-white font-semibold text-sm shadow-xs"
+              aria-label={`Call +91 ${CONTACT_INFO.primaryPhone}`}
             >
               <Phone className="w-4 h-4 fill-current" />
               <span>Call</span>
@@ -162,6 +164,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <a
               href={`tel:${CONTACT_INFO.secondaryPhone}`}
               className="w-full h-12 flex items-center justify-center gap-2 rounded-xl bg-[#F6FAEA] dark:bg-[#163321] text-[#0F4D26] dark:text-[#a2f0b5] border border-[#D5E6D3] dark:border-[#204a2d] font-semibold text-sm"
+              aria-label={`Call +91 ${CONTACT_INFO.secondaryPhone}`}
             >
               <Phone className="w-4 h-4" />
               <span>Call</span>

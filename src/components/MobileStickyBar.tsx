@@ -23,7 +23,7 @@ export const MobileStickyBar: React.FC = () => {
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="h-12 min-h-[44px] flex items-center justify-center gap-2 rounded-xl bg-[#25D366] hover:bg-[#1ebe5d] text-white font-semibold text-sm shadow-sm active:scale-95 transition-all"
+          className="h-12 min-h-[44px] flex items-center justify-center gap-2 rounded-xl bg-[#166534] hover:bg-[#14532D] text-white font-semibold text-sm shadow-sm active:scale-95 transition-all"
           aria-label="Chat on WhatsApp"
         >
           <MessageCircle className="w-4 h-4 fill-current shrink-0" />

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { CheckCircle2, MapPin, MessageCircle, Phone, Send, User } from 'lucide-react';
+import { MapPin, MessageCircle, Phone, Send, User } from 'lucide-react';
 import { CONTACT_INFO, PRODUCTS, SITE_CONTENT } from '../data/siteContent';
-import { createDirectWhatsAppChatUrl, EnquiryData, submitEnquiry, validateEnquiryForm } from '../utils/enquiry';
+import { createDirectWhatsAppChatUrl, createEnquiryWhatsAppUrl, EnquiryData, validateEnquiryForm } from '../utils/enquiry';
 import { TrustBadgesRow } from '../components/TrustBadgesRow';
 
 const initialFormData: EnquiryData = {
@@ -15,9 +15,6 @@ const initialFormData: EnquiryData = {
 export const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState<EnquiryData>(initialFormData);
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submissionMessage, setSubmissionMessage] = useState('');
-  const [submissionState, setSubmissionState] = useState<'idle' | 'success' | 'error'>('idle');
 
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
@@ -29,11 +26,9 @@ export const ContactPage: React.FC = () => {
       delete next[name];
       return next;
     });
-    setSubmissionState('idle');
-    setSubmissionMessage('');
   };
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const validation = validateEnquiryForm(formData);
     if (!validation.isValid) {
@@ -41,25 +36,7 @@ export const ContactPage: React.FC = () => {
       return;
     }
 
-    setIsSubmitting(true);
-    setSubmissionState('idle');
-    setSubmissionMessage('');
-    try {
-      await submitEnquiry(formData);
-      setSubmissionState('success');
-      setSubmissionMessage('Thank you. Your enquiry has been sent successfully.');
-      setFormData(initialFormData);
-      setErrors({});
-    } catch (error) {
-      setSubmissionState('error');
-      setSubmissionMessage(
-        error instanceof Error
-          ? error.message
-          : 'We could not send your enquiry. Please call or WhatsApp us instead.',
-      );
-    } finally {
-      setIsSubmitting(false);
-    }
+    window.location.assign(createEnquiryWhatsAppUrl(formData));
   };
 
   const fieldClass =
@@ -117,7 +94,7 @@ export const ContactPage: React.FC = () => {
               href={createDirectWhatsAppChatUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 font-bold text-white transition-colors hover:bg-[#1ebe5d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0F4D26] sm:w-auto"
+              className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#166534] px-6 font-bold text-white transition-colors hover:bg-[#14532D] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0F4D26] sm:w-auto"
             >
               <MessageCircle aria-hidden="true" className="h-5 w-5" />
               WhatsApp
@@ -150,6 +127,7 @@ export const ContactPage: React.FC = () => {
                   type="text"
                   autoComplete="name"
                   required
+                  maxLength={100}
                   value={formData.name}
                   onChange={handleChange}
                   className={fieldClass}
@@ -166,6 +144,7 @@ export const ContactPage: React.FC = () => {
                   autoComplete="tel"
                   inputMode="tel"
                   required
+                  maxLength={16}
                   value={formData.phone}
                   onChange={handleChange}
                   className={fieldClass}
@@ -197,6 +176,7 @@ export const ContactPage: React.FC = () => {
                   name="quantity"
                   type="text"
                   required
+                  maxLength={100}
                   value={formData.quantity}
                   onChange={handleChange}
                   className={fieldClass}
@@ -205,41 +185,32 @@ export const ContactPage: React.FC = () => {
                 />
               </FormField>
 
-              <FormField label="Message (optional)" name="message">
+              <FormField label="Message (optional)" name="message" error={errors.message}>
                 <textarea
                   id="contact-message"
                   name="message"
                   rows={4}
+                  maxLength={1000}
                   value={formData.message}
                   onChange={handleChange}
                   className={`${fieldClass} py-3`}
+                  aria-invalid={Boolean(errors.message)}
+                  aria-describedby={errors.message ? 'contact-message-error' : undefined}
                 />
               </FormField>
 
+              <p className="text-xs leading-relaxed text-stone-600 dark:text-stone-300">
+                This opens WhatsApp with your enquiry addressed to +91 99858 12721. Review the message and tap Send in WhatsApp.
+              </p>
+
               <button
                 type="submit"
-                disabled={isSubmitting}
                 className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#1F7A3A] px-6 font-bold text-white shadow-sm transition-colors hover:bg-[#17632E] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1F7A3A] disabled:cursor-wait disabled:opacity-70"
               >
                 <Send aria-hidden="true" className="h-4 w-4" />
-                {isSubmitting ? 'Sending…' : 'Send Enquiry'}
+                Send Enquiry
               </button>
             </form>
-
-            {submissionMessage && (
-              <p
-                className={`mt-4 rounded-xl p-3 text-sm ${
-                  submissionState === 'success'
-                    ? 'bg-[#DCEFE1] text-[#0F4D26] dark:bg-[#183a24] dark:text-[#a2f0b5]'
-                    : 'bg-red-50 text-red-800 dark:bg-red-950 dark:text-red-200'
-                }`}
-                role={submissionState === 'error' ? 'alert' : 'status'}
-                aria-live="polite"
-              >
-                {submissionState === 'success' && <CheckCircle2 aria-hidden="true" className="mr-1 inline h-4 w-4" />}
-                {submissionMessage}
-              </p>
-            )}
           </section>
         </div>
 
