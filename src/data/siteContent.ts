@@ -75,19 +75,19 @@ export const SITE_CONTENT = {
     quoteCta: 'Request a Quote',
     productsCta: 'View Products',
     images: {
-      main: {
-        src: '/images/hero-areca-plates.webp',
-        alt: 'Natural areca leaf plates and a bowl arranged on a wooden table',
-        width: 1165,
-        height: 768,
-      },
-      upper: {
+      back: {
         src: '/images/areca-leaf-plates.webp',
         alt: 'Natural areca leaf plates stacked on a wooden table',
         width: 768,
         height: 1024,
       },
-      lower: {
+      middle: {
+        src: '/images/hero-areca-plates.webp',
+        alt: 'Natural areca leaf plates and a bowl arranged on a wooden table',
+        width: 1165,
+        height: 768,
+      },
+      front: {
         src: '/images/areca-plates-in-use.webp',
         alt: 'A natural areca leaf plate being placed above a stack of plates',
         width: 1600,

@@ -53,33 +53,33 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
 
       <div className="relative mx-auto w-full max-w-xl">
         <div className="relative aspect-[5/4] w-full">
-          <div className="absolute right-[3%] top-[4%] z-0 h-[82%] w-[82%] overflow-hidden rounded-[2rem] border-[6px] border-white bg-[#F5F1E7] shadow-2xl dark:border-[#1b3322]">
+          <div className="absolute right-0 top-0 z-0 h-[74%] w-[48%] overflow-hidden rounded-3xl border-[6px] border-white bg-[#F5F1E7] shadow-xl dark:border-[#1b3322]">
             <ProductImage
-              src={SITE_CONTENT.hero.images.main.src}
-              alt={SITE_CONTENT.hero.images.main.alt}
-              width={SITE_CONTENT.hero.images.main.width}
-              height={SITE_CONTENT.hero.images.main.height}
+              src={SITE_CONTENT.hero.images.back.src}
+              alt={SITE_CONTENT.hero.images.back.alt}
+              width={SITE_CONTENT.hero.images.back.width}
+              height={SITE_CONTENT.hero.images.back.height}
+              loading="eager"
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <div className="absolute left-[2%] top-[12%] z-10 h-[74%] w-[82%] overflow-hidden rounded-[2rem] border-[6px] border-white bg-[#F5F1E7] shadow-2xl dark:border-[#1b3322]">
+            <ProductImage
+              src={SITE_CONTENT.hero.images.middle.src}
+              alt={SITE_CONTENT.hero.images.middle.alt}
+              width={SITE_CONTENT.hero.images.middle.width}
+              height={SITE_CONTENT.hero.images.middle.height}
               loading="eager"
               fetchPriority="high"
               className="h-full w-full object-cover"
             />
           </div>
-          <div className="absolute right-0 top-0 z-20 h-[49%] w-[48%] overflow-hidden rounded-3xl border-[6px] border-white bg-[#F5F1E7] shadow-xl dark:border-[#1b3322]">
+          <div className="absolute bottom-0 right-0 z-30 h-[46%] w-[57%] overflow-hidden rounded-3xl border-[6px] border-white bg-[#F5F1E7] shadow-xl dark:border-[#1b3322]">
             <ProductImage
-              src={SITE_CONTENT.hero.images.upper.src}
-              alt={SITE_CONTENT.hero.images.upper.alt}
-              width={SITE_CONTENT.hero.images.upper.width}
-              height={SITE_CONTENT.hero.images.upper.height}
-              loading="eager"
-              className="h-full w-full object-cover"
-            />
-          </div>
-          <div className="absolute bottom-0 left-0 z-30 h-[49%] w-[55%] overflow-hidden rounded-3xl border-[6px] border-white bg-[#F5F1E7] shadow-xl dark:border-[#1b3322]">
-            <ProductImage
-              src={SITE_CONTENT.hero.images.lower.src}
-              alt={SITE_CONTENT.hero.images.lower.alt}
-              width={SITE_CONTENT.hero.images.lower.width}
-              height={SITE_CONTENT.hero.images.lower.height}
+              src={SITE_CONTENT.hero.images.front.src}
+              alt={SITE_CONTENT.hero.images.front.alt}
+              width={SITE_CONTENT.hero.images.front.width}
+              height={SITE_CONTENT.hero.images.front.height}
               loading="eager"
               className="h-full w-full object-cover"
             />
