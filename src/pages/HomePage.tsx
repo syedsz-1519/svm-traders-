@@ -3,6 +3,7 @@ import { Phone, ArrowRight, ShieldCheck, Check, Sparkles, MessageCircle, Truck }
 import { PRODUCTS, CONTACT_INFO, createDirectWhatsAppChatUrl } from '../utils/enquiry';
 import { TrustBadgesRow } from '../components/TrustBadgesRow';
 import { FaqSection } from '../components/FaqSection';
+import { TestimonialsCarousel } from '../components/TestimonialsCarousel';
 import { PageId } from '../components/Navbar';
 
 interface HomePageProps {
@@ -341,51 +342,106 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
         </div>
       </section>
 
+      {/* VERIFIED CUSTOMER TESTIMONIALS CAROUSEL */}
+      <TestimonialsCarousel />
+
       {/* FREQUENTLY ASKED QUESTIONS ACCORDION */}
       <FaqSection openEnquiryModal={openEnquiryModal} />
 
-      {/* CLOSING BAND ON DEEP GREEN */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
-        <div className="w-full bg-[#0F4D26] text-white rounded-3xl p-8 sm:p-12 shadow-xl relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8 border border-[#1b6b38]">
-          <div className="flex flex-col max-w-xl space-y-3 text-center lg:text-left z-10">
-            <span className="inline-block text-xs font-bold uppercase tracking-wider text-[#9ACD32] bg-white/10 px-3 py-1 rounded-full w-fit mx-auto lg:mx-0">
-              Direct Hyderabad Supply
+      {/* IMPROVISED CLOSING ACTION SECTION */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full" id="contact-cta">
+        <div className="w-full bg-[#0F4D26] text-white rounded-3xl p-8 sm:p-12 shadow-xl relative overflow-hidden border border-[#1b6b38] flex flex-col items-center text-center">
+          {/* Subtle botanical glow background */}
+          <div className="absolute inset-0 bg-radial from-[#1F7A3A]/25 via-transparent to-transparent pointer-events-none" />
+
+          {/* Heading block */}
+          <div className="relative z-10 max-w-2xl mx-auto space-y-3 mb-10">
+            <span className="inline-block text-xs font-bold uppercase tracking-wider text-[#9ACD32] bg-white/10 px-3.5 py-1 rounded-full">
+              Direct Hyderabad Wholesale Supply
             </span>
-            <h2 className="font-serif-brand text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight">
-              Need plates for an event? Call us today
+            <h2 className="font-serif-brand text-3xl sm:text-4xl font-bold leading-tight">
+              Need Plates for an Event? Connect With Us Today
             </h2>
-            <p className="text-sm sm:text-base text-white/80">
-              Direct supplier pricing for caterers, event planners, temples, restaurants and wholesalers.
+            <p className="text-sm sm:text-base text-white/80 max-w-xl mx-auto">
+              Direct manufacturer pricing for caterers, wedding banquets, temples, restaurants, and wholesalers across Hyderabad.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4 z-10 w-full sm:w-auto">
-            <div className="flex flex-col gap-2 w-full sm:w-auto">
-              <a
-                href={`tel:${CONTACT_INFO.primaryPhone}`}
-                className="h-12 px-6 rounded-xl bg-white text-[#0F4D26] hover:bg-[#F6FAEA] font-bold text-sm inline-flex items-center justify-center gap-2 transition-all shadow-sm"
-              >
-                <Phone className="w-4 h-4 fill-current" />
-                <span>+91 {CONTACT_INFO.primaryPhone}</span>
-              </a>
-              <a
-                href={`tel:${CONTACT_INFO.secondaryPhone}`}
-                className="h-12 px-6 rounded-xl bg-white text-[#0F4D26] hover:bg-[#F6FAEA] font-bold text-sm inline-flex items-center justify-center gap-2 transition-all shadow-sm"
-              >
-                <Phone className="w-4 h-4 fill-current" />
-                <span>+91 {CONTACT_INFO.secondaryPhone}</span>
-              </a>
-            </div>
+          {/* 3 Balanced Contact Cards */}
+          <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-5 w-full max-w-4xl">
+            {/* Card 1: Primary Call */}
+            <a
+              href={`tel:${CONTACT_INFO.primaryPhone}`}
+              className="bg-white/10 hover:bg-white/15 border border-white/20 rounded-2xl p-6 flex flex-col items-center justify-center text-center transition-all hover:scale-[1.02] active:scale-[0.98] group"
+            >
+              <div className="w-12 h-12 rounded-full bg-white text-[#0F4D26] flex items-center justify-center mb-3 shadow-sm group-hover:scale-110 transition-transform">
+                <Phone className="w-5 h-5 fill-current" />
+              </div>
+              <span className="text-xs uppercase tracking-wider font-semibold text-[#9ACD32] mb-1">
+                Primary Helpline
+              </span>
+              <span className="text-lg sm:text-xl font-bold text-white tracking-tight mb-1">
+                +91 {CONTACT_INFO.primaryPhone}
+              </span>
+              <span className="text-xs text-white/70">
+                Contact: {CONTACT_INFO.owner}
+              </span>
+            </a>
 
+            {/* Card 2: WhatsApp Featured */}
             <a
               href={createDirectWhatsAppChatUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="h-12 sm:h-full lg:h-12 px-6 rounded-xl bg-[#25D366] hover:bg-[#1ebe5d] text-white font-bold text-sm inline-flex items-center justify-center gap-2 transition-all shadow-md w-full sm:w-auto"
+              className="bg-[#25D366] hover:bg-[#1ebe5d] text-white rounded-2xl p-6 flex flex-col items-center justify-center text-center shadow-lg transition-all hover:scale-[1.02] active:scale-[0.98] group border border-white/20"
             >
-              <MessageCircle className="w-4 h-4 fill-current" />
-              <span>Chat on WhatsApp</span>
+              <div className="w-12 h-12 rounded-full bg-white text-[#25D366] flex items-center justify-center mb-3 shadow-sm group-hover:scale-110 transition-transform">
+                <MessageCircle className="w-6 h-6 fill-current" />
+              </div>
+              <span className="text-xs uppercase tracking-wider font-bold text-white/90 mb-1">
+                Instant WhatsApp Chat
+              </span>
+              <span className="text-lg sm:text-xl font-extrabold text-white tracking-tight mb-1">
+                Chat on WhatsApp
+              </span>
+              <span className="text-xs text-white/90 font-medium">
+                +91 {CONTACT_INFO.primaryPhone} • Quick Quotes
+              </span>
             </a>
+
+            {/* Card 3: Secondary Call */}
+            <a
+              href={`tel:${CONTACT_INFO.secondaryPhone}`}
+              className="bg-white/10 hover:bg-white/15 border border-white/20 rounded-2xl p-6 flex flex-col items-center justify-center text-center transition-all hover:scale-[1.02] active:scale-[0.98] group"
+            >
+              <div className="w-12 h-12 rounded-full bg-white text-[#0F4D26] flex items-center justify-center mb-3 shadow-sm group-hover:scale-110 transition-transform">
+                <Phone className="w-5 h-5 fill-current" />
+              </div>
+              <span className="text-xs uppercase tracking-wider font-semibold text-[#9ACD32] mb-1">
+                Secondary Helpline
+              </span>
+              <span className="text-lg sm:text-xl font-bold text-white tracking-tight mb-1">
+                +91 {CONTACT_INFO.secondaryPhone}
+              </span>
+              <span className="text-xs text-white/70">
+                Bulk Orders &amp; Dispatches
+              </span>
+            </a>
+          </div>
+
+          {/* Quick Quote Modal Trigger Button */}
+          <div className="relative z-10 mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button
+              type="button"
+              onClick={() => openEnquiryModal()}
+              className="h-12 px-8 rounded-xl bg-white text-[#0F4D26] hover:bg-[#F6FAEA] font-bold text-sm inline-flex items-center justify-center gap-2 transition-transform hover:scale-[1.02] active:scale-[0.98] shadow-md cursor-pointer"
+            >
+              <span>Request Custom Price Quote</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+            <span className="text-xs text-white/75">
+              ✓ Doorstep delivery across Greater Hyderabad &amp; Telangana
+            </span>
           </div>
         </div>
       </section>

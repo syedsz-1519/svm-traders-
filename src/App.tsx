@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar, PageId } from './components/Navbar';
 import { Footer } from './components/Footer';
-import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { MobileStickyBar } from './components/MobileStickyBar';
 import { EnquiryModal } from './components/EnquiryModal';
 import { HomePage } from './pages/HomePage';
@@ -89,9 +88,6 @@ export default function App() {
 
       {/* Footer */}
       <Footer setActivePage={setActivePage} />
-
-      {/* Floating WhatsApp Action for Desktop */}
-      <FloatingWhatsApp />
 
       {/* Mobile Sticky Bar (Call + WhatsApp) */}
       <MobileStickyBar />
