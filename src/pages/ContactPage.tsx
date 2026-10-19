@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Phone, MapPin, User, MessageCircle, Send, CheckCircle2, Sparkles } from 'lucide-react';
-import { PRODUCTS, CONTACT_INFO, createWhatsAppEnquiryUrl, createDirectWhatsAppChatUrl, validateEnquiryForm, EnquiryData } from '../utils/enquiry';
+import { PRODUCTS, CONTACT_INFO, createWhatsAppEnquiryUrl, createDirectWhatsAppChatUrl, createMapsSearchUrl, validateEnquiryForm, EnquiryData } from '../utils/enquiry';
 import { TrustBadgesRow } from '../components/TrustBadgesRow';
 
 export const ContactPage: React.FC = () => {
@@ -29,25 +29,30 @@ export const ContactPage: React.FC = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const sendToWhatsApp = () => {
     const result = validateEnquiryForm(formData);
     if (!result.isValid) {
       setErrors(result.errors);
       return;
     }
+
+    const whatsappWindow = window.open(createWhatsAppEnquiryUrl(formData), '_blank', 'noopener,noreferrer');
+    if (!whatsappWindow) {
+      setErrors({ form: 'WhatsApp could not be opened. Allow pop-ups for this site and try again.' });
+      return;
+    }
+
+    setErrors({});
     setIsSubmitted(true);
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    sendToWhatsApp();
+  };
+
   const handleSendViaWhatsApp = () => {
-    const result = validateEnquiryForm(formData);
-    if (!result.isValid) {
-      setErrors(result.errors);
-      return;
-    }
-    const url = createWhatsAppEnquiryUrl(formData);
-    window.open(url, '_blank', 'noopener,noreferrer');
-    setIsSubmitted(true);
+    sendToWhatsApp();
   };
 
   return (
@@ -142,38 +147,23 @@ export const ContactPage: React.FC = () => {
               <span>Chat on WhatsApp (9985812721)</span>
             </a>
 
-            {/* Map Placeholder with green pin labelled "Hyderabad, Telangana" */}
+            {/* Use a broad place search until the verified street address is supplied. */}
             <div className="pt-2">
               <h4 className="font-serif-brand text-lg font-bold text-[#0F4D26] dark:text-[#d7f9dc] mb-3">
-                Location Map
+                Find us in Hyderabad
               </h4>
-              <div className="relative w-full h-48 bg-[#E1EDE0] dark:bg-[#132c1c] border border-[#BDD7B7] dark:border-[#204a2d] rounded-2xl overflow-hidden shadow-inner flex flex-col items-center justify-center">
-                {/* Stylized geometric grid roads */}
-                <svg className="absolute inset-0 w-full h-full opacity-40" xmlns="http://www.w3.org/2000/svg">
-                  <line x1="0" y1="40" x2="600" y2="40" stroke="#7BA877" strokeWidth="6" />
-                  <line x1="0" y1="120" x2="600" y2="120" stroke="#7BA877" strokeWidth="10" />
-                  <line x1="120" y1="0" x2="160" y2="200" stroke="#7BA877" strokeWidth="6" />
-                  <line x1="320" y1="0" x2="280" y2="200" stroke="#7BA877" strokeWidth="8" />
-                  <line x1="480" y1="0" x2="520" y2="200" stroke="#7BA877" strokeWidth="5" />
-                  <circle cx="300" cy="110" r="14" fill="#1F7A3A" opacity="0.3" />
-                </svg>
-
-                {/* Map Pin */}
-                <div className="relative z-10 flex flex-col items-center">
-                  <div className="w-10 h-10 rounded-full bg-[#1F7A3A] text-white flex items-center justify-center shadow-lg animate-bounce">
-                    <MapPin className="w-6 h-6 fill-current text-white" />
-                  </div>
-                  <div className="mt-2 px-3.5 py-1.5 rounded-full bg-white/95 dark:bg-[#102216]/95 border border-[#BDD7B7] dark:border-[#225032] shadow-md flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-[#1F7A3A] dark:bg-[#52d274]" />
-                    <span className="text-xs font-bold text-[#0F4D26] dark:text-white">
-                      Hyderabad, Telangana
-                    </span>
-                  </div>
-                  <span className="text-[11px] text-stone-500 dark:text-stone-400 mt-1">
-                    (street address to be added)
-                  </span>
-                </div>
-              </div>
+              <a
+                href={createMapsSearchUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="min-h-40 w-full bg-[#E1EDE0] dark:bg-[#132c1c] border border-[#BDD7B7] dark:border-[#204a2d] rounded-2xl p-6 flex flex-col items-center justify-center text-center gap-3 shadow-inner hover:border-[#1F7A3A] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1F7A3A]"
+              >
+                <span className="w-11 h-11 rounded-full bg-[#1F7A3A] text-white flex items-center justify-center shadow-lg">
+                  <MapPin className="w-6 h-6" />
+                </span>
+                <span className="font-bold text-[#0F4D26] dark:text-white">SVM Traders · Hyderabad, Telangana</span>
+                <span className="text-sm text-stone-600 dark:text-stone-300">Open a Google Maps search</span>
+              </a>
             </div>
           </div>
 
@@ -188,6 +178,11 @@ export const ContactPage: React.FC = () => {
 
             {!isSubmitted ? (
               <form onSubmit={handleSubmit} className="space-y-4">
+                {errors.form && (
+                  <p className="text-sm font-medium text-red-700 dark:text-red-300" role="alert">
+                    {errors.form}
+                  </p>
+                )}
                 <div>
                   <label
                     htmlFor="contact-name"
@@ -309,7 +304,7 @@ export const ContactPage: React.FC = () => {
                     className="w-full h-[52px] rounded-xl bg-[#1F7A3A] hover:bg-[#17632E] text-white font-bold text-base shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-98"
                   >
                     <Send className="w-4 h-4" />
-                    <span>Send Enquiry</span>
+                    <span>Continue to WhatsApp</span>
                   </button>
 
                   <p className="text-xs text-center text-stone-600 dark:text-stone-300 font-medium">

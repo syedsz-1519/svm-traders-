@@ -50,9 +50,6 @@ export const AboutPage: React.FC = () => {
               <h2 className="font-serif-brand text-2xl font-bold text-[#0F4D26] dark:text-[#d7f9dc] mb-4">
                 Our Story
               </h2>
-              <div className="p-3.5 rounded-xl bg-[#F6FAEA] dark:bg-[#183522] border border-[#D5E6D3] dark:border-[#234d31] mb-3 text-xs font-bold text-[#1F7A3A] dark:text-[#88d982]">
-                [Owner to confirm]
-              </div>
               <p className="text-base text-[#1F2A22] dark:text-[#d0dfd3] leading-relaxed">
                 SVM Traders, led by owner S. Pradeep Reddy, supplies natural leaf plates from Hyderabad as an alternative to plastic and paper plates.
               </p>
