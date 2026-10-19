@@ -113,4 +113,8 @@ test('keeps product and gallery image references unique and all public image fil
   assert.equal(new Set(productImages).size, productImages.length, 'product images must not repeat');
   assert.equal(new Set(galleryImages).size, galleryImages.length, 'gallery images must not repeat');
   assert.equal(new Set(fileHashes).size, fileHashes.length, 'public image files must not contain duplicates');
+  assert.ok(
+    [...productImages, ...galleryImages].every((image) => imageFiles.includes(image.split('/').at(-1) ?? '')),
+    'product and gallery references must exist in public/images',
+  );
 });
