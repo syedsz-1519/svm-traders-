@@ -1,0 +1,8 @@
+{
+  "name": "SVM Traders - Eco Friendly Leaf Plates",
+  "description": "Hyderabad-based supplier of eco-friendly natural leaf plates by S. Pradeep Reddy. 100% Natural, Biodegradable, Chemical Free, Safe for Environment.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
