@@ -7,9 +7,10 @@ import { PageId } from './Navbar';
 
 interface FooterProps {
   setActivePage: (page: PageId) => void;
+  openEnquiryModal?: (productName?: string) => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ setActivePage }) => {
+export const Footer: React.FC<FooterProps> = ({ setActivePage, openEnquiryModal }) => {
   return (
     <footer className="w-full bg-[#0F4D26] text-white pt-16 pb-12 mt-20 relative z-10 border-t border-[#166031]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -75,10 +76,24 @@ export const Footer: React.FC<FooterProps> = ({ setActivePage }) => {
               </button>
               <button
                 type="button"
+                onClick={() => {
+                  if (openEnquiryModal) {
+                    openEnquiryModal();
+                  } else {
+                    setActivePage('contact');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }
+                }}
+                className="text-left font-semibold text-[#9ACD32] hover:underline transition-colors cursor-pointer"
+              >
+                Contact Us (Quick Quote)
+              </button>
+              <button
+                type="button"
                 onClick={() => { setActivePage('contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
                 className="text-left hover:text-[#9ACD32] transition-colors cursor-pointer"
               >
-                Contact &amp; Bulk Orders
+                Bulk Order Inquiries
               </button>
               <button
                 type="button"
@@ -120,7 +135,21 @@ export const Footer: React.FC<FooterProps> = ({ setActivePage }) => {
                 <span>+91 {CONTACT_INFO.secondaryPhone}</span>
               </a>
             </div>
-            <div className="pt-2 text-xs text-white/70 flex items-center gap-1.5">
+
+            {/* Prominent Contact Us Trigger */}
+            {openEnquiryModal && (
+              <div className="pt-2">
+                <button
+                  type="button"
+                  onClick={() => openEnquiryModal()}
+                  className="w-full py-3 px-4 rounded-xl bg-[#9ACD32] hover:bg-[#88ba2a] text-[#0F4D26] font-extrabold text-sm shadow-md transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2"
+                >
+                  <span>Request Online Bulk Quote</span>
+                </button>
+              </div>
+            )}
+
+            <div className="pt-1 text-xs text-white/70 flex items-center gap-1.5">
               <CheckCircle2 className="w-4 h-4 text-[#9ACD32]" />
               <span>Price &amp; Minimum Order: On Request</span>
             </div>

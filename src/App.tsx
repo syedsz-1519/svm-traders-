@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar, PageId } from './components/Navbar';
 import { Footer } from './components/Footer';
+import { WhatsAppBubble } from './components/WhatsAppBubble';
 import { MobileStickyBar } from './components/MobileStickyBar';
 import { EnquiryModal } from './components/EnquiryModal';
 import { HomePage } from './pages/HomePage';
@@ -86,8 +87,11 @@ export default function App() {
         </div>
       </main>
 
-      {/* Footer */}
-      <Footer setActivePage={setActivePage} />
+      {/* Footer with prominent Contact Us modal trigger */}
+      <Footer setActivePage={setActivePage} openEnquiryModal={openEnquiryModal} />
+
+      {/* Floating WhatsApp Bubble Action Button on Right Side */}
+      <WhatsAppBubble />
 
       {/* Mobile Sticky Bar (Call + WhatsApp) */}
       <MobileStickyBar />

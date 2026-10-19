@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, Menu, X, Sun, Moon } from 'lucide-react';
+import { Phone, Menu, X } from 'lucide-react';
 import { ThreeLeafIcon } from './ThreeLeafIcon';
 import { CONTACT_INFO } from '../utils/enquiry';
 
@@ -8,15 +8,13 @@ export type PageId = 'home' | 'products' | 'about' | 'contact';
 interface NavbarProps {
   activePage: PageId;
   setActivePage: (page: PageId) => void;
-  isDark: boolean;
-  toggleDark: () => void;
+  isDark?: boolean;
+  toggleDark?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   activePage,
   setActivePage,
-  isDark,
-  toggleDark,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -96,19 +94,8 @@ export const Navbar: React.FC<NavbarProps> = ({
           })}
         </nav>
 
-        {/* Right Actions: Dark mode toggle & Call Now Button */}
+        {/* Right Actions: Call Now Button */}
         <div className="flex items-center gap-3">
-          {/* Dark Mode Toggle */}
-          <button
-            type="button"
-            onClick={toggleDark}
-            className="p-2.5 rounded-xl border border-[#D5E6D3] dark:border-[#22472d] text-[#0F4D26] dark:text-[#a2f0b5] bg-white dark:bg-[#162e1e] hover:bg-[#F6FAEA] dark:hover:bg-[#1c3a26] transition-all cursor-pointer shadow-xs"
-            aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-            title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-          >
-            {isDark ? <Sun className="w-5 h-5 text-amber-300" /> : <Moon className="w-5 h-5" />}
-          </button>
-
           {/* Desktop "Call Now" Button */}
           <a
             href={`tel:${CONTACT_INFO.primaryPhone}`}

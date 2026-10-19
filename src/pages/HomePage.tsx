@@ -367,81 +367,74 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
             </p>
           </div>
 
-          {/* 3 Balanced Contact Cards */}
-          <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-5 w-full max-w-4xl">
+          {/* 2 Clear Helpline Cards */}
+          <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-3xl">
             {/* Card 1: Primary Call */}
             <a
               href={`tel:${CONTACT_INFO.primaryPhone}`}
-              className="bg-white/10 hover:bg-white/15 border border-white/20 rounded-2xl p-6 flex flex-col items-center justify-center text-center transition-all hover:scale-[1.02] active:scale-[0.98] group"
+              className="bg-white/10 hover:bg-white/15 border border-white/20 rounded-2xl p-6 sm:p-7 flex flex-col items-center justify-center text-center transition-all hover:scale-[1.02] active:scale-[0.98] group shadow-md"
             >
-              <div className="w-12 h-12 rounded-full bg-white text-[#0F4D26] flex items-center justify-center mb-3 shadow-sm group-hover:scale-110 transition-transform">
-                <Phone className="w-5 h-5 fill-current" />
+              <div className="w-14 h-14 rounded-full bg-white text-[#0F4D26] flex items-center justify-center mb-3.5 shadow-sm group-hover:scale-110 transition-transform">
+                <Phone className="w-6 h-6 fill-current" />
               </div>
-              <span className="text-xs uppercase tracking-wider font-semibold text-[#9ACD32] mb-1">
-                Primary Helpline
+              <span className="text-xs uppercase tracking-wider font-bold text-[#9ACD32] mb-1">
+                Primary Helpline • Direct Owner
               </span>
-              <span className="text-lg sm:text-xl font-bold text-white tracking-tight mb-1">
+              <span className="text-xl sm:text-2xl font-extrabold text-white tracking-tight mb-1">
                 +91 {CONTACT_INFO.primaryPhone}
               </span>
-              <span className="text-xs text-white/70">
+              <span className="text-sm font-semibold text-white/90">
                 Contact: {CONTACT_INFO.owner}
               </span>
-            </a>
-
-            {/* Card 2: WhatsApp Featured */}
-            <a
-              href={createDirectWhatsAppChatUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#25D366] hover:bg-[#1ebe5d] text-white rounded-2xl p-6 flex flex-col items-center justify-center text-center shadow-lg transition-all hover:scale-[1.02] active:scale-[0.98] group border border-white/20"
-            >
-              <div className="w-12 h-12 rounded-full bg-white text-[#25D366] flex items-center justify-center mb-3 shadow-sm group-hover:scale-110 transition-transform">
-                <MessageCircle className="w-6 h-6 fill-current" />
-              </div>
-              <span className="text-xs uppercase tracking-wider font-bold text-white/90 mb-1">
-                Instant WhatsApp Chat
-              </span>
-              <span className="text-lg sm:text-xl font-extrabold text-white tracking-tight mb-1">
-                Chat on WhatsApp
-              </span>
-              <span className="text-xs text-white/90 font-medium">
-                +91 {CONTACT_INFO.primaryPhone} • Quick Quotes
+              <span className="text-xs text-white/70 mt-1">
+                Instant bulk quotes for weddings, caterers &amp; temples
               </span>
             </a>
 
-            {/* Card 3: Secondary Call */}
+            {/* Card 2: Secondary Call */}
             <a
               href={`tel:${CONTACT_INFO.secondaryPhone}`}
-              className="bg-white/10 hover:bg-white/15 border border-white/20 rounded-2xl p-6 flex flex-col items-center justify-center text-center transition-all hover:scale-[1.02] active:scale-[0.98] group"
+              className="bg-white/10 hover:bg-white/15 border border-white/20 rounded-2xl p-6 sm:p-7 flex flex-col items-center justify-center text-center transition-all hover:scale-[1.02] active:scale-[0.98] group shadow-md"
             >
-              <div className="w-12 h-12 rounded-full bg-white text-[#0F4D26] flex items-center justify-center mb-3 shadow-sm group-hover:scale-110 transition-transform">
-                <Phone className="w-5 h-5 fill-current" />
+              <div className="w-14 h-14 rounded-full bg-white text-[#0F4D26] flex items-center justify-center mb-3.5 shadow-sm group-hover:scale-110 transition-transform">
+                <Phone className="w-6 h-6 fill-current" />
               </div>
-              <span className="text-xs uppercase tracking-wider font-semibold text-[#9ACD32] mb-1">
-                Secondary Helpline
+              <span className="text-xs uppercase tracking-wider font-bold text-[#9ACD32] mb-1">
+                Secondary Helpline • Dispatches
               </span>
-              <span className="text-lg sm:text-xl font-bold text-white tracking-tight mb-1">
+              <span className="text-xl sm:text-2xl font-extrabold text-white tracking-tight mb-1">
                 +91 {CONTACT_INFO.secondaryPhone}
               </span>
-              <span className="text-xs text-white/70">
-                Bulk Orders &amp; Dispatches
+              <span className="text-sm font-semibold text-white/90">
+                Bulk Dispatch &amp; Logistics Desk
+              </span>
+              <span className="text-xs text-white/70 mt-1">
+                Transport scheduling &amp; warehouse pickup across Telangana
               </span>
             </a>
           </div>
 
-          {/* Quick Quote Modal Trigger Button */}
-          <div className="relative z-10 mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+          {/* Quick Quote Trigger & Clear SEO Badges */}
+          <div className="relative z-10 mt-9 flex flex-col items-center justify-center gap-4 w-full">
             <button
               type="button"
               onClick={() => openEnquiryModal()}
-              className="h-12 px-8 rounded-xl bg-white text-[#0F4D26] hover:bg-[#F6FAEA] font-bold text-sm inline-flex items-center justify-center gap-2 transition-transform hover:scale-[1.02] active:scale-[0.98] shadow-md cursor-pointer"
+              className="h-13 px-8 rounded-xl bg-white text-[#0F4D26] hover:bg-[#F6FAEA] font-extrabold text-base inline-flex items-center justify-center gap-2.5 transition-transform hover:scale-[1.02] active:scale-[0.98] shadow-lg cursor-pointer"
             >
-              <span>Request Custom Price Quote</span>
-              <ArrowRight className="w-4 h-4" />
+              <span>Request Custom Bulk Price Quote</span>
+              <ArrowRight className="w-5 h-5" />
             </button>
-            <span className="text-xs text-white/75">
-              ✓ Doorstep delivery across Greater Hyderabad &amp; Telangana
-            </span>
+
+            {/* Clear SEO Words & Service Coverage */}
+            <div className="pt-2 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-white/80 max-w-2xl text-center">
+              <span>✓ Eco-Friendly Leaf Plates in Hyderabad</span>
+              <span aria-hidden="true">·</span>
+              <span>✓ 100% Natural Areca Palm Tableware</span>
+              <span aria-hidden="true">·</span>
+              <span>✓ Chemical Free &amp; Biodegradable</span>
+              <span aria-hidden="true">·</span>
+              <span>✓ Greater Hyderabad Delivery</span>
+            </div>
           </div>
         </div>
       </section>
