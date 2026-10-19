@@ -42,7 +42,7 @@ The Contact form and product quote modal validate the entered details and open W
 
 ## Campaign video
 
-The homepage campaign video is stored at `public/videos/svm-traders-ad.mp4` and served at `/videos/svm-traders-ad.mp4`. It uses native playback controls and loads metadata until a visitor chooses to play it. Keep a single canonical copy of the video in `public/videos/`.
+The homepage campaign video is stored at `public/videos/svm-traders-ad.mp4` and served at `/videos/svm-traders-ad.mp4`. The portrait clip is arranged beside its campaign text on tablet and desktop, with the full frame preserved; on smaller screens, the content stacks vertically. It uses native playback controls and loads metadata until a visitor chooses to play it. Keep a single canonical copy of the video in `public/videos/`.
 
 ## Navigation and footer
 

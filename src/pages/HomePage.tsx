@@ -153,7 +153,7 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
       aria-labelledby="campaign-heading"
       className="border-y border-[#D5E6D3] bg-[#F5F1E7] px-4 py-16 dark:border-[#224e2f] dark:bg-[#17261a] sm:px-6 sm:py-20 lg:px-8"
     >
-      <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1fr_auto] lg:gap-16">
+      <div className="mx-auto grid max-w-7xl items-center gap-10 md:grid-cols-[minmax(0,1fr)_minmax(14rem,19rem)] md:gap-10 lg:gap-16">
         <div className="max-w-2xl">
           <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-[#1F7A3A] dark:text-[#82d991]">
             {SITE_CONTENT.campaign.eyebrow}
@@ -176,7 +176,7 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
             <ArrowRight aria-hidden="true" className="h-4 w-4" />
           </button>
         </div>
-        <div className="mx-auto w-full max-w-xs overflow-hidden rounded-3xl border border-[#D5E6D3] bg-black shadow-xl dark:border-[#2b5435]">
+        <div className="mx-auto w-full max-w-xs overflow-hidden rounded-3xl border border-[#D5E6D3] bg-black shadow-xl dark:border-[#2b5435] md:mx-0 md:justify-self-end">
           <video
             controls
             playsInline
