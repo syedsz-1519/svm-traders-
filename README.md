@@ -46,6 +46,6 @@ The homepage campaign video is stored at `public/videos/svm-traders-ad.mp4` and 
 
 ## Images and visibility
 
-Static site images live in `public/images/` and are referenced using absolute `/images/...` paths. The hero and Areca product card use the same canonical `areca-leaf-plates.webp` file; do not add another copy under a second name. The test suite checks image-file hashes and ensures product and gallery image lists contain no repeated paths. Each product card shows its product photo on both the homepage and Products page; the separate homepage gallery highlights additional product photography.
+Static site images live in `public/images/` and are referenced using absolute `/images/...` paths. The hero and Areca product card use the same canonical `areca-leaf-plates.webp` file; do not add another copy under a second name. The test suite checks image-file hashes and ensures product and gallery image lists contain no repeated paths. Each product card shows its product photo on both the homepage and Products page; the separate homepage gallery highlights a selected set of tableware photos.
 
 The home gallery lists only the distinct supplied images selected for it. Additional gallery subjects such as packed orders or local delivery should be added only when matching photos are supplied. Scroll-reveal and page fade animations are intentionally not used, so content is not hidden while waiting for an observer or animation.
