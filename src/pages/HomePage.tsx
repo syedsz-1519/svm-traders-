@@ -1,9 +1,8 @@
 import React from 'react';
 import { ArrowRight, Check, Leaf, MapPin, PackageCheck, ShieldCheck, Truck } from 'lucide-react';
 import { ProductImage } from '../components/ProductImage';
-import { ProductPhotoGallery } from '../components/ProductPhotoGallery';
 import { FaqSection } from '../components/FaqSection';
-import { CONTACT_INFO, PRODUCTS, SITE_CONTENT, TRUST_BADGES } from '../data/siteContent';
+import { CONTACT_INFO, SITE_CONTENT, TRUST_BADGES } from '../data/siteContent';
 import { PageId } from '../components/Navbar';
 
 interface HomePageProps {
@@ -52,17 +51,26 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
         </div>
       </div>
 
-      <div className="relative mx-auto w-full max-w-xl">
-        <div className="overflow-hidden rounded-[2rem] border-[6px] border-white bg-[#F5F1E7] shadow-2xl dark:border-[#1b3322]">
-          <ProductImage
-            src={SITE_CONTENT.hero.image.src}
-            alt={SITE_CONTENT.hero.image.alt}
-            width={SITE_CONTENT.hero.image.width}
-            height={SITE_CONTENT.hero.image.height}
-            loading="eager"
-            fetchPriority="high"
-            className="h-auto max-h-[34rem] w-full object-contain"
-          />
+      <div className="mx-auto w-full max-w-xl">
+        <div className="grid aspect-[4/3] grid-cols-[1.15fr_0.85fr] grid-rows-2 gap-3">
+          {SITE_CONTENT.hero.images.map((image, index) => (
+            <div
+              key={image.src}
+              className={`overflow-hidden rounded-2xl border-4 border-white bg-[#F5F1E7] shadow-xl dark:border-[#1b3322] ${
+                index === 0 ? 'row-span-2 rounded-[2rem]' : ''
+              }`}
+            >
+              <ProductImage
+                src={image.src}
+                alt={image.alt}
+                width={image.width}
+                height={image.height}
+                loading="eager"
+                fetchPriority={index === 0 ? 'high' : 'auto'}
+                className="h-full w-full object-cover"
+              />
+            </div>
+          ))}
         </div>
         <div className="mx-auto mt-4 flex max-w-sm items-center gap-3 rounded-2xl border border-[#D5E6D3] bg-white/95 p-4 shadow-lg backdrop-blur dark:border-[#224e2f] dark:bg-[#13271A]/95">
           <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#EBF5EC] text-[#1F7A3A] dark:bg-[#1a3824] dark:text-[#52d274]">
@@ -76,93 +84,42 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
       </div>
     </section>
 
-    <section aria-label="Product qualities" className="border-y border-[#D5E6D3] bg-[#EBF5EC] px-4 py-7 dark:border-[#1d4128] dark:bg-[#112417]">
-      <ul className="mx-auto flex max-w-7xl flex-wrap justify-center gap-x-8 gap-y-3 text-sm font-semibold text-[#0F4D26] dark:text-[#d7f9dc] sm:gap-x-12">
-        {TRUST_BADGES.map((badge) => (
-          <li key={badge} className="inline-flex items-center gap-2">
-            <Check aria-hidden="true" className="h-4 w-4 text-[#1F7A3A] dark:text-[#52d274]" />
-            {badge}
-          </li>
-        ))}
-      </ul>
-    </section>
-
-    <section id="products" className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
-      <SectionHeading title={SITE_CONTENT.products.title} subtitle={SITE_CONTENT.products.subtitle} />
-      <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {PRODUCTS.map((product) => (
-          <article key={product.id} className="card-hover flex h-full flex-col overflow-hidden rounded-2xl border border-[#D5E6D3] bg-white p-4 shadow-sm dark:border-[#224e2f] dark:bg-[#13271A]">
-            <ProductPhotoGallery productName={product.name} photos={product.images} />
-            <h3 className="mt-5 font-serif-brand text-xl font-bold text-[#0F4D26] dark:text-[#d7f9dc]">
-              {product.name}
-            </h3>
-            <p className="mt-2 text-sm font-semibold text-[#8A5A32] dark:text-[#d6a879]">
-              {product.categoryLabel}
-            </p>
-            <button
-              type="button"
-              onClick={() => openEnquiryModal(product.name)}
-              className="mt-5 inline-flex min-h-12 items-center justify-center rounded-xl bg-[#EBF5EC] px-5 font-bold text-[#0F4D26] transition-colors hover:bg-[#DCEFE1] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1F7A3A] dark:bg-[#193a24] dark:text-[#a2f0b5] dark:hover:bg-[#21492d]"
-            >
-              {SITE_CONTENT.products.cardCta}
-            </button>
-          </article>
+    <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+      <SectionHeading
+        title={SITE_CONTENT.sectionTitles.gallery}
+        subtitle="Browse every product photo, including individual pieces, serving ideas and stacks."
+      />
+      <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5 xl:grid-cols-4">
+        {SITE_CONTENT.galleryImages.map((image) => (
+          <figure key={image.src} className="overflow-hidden rounded-2xl border border-[#D5E6D3] bg-white shadow-sm dark:border-[#224e2f] dark:bg-[#13271A]">
+            <div className="aspect-[4/3] bg-[#F5F1E7] dark:bg-[#183622]">
+              <ProductImage
+                src={image.src}
+                alt={image.alt}
+                width={image.width}
+                height={image.height}
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <figcaption className="px-3 py-3 sm:px-4">
+              <p className="text-sm font-bold text-[#0F4D26] dark:text-[#d7f9dc]">{image.productName}</p>
+              <p className="mt-1 text-xs font-semibold text-[#8A5A32] dark:text-[#d6a879]">{image.categoryLabel}</p>
+            </figcaption>
+          </figure>
         ))}
       </div>
-      <div className="mt-8 flex flex-col items-center justify-between gap-4 rounded-2xl border border-[#D5E6D3] bg-[#EBF5EC] p-6 dark:border-[#224e2f] dark:bg-[#13291b] sm:flex-row sm:p-8">
-        <h3 className="font-serif-brand text-xl font-bold text-[#0F4D26] dark:text-[#d7f9dc]">
-          {SITE_CONTENT.products.bulkHeading}
-        </h3>
+      <div className="mt-8 text-center">
         <button
           type="button"
-          onClick={() => openEnquiryModal()}
-          className="inline-flex min-h-12 items-center justify-center rounded-xl bg-[#1F7A3A] px-6 font-bold text-white transition-colors hover:bg-[#17632E] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1F7A3A]"
+          onClick={() => {
+            setActivePage('products');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#1F7A3A] px-6 font-bold text-white transition-colors hover:bg-[#17632E] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1F7A3A]"
         >
-          {SITE_CONTENT.products.quoteCta}
+          Check the Products
+          <ArrowRight aria-hidden="true" className="h-4 w-4" />
         </button>
-      </div>
-    </section>
-
-    <section
-      aria-labelledby="campaign-heading"
-      className="border-y border-[#D5E6D3] bg-[#F5F1E7] px-4 py-16 dark:border-[#224e2f] dark:bg-[#17261a] sm:px-6 sm:py-20 lg:px-8"
-    >
-      <div className="mx-auto grid max-w-7xl items-center gap-10 md:grid-cols-2 md:gap-10 lg:gap-16">
-        <div className="max-w-2xl">
-          <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-[#1F7A3A] dark:text-[#82d991]">
-            {SITE_CONTENT.campaign.eyebrow}
-          </p>
-          <h2
-            id="campaign-heading"
-            className="font-serif-brand text-3xl font-bold tracking-tight text-[#0F4D26] dark:text-[#d7f9dc] sm:text-4xl"
-          >
-            {SITE_CONTENT.campaign.title}
-          </h2>
-          <p className="mt-4 max-w-xl text-base leading-relaxed text-[#1F2A22]/85 dark:text-[#d0dfd3] sm:text-lg">
-            {SITE_CONTENT.campaign.text}
-          </p>
-          <button
-            type="button"
-            onClick={() => openEnquiryModal()}
-            className="mt-7 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#1F7A3A] px-6 font-bold text-white shadow-md transition-colors hover:bg-[#17632E] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1F7A3A]"
-          >
-            {SITE_CONTENT.campaign.quoteCta}
-            <ArrowRight aria-hidden="true" className="h-4 w-4" />
-          </button>
-        </div>
-        <div className="relative mx-auto aspect-video w-full overflow-hidden rounded-3xl border border-[#D5E6D3] bg-black shadow-xl dark:border-[#2b5435]">
-          <video
-            controls
-            playsInline
-            preload="metadata"
-            poster={SITE_CONTENT.hero.image.src}
-            aria-label={SITE_CONTENT.campaign.videoLabel}
-            className="absolute inset-0 h-full w-full object-cover"
-          >
-            <source src={SITE_CONTENT.campaign.videoSrc} type="video/mp4" />
-            Your browser does not support embedded video. Please use the quote button to contact SVM Traders.
-          </video>
-        </div>
       </div>
     </section>
 
@@ -184,6 +141,17 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
           })}
         </div>
       </div>
+    </section>
+
+    <section aria-label="Product qualities" className="border-y border-[#D5E6D3] bg-[#EBF5EC] px-4 py-7 dark:border-[#1d4128] dark:bg-[#112417]">
+      <ul className="mx-auto flex max-w-7xl flex-wrap justify-center gap-x-8 gap-y-3 text-sm font-semibold text-[#0F4D26] dark:text-[#d7f9dc] sm:gap-x-12">
+        {TRUST_BADGES.map((badge) => (
+          <li key={badge} className="inline-flex items-center gap-2">
+            <Check aria-hidden="true" className="h-4 w-4 text-[#1F7A3A] dark:text-[#52d274]" />
+            {badge}
+          </li>
+        ))}
+      </ul>
     </section>
 
     <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
@@ -220,22 +188,6 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
           <h2 className="font-serif-brand text-2xl font-bold text-[#0F4D26] dark:text-[#d7f9dc]">{SITE_CONTENT.delivery.title}</h2>
           <p className="mt-2 max-w-4xl leading-relaxed text-[#1F2A22]/85 dark:text-[#e8e0d2]">{SITE_CONTENT.delivery.text}</p>
         </div>
-      </div>
-    </section>
-
-    <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-      <SectionHeading title={SITE_CONTENT.sectionTitles.gallery} subtitle={SITE_CONTENT.sectionTitles.gallerySubtitle} />
-      <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5">
-        {SITE_CONTENT.galleryImages.map((image) => (
-          <figure key={image.src} className="overflow-hidden rounded-2xl border border-[#D5E6D3] bg-white dark:border-[#224e2f] dark:bg-[#13271A]">
-            <div className="aspect-[4/3] bg-[#F5F1E7] dark:bg-[#183622]">
-              <ProductImage src={image.src} alt={image.alt} width={image.width} height={image.height} className="h-full w-full object-cover" />
-            </div>
-            <figcaption className="px-4 py-3 text-sm font-semibold text-[#8A5A32] dark:text-[#d6a879]">
-              {image.categoryLabel}
-            </figcaption>
-          </figure>
-        ))}
       </div>
     </section>
 

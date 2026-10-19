@@ -37,7 +37,7 @@ export const Footer: React.FC<FooterProps> = ({ setActivePage }) => {
             <h2 className="font-serif-brand text-lg font-bold">Quick Links</h2>
             <ul className="mt-4 space-y-2 text-sm text-white/85">
               <FooterPageLink label="Home" page="home" setActivePage={setActivePage} />
-              <FooterPageLink label="Products" page="products" setActivePage={setActivePage} />
+              <FooterPageLink label="Our Range" page="products" setActivePage={setActivePage} />
               <FooterPageLink label="About" page="about" setActivePage={setActivePage} />
               <FooterPageLink label="Contact" page="contact" setActivePage={setActivePage} />
               <li>

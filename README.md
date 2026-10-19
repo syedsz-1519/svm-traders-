@@ -42,11 +42,11 @@ The Contact form and product quote modal validate the entered details and open W
 
 ## Product categories
 
-Product cards, gallery captions, and enquiry dropdowns identify Areca leaf plates separately from Sal leaf plates and bowls. Each product card has carousel arrows and selectable thumbnails. The photo order is single product, food-serving view, then a stack/bunch where clean matching photos are available. The recently supplied bowl-stack photo had the embedded sparkle mark, so it was omitted; the bowl card uses the clean single-bowl and food-serving photos instead. No Areca food photo was included in the recent uploads, so the Areca carousel uses only matching clean Areca plate photos.
+Product cards, gallery captions, and enquiry dropdowns identify Areca leaf plates separately from Sal leaf plates and bowls. The homepage shows a three-photo hero, then a gallery containing every clean product photo, then the “Why Choose Us” section. The full, enquiry-ready product cards are on the separate “Our Range” page. Product cards have carousel arrows and selectable thumbnails. The recently supplied bowl-stack photo had the embedded sparkle mark, so it was omitted; the bowl card uses the clean single-bowl and food-serving photos instead. A matching Areca plate with food and a clean Sal bowl stack were not included in the uploads.
 
 ## Campaign video
 
-The homepage campaign video is stored at `public/videos/svm-traders-ad.mp4` and served at `/videos/svm-traders-ad.mp4`. It is encoded as a landscape 16:9 video from the supplied portrait clip using a centered crop, so some content at the top and bottom is cropped. The player sits beside its campaign text on tablet and desktop, and stacks below it on smaller screens. It uses native playback controls and loads metadata until a visitor chooses to play it. Keep a single canonical copy of the video in `public/videos/`.
+The campaign-video section is temporarily omitted while SVM Traders prepares an edited replacement video. Add the replacement to `public/videos/` before restoring a video player or referencing the file.
 
 ## Navigation and footer
 
@@ -54,6 +54,6 @@ On mobile, the menu toggle sits on the right side of the header. The fixed botto
 
 ## Images and visibility
 
-Static site images live in `public/images/` and are referenced using absolute `/images/...` paths. The optimized `svm-traders-logo.webp` is used in the navbar and footer. Product cards use interactive carousels with clean product photos. Photos with the embedded sparkle mark have been deleted or omitted; the hero uses the newly supplied single Areca plate image. Bowl photos are reserved for Sal leaf products. Keep one file for each distinct photo rather than adding duplicate copies. The test suite checks image-file hashes, verifies known marked files are absent, and ensures product, gallery, and hero image lists contain no repeated paths.
+Static site images live in `public/images/` and are referenced using absolute `/images/...` paths. The optimized `svm-traders-logo.webp` is used in the navbar and footer. Photos with the embedded sparkle mark have been deleted or omitted; the hero collage shows Areca plates, a Sal leaf bowl, and an empty Sal leaf plate. The buffet-plate gallery currently lacks an empty single-plate photo. Bowl photos are reserved for Sal leaf products. Keep one file for each distinct photo rather than adding duplicate copies. The test suite checks image-file hashes, verifies known marked files are absent, and ensures product, gallery, and hero image lists contain no repeated paths.
 
 The home gallery lists only the distinct supplied images selected for it. Additional gallery subjects such as packed orders or local delivery should be added only when matching photos are supplied. Scroll-reveal and page fade animations are intentionally not used, so content is not hidden while waiting for an observer or animation.

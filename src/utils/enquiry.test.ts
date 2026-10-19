@@ -83,7 +83,7 @@ test('has the exact product range and trust strip provided by SVM Traders', () =
   assert.equal(PRODUCTS[2].name, '12-Inch Buffet Plate');
   assert.equal(PRODUCTS[3].name, '8-Inch Tiffin Plate');
   assert.equal(PRODUCTS[4].name, '4.5-Inch Bowl');
-  assert.equal(PRODUCTS[0].images[0].src, SITE_CONTENT.hero.image.src);
+  assert.equal(PRODUCTS[0].images[0].src, '/images/areca-leaf-plate-single.jpeg');
   assert.doesNotMatch(PRODUCTS[0].images.map((image) => image.alt).join(' '), /bowl/i);
   assert.deepEqual(PRODUCTS.map((product) => product.images.length), [3, 3, 3, 3, 2]);
   assert.deepEqual(
@@ -144,7 +144,7 @@ test('keeps product and gallery image references unique and all public image fil
   const logoImage = new URL('../../public/images/svm-traders-logo.webp', import.meta.url);
   const productImages = PRODUCTS.flatMap((product) => product.images.map((image) => image.src));
   const galleryImages = SITE_CONTENT.galleryImages.map((image) => image.src);
-  const heroImages = [SITE_CONTENT.hero.image.src];
+  const heroImages = SITE_CONTENT.hero.images.map((image) => image.src);
   const imageFiles = readdirSync(imageDirectory, { withFileTypes: true })
     .filter((entry) => entry.isFile())
     .map((entry) => entry.name);
@@ -170,13 +170,22 @@ test('keeps product and gallery image references unique and all public image fil
   assert.equal(new Set(productImages).size, productImages.length, 'product images must not repeat');
   assert.equal(new Set(galleryImages).size, galleryImages.length, 'gallery images must not repeat');
   assert.equal(new Set(heroImages).size, heroImages.length, 'hero collage images must not repeat');
+  assert.deepEqual(
+    [...galleryImages].sort(),
+    [...productImages].sort(),
+    'the home gallery must include each product category photo exactly once',
+  );
   assert.equal(new Set(fileHashes).size, fileHashes.length, 'public image files must not contain duplicates');
   assert.equal(existsSync(logoImage), true, 'SVM Traders brand logo must exist in public/images');
   assert.ok(
     [...productImages, ...galleryImages, ...heroImages].every((image) => imageFiles.includes(image.split('/').at(-1) ?? '')),
     'product and gallery references must exist in public/images',
   );
-  assert.ok(heroImages.every((image) => !/bowl/i.test(image)), 'the Areca hero must not reference bowl imagery');
+  assert.deepEqual(heroImages, [
+    '/images/areca-leaf-plates-stack.png',
+    '/images/sal-bowl-single.png',
+    '/images/sal-sitting-plate-single.png',
+  ]);
   assert.ok(
     [...productImages, ...galleryImages, ...heroImages].every((image) =>
       !watermarkedImages.some((file) => image.endsWith(file)),
@@ -184,13 +193,7 @@ test('keeps product and gallery image references unique and all public image fil
     'watermarked product photos must not be referenced by the site',
   );
   assert.ok(
-    watermarkedImages.every((file) => !imageFiles.includes(file)),
+    [...watermarkedImages, 'bunch of bowls.png'].every((file) => !imageFiles.includes(file)),
     'watermarked product photos must be deleted from public/images',
   );
-});
-
-test('includes the configured promotional video asset', () => {
-  const campaignVideo = new URL('../../public/videos/svm-traders-ad.mp4', import.meta.url);
-  assert.equal(SITE_CONTENT.campaign.videoSrc, '/videos/svm-traders-ad.mp4');
-  assert.equal(existsSync(campaignVideo), true);
 });

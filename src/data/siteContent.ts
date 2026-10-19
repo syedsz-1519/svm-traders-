@@ -82,16 +82,12 @@ export const SITE_CONTENT = {
     subheading:
       'Hand-crafted, chemical-free and fully biodegradable. A plastic-free choice for weddings, catering, temples and everyday use.',
     quoteCta: 'Request a Quote',
-    productsCta: 'View Products',
-    image: PRODUCTS[0].images[0],
-  },
-  campaign: {
-    eyebrow: 'SVM Traders Campaign',
-    title: 'Choose natural plates for your next gathering',
-    text: 'Watch our short video, explore our Areca and Sal leaf tableware, and request a quote for your event or business.',
-    quoteCta: 'Request a Quote',
-    videoSrc: '/videos/svm-traders-ad.mp4',
-    videoLabel: 'SVM Traders campaign video for natural leaf tableware',
+    productsCta: 'Check the Products',
+    images: [
+      { src: '/images/areca-leaf-plates-stack.png', alt: 'A stack of natural Areca leaf plates', width: 1024, height: 765 },
+      { src: '/images/sal-bowl-single.png', alt: 'A single empty Sal leaf bowl', width: 1024, height: 764 },
+      { src: '/images/sal-sitting-plate-single.png', alt: 'An empty Sal leaf plate', width: 1024, height: 765 },
+    ],
   },
   products: {
     title: 'Our Range',
@@ -194,14 +190,20 @@ export const SITE_CONTENT = {
     },
   ],
   galleryImages: [
-    { src: '/images/sal-sitting-plates-stack.png', alt: 'A stack of Sal leaf sitting plates', categoryLabel: 'Sal leaf', width: 1024, height: 765 },
-    { src: '/images/sal-tiffin-plate-with-food.jpeg', alt: 'A Sal leaf tiffin plate served with food', categoryLabel: 'Sal leaf', width: 1600, height: 1194 },
-    { src: '/images/leaf-bowl-4-5in.webp', alt: 'Green Sal leaf bowl prepared for serving food', categoryLabel: 'Sal leaf', width: 1200, height: 896 },
-    { src: '/images/leaf-plate-detail.webp', alt: 'Close-up detail of a green Sal leaf plate', categoryLabel: 'Sal leaf', width: 1024, height: 1024 },
+    ...PRODUCTS.flatMap((product) =>
+      product.images.map((image) => ({
+        ...image,
+        productName: product.name,
+        categoryLabel: product.categoryLabel,
+      })),
+    ),
   ],
   testimonials: TESTIMONIALS,
   imageRequirements: [
     { file: 'areca-leaf-plate-single.jpeg', width: 1600, height: 1062, subject: 'A single Areca leaf plate' },
     { file: 'areca-leaf-plates-stack.png', width: 1024, height: 765, subject: 'A stack of Areca leaf plates' },
+    { file: 'areca-leaf-plate-with-food.webp', width: 1200, height: 900, subject: 'An Areca leaf plate served with food, without a watermark' },
+    { file: 'sal-buffet-plate-single.webp', width: 1200, height: 900, subject: 'A single empty Sal leaf buffet plate' },
+    { file: 'sal-leaf-bowls-stack.webp', width: 1200, height: 900, subject: 'A clean stack of Sal leaf bowls, without a watermark' },
   ],
 } as const;
