@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import { ProductImage } from '../components/ProductImage';
+import { ProductPhotoGallery } from '../components/ProductPhotoGallery';
 import { PRODUCTS, SITE_CONTENT } from '../data/siteContent';
 
 interface ProductsPageProps {
@@ -23,15 +23,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ openEnquiryModal }) 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {PRODUCTS.map((product) => (
           <article key={product.id} className="card-hover flex flex-col overflow-hidden rounded-2xl border border-[#D5E6D3] bg-white p-4 shadow-sm dark:border-[#224e2f] dark:bg-[#13271A]">
-            <div className="aspect-[4/3] overflow-hidden rounded-xl bg-[#F5F1E7] dark:bg-[#183622]">
-              <ProductImage
-                src={product.image}
-                alt={product.imageAlt}
-                width={product.width}
-                height={product.height}
-                className={`h-full w-full ${product.id === 'areca-leaf-plates' ? 'object-cover' : 'object-contain'}`}
-              />
-            </div>
+            <ProductPhotoGallery productName={product.name} photos={product.images} />
             <h2 className="mt-5 font-serif-brand text-xl font-bold text-[#0F4D26] dark:text-[#d7f9dc]">
               {product.name}
             </h2>

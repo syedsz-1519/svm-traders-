@@ -83,8 +83,9 @@ test('has the exact product range and trust strip provided by SVM Traders', () =
   assert.equal(PRODUCTS[2].name, '12-Inch Buffet Plate');
   assert.equal(PRODUCTS[3].name, '8-Inch Tiffin Plate');
   assert.equal(PRODUCTS[4].name, '4.5-Inch Bowl');
-  assert.equal(PRODUCTS[0].image, SITE_CONTENT.hero.image.src);
-  assert.doesNotMatch(PRODUCTS[0].imageAlt, /bowl/i);
+  assert.equal(PRODUCTS[0].images[0].src, SITE_CONTENT.hero.image.src);
+  assert.doesNotMatch(PRODUCTS[0].images.map((image) => image.alt).join(' '), /bowl/i);
+  assert.deepEqual(PRODUCTS.map((product) => product.images.length), [2, 6, 5, 3, 3]);
   assert.deepEqual(
     PRODUCTS.map((product) => product.categoryLabel),
     [
@@ -114,7 +115,7 @@ test('has the exact product range and trust strip provided by SVM Traders', () =
 test('keeps product and gallery image references unique and all public image files distinct', () => {
   const imageDirectory = new URL('../../public/images/', import.meta.url);
   const logoImage = new URL('../../public/images/svm-traders-logo.webp', import.meta.url);
-  const productImages = PRODUCTS.map((product) => product.image);
+  const productImages = PRODUCTS.flatMap((product) => product.images.map((image) => image.src));
   const galleryImages = SITE_CONTENT.galleryImages.map((image) => image.src);
   const heroImages = [SITE_CONTENT.hero.image.src];
   const imageFiles = readdirSync(imageDirectory, { withFileTypes: true })

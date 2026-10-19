@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, Check, Leaf, MapPin, PackageCheck, ShieldCheck, Truck } from 'lucide-react';
 import { ProductImage } from '../components/ProductImage';
+import { ProductPhotoGallery } from '../components/ProductPhotoGallery';
 import { FaqSection } from '../components/FaqSection';
 import { CONTACT_INFO, PRODUCTS, SITE_CONTENT, TRUST_BADGES } from '../data/siteContent';
 import { PageId } from '../components/Navbar';
@@ -91,15 +92,7 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
       <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {PRODUCTS.map((product) => (
           <article key={product.id} className="card-hover flex h-full flex-col overflow-hidden rounded-2xl border border-[#D5E6D3] bg-white p-4 shadow-sm dark:border-[#224e2f] dark:bg-[#13271A]">
-            <div className="aspect-[4/3] overflow-hidden rounded-xl bg-[#F5F1E7] dark:bg-[#183622]">
-              <ProductImage
-                src={product.image}
-                alt={product.imageAlt}
-                width={product.width}
-                height={product.height}
-                className={`h-full w-full ${product.id === 'areca-leaf-plates' ? 'object-cover' : 'object-contain'}`}
-              />
-            </div>
+            <ProductPhotoGallery productName={product.name} photos={product.images} />
             <h3 className="mt-5 font-serif-brand text-xl font-bold text-[#0F4D26] dark:text-[#d7f9dc]">
               {product.name}
             </h3>

@@ -42,7 +42,7 @@ The Contact form and product quote modal validate the entered details and open W
 
 ## Product categories
 
-Product cards, gallery captions, and enquiry dropdowns identify Areca leaf plates separately from Sal leaf plates and bowls.
+Product cards, gallery captions, and enquiry dropdowns identify Areca leaf plates separately from Sal leaf plates and bowls. Product cards include selectable photo strips with stack, single-item, and food-serving views grouped under the matching product.
 
 ## Campaign video
 
@@ -54,6 +54,6 @@ On mobile, the menu toggle sits on the right side of the header. The fixed botto
 
 ## Images and visibility
 
-Static site images live in `public/images/` and are referenced using absolute `/images/...` paths. The optimized `svm-traders-logo.webp` is used in the navbar and footer. The homepage hero and Areca Leaf Plates card currently use the plate-only `areca-leaf-plates.webp` photo; bowl photos are reserved for Sal leaf products. Replace the temporary hero photo when new Areca plate photos are supplied. Keep one file for each distinct photo rather than adding duplicate copies. The test suite checks image-file hashes and ensures product, gallery, and hero image lists contain no repeated paths. The separate homepage gallery highlights a selected set of tableware photos.
+Static site images live in `public/images/` and are referenced using absolute `/images/...` paths. The optimized `svm-traders-logo.webp` is used in the navbar and footer. Product cards include selectable photo strips grouping stack, single-product, and food-serving photos under their matching product. The homepage hero now leads with the new Areca leaf plate stack photo. Bowl photos are reserved for Sal leaf products. Keep one file for each distinct photo rather than adding duplicate copies. The test suite checks image-file hashes and ensures product, gallery, and hero image lists contain no repeated paths.
 
 The home gallery lists only the distinct supplied images selected for it. Additional gallery subjects such as packed orders or local delivery should be added only when matching photos are supplied. Scroll-reveal and page fade animations are intentionally not used, so content is not hidden while waiting for an observer or animation.
