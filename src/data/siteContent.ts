@@ -89,6 +89,14 @@ export const SITE_CONTENT = {
       { src: '/images/sal-sitting-plate-single.png', alt: 'An empty Sal leaf plate', width: 1024, height: 765 },
     ],
   },
+  campaign: {
+    eyebrow: 'SVM Traders Campaign',
+    title: 'A closer look at our natural leaf tableware',
+    text: 'See how our leaf plates and bowls can bring a natural touch to your next gathering.',
+    quoteCta: 'Request a Quote',
+    videoSrc: '/videos/svm-traders-campaign.mp4',
+    videoLabel: 'SVM Traders campaign video for natural leaf tableware',
+  },
   products: {
     title: 'Our Range',
     subtitle: 'Areca leaf plates and Sal leaf plates and bowls for caterers, event planners, temples and retailers.',

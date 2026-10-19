@@ -46,7 +46,7 @@ Product cards, gallery captions, and enquiry dropdowns identify Areca leaf plate
 
 ## Campaign video
 
-The campaign-video section is temporarily omitted while SVM Traders prepares an edited replacement video. Add the replacement to `public/videos/` before restoring a video player or referencing the file.
+The campaign video lives at `public/videos/svm-traders-campaign.mp4`. It uses native playback controls, starts only when the visitor presses play, and sits in a black frame. The video is displayed with `object-fit: contain` so the full portrait clip remains visible with black side bars on wider screens and no cropping.
 
 ## Navigation and footer
 

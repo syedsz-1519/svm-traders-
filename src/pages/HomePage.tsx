@@ -143,6 +143,48 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
       </div>
     </section>
 
+    <section
+      aria-labelledby="campaign-heading"
+      className="border-y border-[#D5E6D3] bg-[#F5F1E7] px-4 py-16 dark:border-[#224e2f] dark:bg-[#17261a] sm:px-6 sm:py-20 lg:px-8"
+    >
+      <div className="mx-auto grid max-w-7xl items-center gap-10 md:grid-cols-2 md:gap-10 lg:gap-16">
+        <div className="max-w-2xl">
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-[#1F7A3A] dark:text-[#82d991]">
+            {SITE_CONTENT.campaign.eyebrow}
+          </p>
+          <h2
+            id="campaign-heading"
+            className="font-serif-brand text-3xl font-bold tracking-tight text-[#0F4D26] dark:text-[#d7f9dc] sm:text-4xl"
+          >
+            {SITE_CONTENT.campaign.title}
+          </h2>
+          <p className="mt-4 max-w-xl text-base leading-relaxed text-[#1F2A22]/85 dark:text-[#d0dfd3] sm:text-lg">
+            {SITE_CONTENT.campaign.text}
+          </p>
+          <button
+            type="button"
+            onClick={() => openEnquiryModal()}
+            className="mt-7 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#1F7A3A] px-6 font-bold text-white shadow-md transition-colors hover:bg-[#17632E] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1F7A3A]"
+          >
+            {SITE_CONTENT.campaign.quoteCta}
+            <ArrowRight aria-hidden="true" className="h-4 w-4" />
+          </button>
+        </div>
+        <div className="relative mx-auto aspect-[9/16] w-full max-w-sm overflow-hidden rounded-3xl border border-[#202020] bg-black shadow-2xl md:aspect-video md:max-w-none">
+          <video
+            controls
+            playsInline
+            preload="metadata"
+            aria-label={SITE_CONTENT.campaign.videoLabel}
+            className="absolute inset-0 h-full w-full bg-black object-contain"
+          >
+            <source src={SITE_CONTENT.campaign.videoSrc} type="video/mp4" />
+            Your browser does not support embedded video. Please use the quote button to contact SVM Traders.
+          </video>
+        </div>
+      </div>
+    </section>
+
     <section aria-label="Product qualities" className="border-y border-[#D5E6D3] bg-[#EBF5EC] px-4 py-7 dark:border-[#1d4128] dark:bg-[#112417]">
       <ul className="mx-auto flex max-w-7xl flex-wrap justify-center gap-x-8 gap-y-3 text-sm font-semibold text-[#0F4D26] dark:text-[#d7f9dc] sm:gap-x-12">
         {TRUST_BADGES.map((badge) => (

@@ -197,3 +197,9 @@ test('keeps product and gallery image references unique and all public image fil
     'watermarked product photos must be deleted from public/images',
   );
 });
+
+test('includes the configured campaign video asset', () => {
+  const campaignVideo = new URL('../../public/videos/svm-traders-campaign.mp4', import.meta.url);
+  assert.equal(SITE_CONTENT.campaign.videoSrc, '/videos/svm-traders-campaign.mp4');
+  assert.equal(existsSync(campaignVideo), true);
+});
