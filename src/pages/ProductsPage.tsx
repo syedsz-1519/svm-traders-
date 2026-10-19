@@ -29,7 +29,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ openEnquiryModal }) 
                 alt={product.imageAlt}
                 width={product.width}
                 height={product.height}
-                className="h-full w-full object-contain"
+                className={`h-full w-full ${product.id === 'areca-leaf-plates' ? 'object-cover' : 'object-contain'}`}
               />
             </div>
             <h2 className="mt-5 font-serif-brand text-xl font-bold text-[#0F4D26] dark:text-[#d7f9dc]">
