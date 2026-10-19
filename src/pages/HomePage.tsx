@@ -1,7 +1,6 @@
 import React from 'react';
 import { ArrowRight, Check, Leaf, MapPin, PackageCheck, ShieldCheck, Truck } from 'lucide-react';
 import { ProductImage } from '../components/ProductImage';
-import { RevealOnScroll } from '../components/RevealOnScroll';
 import { FaqSection } from '../components/FaqSection';
 import { CONTACT_INFO, PRODUCTS, SITE_CONTENT, TRUST_BADGES } from '../data/siteContent';
 import { PageId } from '../components/Navbar';
@@ -91,29 +90,27 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
       <SectionHeading title={SITE_CONTENT.products.title} subtitle={SITE_CONTENT.products.subtitle} />
       <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {PRODUCTS.map((product) => (
-          <RevealOnScroll key={product.id} className="h-full">
-            <article className="card-hover flex h-full flex-col overflow-hidden rounded-2xl border border-[#D5E6D3] bg-white p-4 shadow-sm dark:border-[#224e2f] dark:bg-[#13271A]">
-              <div className="aspect-[4/3] overflow-hidden rounded-xl bg-[#F5F1E7] dark:bg-[#183622]">
-                <ProductImage
-                  src={product.image}
-                  alt={product.imageAlt}
-                  width={product.width}
-                  height={product.height}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <h3 className="mt-5 font-serif-brand text-xl font-bold text-[#0F4D26] dark:text-[#d7f9dc]">
-                {product.name}
-              </h3>
-              <button
-                type="button"
-                onClick={() => openEnquiryModal(product.name)}
-                className="mt-5 inline-flex min-h-12 items-center justify-center rounded-xl bg-[#EBF5EC] px-5 font-bold text-[#0F4D26] transition-colors hover:bg-[#DCEFE1] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1F7A3A] dark:bg-[#193a24] dark:text-[#a2f0b5] dark:hover:bg-[#21492d]"
-              >
-                {SITE_CONTENT.products.cardCta}
-              </button>
-            </article>
-          </RevealOnScroll>
+          <article key={product.id} className="card-hover flex h-full flex-col overflow-hidden rounded-2xl border border-[#D5E6D3] bg-white p-4 shadow-sm dark:border-[#224e2f] dark:bg-[#13271A]">
+            <div className="aspect-[4/3] overflow-hidden rounded-xl bg-[#F5F1E7] dark:bg-[#183622]">
+              <ProductImage
+                src={product.image}
+                alt={product.imageAlt}
+                width={product.width}
+                height={product.height}
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <h3 className="mt-5 font-serif-brand text-xl font-bold text-[#0F4D26] dark:text-[#d7f9dc]">
+              {product.name}
+            </h3>
+            <button
+              type="button"
+              onClick={() => openEnquiryModal(product.name)}
+              className="mt-5 inline-flex min-h-12 items-center justify-center rounded-xl bg-[#EBF5EC] px-5 font-bold text-[#0F4D26] transition-colors hover:bg-[#DCEFE1] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1F7A3A] dark:bg-[#193a24] dark:text-[#a2f0b5] dark:hover:bg-[#21492d]"
+            >
+              {SITE_CONTENT.products.cardCta}
+            </button>
+          </article>
         ))}
       </div>
       <div className="mt-8 flex flex-col items-center justify-between gap-4 rounded-2xl border border-[#D5E6D3] bg-[#EBF5EC] p-6 dark:border-[#224e2f] dark:bg-[#13291b] sm:flex-row sm:p-8">
@@ -137,15 +134,13 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
           {SITE_CONTENT.reasons.map((reason, index) => {
             const Icon = reasonIcons[index];
             return (
-              <RevealOnScroll key={reason.title} className="h-full">
-                <article className="h-full rounded-2xl border border-[#D5E6D3] bg-white p-7 shadow-sm dark:border-[#224e2f] dark:bg-[#13271A]">
-                  <span className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-[#EBF5EC] text-[#1F7A3A] dark:bg-[#1a3824] dark:text-[#52d274]">
-                    <Icon aria-hidden="true" className="h-6 w-6" />
-                  </span>
-                  <h3 className="font-serif-brand text-xl font-bold text-[#0F4D26] dark:text-[#d7f9dc]">{reason.title}</h3>
-                  <p className="mt-2 leading-relaxed text-[#1F2A22]/80 dark:text-[#c4d6c8]">{reason.text}</p>
-                </article>
-              </RevealOnScroll>
+              <article key={reason.title} className="h-full rounded-2xl border border-[#D5E6D3] bg-white p-7 shadow-sm dark:border-[#224e2f] dark:bg-[#13271A]">
+                <span className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-[#EBF5EC] text-[#1F7A3A] dark:bg-[#1a3824] dark:text-[#52d274]">
+                  <Icon aria-hidden="true" className="h-6 w-6" />
+                </span>
+                <h3 className="font-serif-brand text-xl font-bold text-[#0F4D26] dark:text-[#d7f9dc]">{reason.title}</h3>
+                <p className="mt-2 leading-relaxed text-[#1F2A22]/80 dark:text-[#c4d6c8]">{reason.text}</p>
+              </article>
             );
           })}
         </div>
@@ -158,14 +153,12 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
         {SITE_CONTENT.bulkOrders.packs.map((pack, index) => {
           const Icon = packIcons[index];
           return (
-            <RevealOnScroll key={pack.name} className="h-full">
-              <article className="h-full rounded-2xl border border-[#D5E6D3] bg-white p-6 shadow-sm dark:border-[#224e2f] dark:bg-[#13271A]">
-                <Icon aria-hidden="true" className="mb-4 h-7 w-7 text-[#1F7A3A] dark:text-[#52d274]" />
-                <h3 className="font-serif-brand text-xl font-bold text-[#0F4D26] dark:text-[#d7f9dc]">{pack.name}</h3>
-                <p className="mt-1 text-lg font-semibold text-[#8A5A32] dark:text-[#d6a879]">{pack.quantity}</p>
-                <p className="mt-1 text-sm text-stone-600 dark:text-stone-300">{pack.use}</p>
-              </article>
-            </RevealOnScroll>
+            <article key={pack.name} className="h-full rounded-2xl border border-[#D5E6D3] bg-white p-6 shadow-sm dark:border-[#224e2f] dark:bg-[#13271A]">
+              <Icon aria-hidden="true" className="mb-4 h-7 w-7 text-[#1F7A3A] dark:text-[#52d274]" />
+              <h3 className="font-serif-brand text-xl font-bold text-[#0F4D26] dark:text-[#d7f9dc]">{pack.name}</h3>
+              <p className="mt-1 text-lg font-semibold text-[#8A5A32] dark:text-[#d6a879]">{pack.quantity}</p>
+              <p className="mt-1 text-sm text-stone-600 dark:text-stone-300">{pack.use}</p>
+            </article>
           );
         })}
       </div>
@@ -194,12 +187,10 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
     <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
       <SectionHeading title={SITE_CONTENT.sectionTitles.gallery} subtitle={SITE_CONTENT.sectionTitles.gallerySubtitle} />
       <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5">
-        {SITE_CONTENT.galleryImages.map((image, index) => (
-          <RevealOnScroll key={index}>
-            <div className="aspect-[4/3] overflow-hidden rounded-2xl border border-[#D5E6D3] bg-[#F5F1E7] dark:border-[#224e2f]">
-              <ProductImage src={image.src} alt={image.alt} width={image.width} height={image.height} className="h-full w-full object-cover" />
-            </div>
-          </RevealOnScroll>
+        {SITE_CONTENT.galleryImages.map((image) => (
+          <div key={image.src} className="aspect-[4/3] overflow-hidden rounded-2xl border border-[#D5E6D3] bg-[#F5F1E7] dark:border-[#224e2f]">
+            <ProductImage src={image.src} alt={image.alt} width={image.width} height={image.height} className="h-full w-full object-cover" />
+          </div>
         ))}
       </div>
     </section>

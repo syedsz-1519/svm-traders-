@@ -1,5 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { readdirSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { SITE_CONTENT } from '../data/siteContent.ts';
 import {
   validateEnquiryForm,
   createDirectWhatsAppChatUrl,
@@ -90,4 +95,22 @@ test('has the exact product range and trust strip provided by SVM Traders', () =
   assert.equal(CONTACT_INFO.secondaryPhone, '8186801206');
   assert.equal(CONTACT_INFO.owner, 'S. Pradeep Reddy');
   assert.equal(CONTACT_INFO.location, 'Hyderabad, Telangana');
+});
+
+test('keeps product and gallery image references unique and all public image files distinct', () => {
+  const imageDirectory = new URL('../../public/images/', import.meta.url);
+  const productImages = PRODUCTS.map((product) => product.image);
+  const galleryImages = SITE_CONTENT.galleryImages.map((image) => image.src);
+  const imageFiles = readdirSync(imageDirectory, { withFileTypes: true })
+    .filter((entry) => entry.isFile())
+    .map((entry) => entry.name);
+  const fileHashes = imageFiles.map((file) =>
+    createHash('sha256')
+      .update(readFileSync(join(fileURLToPath(imageDirectory), file)))
+      .digest('hex'),
+  );
+
+  assert.equal(new Set(productImages).size, productImages.length, 'product images must not repeat');
+  assert.equal(new Set(galleryImages).size, galleryImages.length, 'gallery images must not repeat');
+  assert.equal(new Set(fileHashes).size, fileHashes.length, 'public image files must not contain duplicates');
 });

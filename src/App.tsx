@@ -43,9 +43,9 @@ export default function App() {
         openEnquiryModal={openEnquiryModal}
       />
 
-      {/* Main Content Area with Smooth Page Transitions */}
+      {/* Main Content Area */}
       <main className="flex-1 w-full pb-16 sm:pb-0" id="main-content">
-        <div key={activePage} className="w-full page-transition">
+        <div key={activePage} className="w-full">
           <Suspense fallback={<div className="mx-auto max-w-7xl px-4 py-16 text-center text-[#0F4D26]" role="status">Loading…</div>}>
             {activePage === 'home' && (
               <HomePage

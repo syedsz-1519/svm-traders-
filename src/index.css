@@ -104,32 +104,6 @@
   box-shadow: 0 10px 24px -4px rgba(0, 0, 0, 0.5);
 }
 
-@keyframes pageFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.page-transition {
-  animation: pageFadeIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.scroll-reveal {
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 0.45s ease, transform 0.45s ease;
-}
-
-.scroll-reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -140,8 +114,4 @@
     transition-duration: 0.01ms !important;
   }
 
-  .scroll-reveal {
-    opacity: 1;
-    transform: none;
-  }
 }
