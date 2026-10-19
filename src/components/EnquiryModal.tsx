@@ -53,26 +53,26 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const result = validateEnquiryForm(formData);
-    if (!result.isValid) {
-      setErrors(result.errors);
-      return;
-    }
-
-    setIsSubmitted(true);
-  };
-
   const handleWhatsAppSend = () => {
     const result = validateEnquiryForm(formData);
     if (!result.isValid) {
       setErrors(result.errors);
       return;
     }
-    const url = createWhatsAppEnquiryUrl(formData);
-    window.open(url, '_blank', 'noopener,noreferrer');
+
+    const whatsappWindow = window.open(createWhatsAppEnquiryUrl(formData), '_blank', 'noopener,noreferrer');
+    if (!whatsappWindow) {
+      setErrors({ form: 'WhatsApp could not be opened. Allow pop-ups for this site and try again.' });
+      return;
+    }
+
+    setErrors({});
     setIsSubmitted(true);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    handleWhatsAppSend();
   };
 
   return (
@@ -111,6 +111,11 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
+              {errors.form && (
+                <p className="text-sm font-medium text-red-700 dark:text-red-300" role="alert">
+                  {errors.form}
+                </p>
+              )}
               <div>
                 <label
                   htmlFor="modal-name"
@@ -226,22 +231,17 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                 />
               </div>
 
-              <div className="pt-2 flex flex-col sm:flex-row gap-3">
+              <div className="pt-2">
                 <button
                   type="submit"
-                  className="flex-1 h-12 rounded-xl bg-[#1F7A3A] hover:bg-[#17632E] text-white font-bold text-sm shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer active:scale-98"
+                  className="w-full h-12 rounded-xl bg-[#1F7A3A] hover:bg-[#17632E] text-white font-bold text-sm shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer active:scale-98"
                 >
                   <Send className="w-4 h-4" />
-                  <span>Send Enquiry</span>
+                  <span>Continue to WhatsApp</span>
                 </button>
-                <button
-                  type="button"
-                  onClick={handleWhatsAppSend}
-                  className="flex-1 h-12 rounded-xl bg-[#25D366] hover:bg-[#1ebe5d] text-white font-bold text-sm shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer active:scale-98"
-                >
-                  <MessageCircle className="w-4 h-4 fill-current" />
-                  <span>Chat on WhatsApp</span>
-                </button>
+                <p className="mt-3 text-xs text-center text-stone-600 dark:text-stone-300">
+                  WhatsApp opens with your message ready for review. Tap Send there to submit it.
+                </p>
               </div>
             </form>
           </>
@@ -251,11 +251,11 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
               <CheckCircle className="w-8 h-8" />
             </div>
             <h3 className="font-serif-brand text-2xl font-bold text-[#0F4D26] dark:text-[#d7f9dc]">
-              Enquiry Received!
+              WhatsApp message is ready
             </h3>
             <p className="text-sm text-stone-600 dark:text-stone-300 max-w-sm mx-auto">
-              Thank you, <span className="font-bold">{formData.name}</span>. S. Pradeep Reddy will review your enquiry for{' '}
-              <span className="font-bold">{formData.product}</span> ({formData.quantity}) shortly.
+              Review the message opened in WhatsApp and tap Send to share your enquiry for{' '}
+              <span className="font-bold">{formData.product}</span>. It has not been sent yet.
             </p>
             <div className="pt-4 flex flex-col gap-2">
               <button
@@ -264,7 +264,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                 className="w-full h-11 rounded-xl bg-[#25D366] hover:bg-[#1ebe5d] text-white font-bold text-sm flex items-center justify-center gap-2 transition-all cursor-pointer"
               >
                 <MessageCircle className="w-4 h-4 fill-current" />
-                <span>Open in WhatsApp for Instant Response</span>
+                <span>Open WhatsApp again</span>
               </button>
               <button
                 type="button"
