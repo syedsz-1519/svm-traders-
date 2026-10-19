@@ -51,13 +51,18 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
         </div>
       </div>
 
-      <div className="mx-auto w-full max-w-xl">
-        <div className="grid aspect-[4/3] grid-cols-[1.15fr_0.85fr] grid-rows-2 gap-3">
+      <div className="relative mx-auto w-full max-w-xl px-2 pb-4 sm:px-5">
+        <div aria-hidden="true" className="absolute inset-x-8 inset-y-5 rotate-[-5deg] rounded-[3rem] bg-[#DCEFE1] dark:bg-[#183a24]" />
+        <div className="relative aspect-[1.06] sm:aspect-[1.12]">
           {SITE_CONTENT.hero.images.map((image, index) => (
             <div
               key={image.src}
-              className={`overflow-hidden rounded-2xl border-4 border-white bg-[#F5F1E7] shadow-xl dark:border-[#1b3322] ${
-                index === 0 ? 'row-span-2 rounded-[2rem]' : ''
+              className={`absolute overflow-hidden border-4 border-white bg-[#F5F1E7] shadow-2xl transition-transform duration-300 hover:scale-[1.02] dark:border-[#1b3322] ${
+                index === 0
+                  ? 'left-0 top-[8%] z-10 h-[82%] w-[73%] rounded-[1.75rem] sm:rounded-[2rem]'
+                  : index === 1
+                    ? 'right-0 top-0 z-20 h-[44%] w-[48%] rounded-[1.25rem] sm:rounded-[1.5rem]'
+                    : 'bottom-[2%] right-[1%] z-30 h-[43%] w-[44%] rounded-[1.25rem] sm:rounded-[1.5rem]'
               }`}
             >
               <ProductImage
@@ -71,14 +76,9 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
               />
             </div>
           ))}
-        </div>
-        <div className="mx-auto mt-4 flex max-w-sm items-center gap-3 rounded-2xl border border-[#D5E6D3] bg-white/95 p-4 shadow-lg backdrop-blur dark:border-[#224e2f] dark:bg-[#13271A]/95">
-          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#EBF5EC] text-[#1F7A3A] dark:bg-[#1a3824] dark:text-[#52d274]">
-            <PackageCheck aria-hidden="true" className="h-6 w-6" />
-          </span>
-          <div>
-            <p className="font-bold text-[#0F4D26] dark:text-[#d7f9dc]">Natural leaf tableware</p>
-            <p className="text-sm text-stone-600 dark:text-stone-300">For events, catering and everyday use</p>
+          <div className="absolute bottom-[5%] left-[4%] z-40 flex items-center gap-2 rounded-full border border-[#D5E6D3] bg-white/95 px-3 py-2 text-xs font-bold text-[#0F4D26] shadow-lg backdrop-blur dark:border-[#224e2f] dark:bg-[#13271A]/95 dark:text-[#d7f9dc] sm:left-[7%] sm:px-4 sm:text-sm">
+            <PackageCheck aria-hidden="true" className="h-4 w-4 text-[#1F7A3A] dark:text-[#52d274]" />
+            Natural leaf tableware
           </div>
         </div>
       </div>
