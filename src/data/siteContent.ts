@@ -197,15 +197,11 @@ export const SITE_CONTENT = {
       answer: 'Packed clean and sealed to protect from moisture and damage.',
     },
   ],
-  galleryImages: [
-    ...PRODUCTS.flatMap((product) =>
-      product.images.map((image) => ({
-        ...image,
-        productName: product.name,
-        categoryLabel: product.categoryLabel,
-      })),
-    ),
-  ],
+  galleryImages: PRODUCTS.map((product) => ({
+    productName: product.name,
+    categoryLabel: product.categoryLabel,
+    photos: product.images,
+  })),
   testimonials: TESTIMONIALS,
   imageRequirements: [
     { file: 'areca-leaf-plate-single.jpeg', width: 1600, height: 1062, subject: 'A single Areca leaf plate' },

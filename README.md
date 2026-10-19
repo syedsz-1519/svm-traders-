@@ -42,7 +42,7 @@ The Contact form and product quote modal validate the entered details and open W
 
 ## Product categories
 
-Product cards, gallery captions, and enquiry dropdowns identify Areca leaf plates separately from Sal leaf plates and bowls. The homepage shows a three-photo hero, then a gallery containing every clean product photo, then the “Why Choose Us” section. The full, enquiry-ready product cards are on the separate “Our Range” page. Product cards have carousel arrows and selectable thumbnails. The recently supplied bowl-stack photo had the embedded sparkle mark, so it was omitted; the bowl card uses the clean single-bowl and food-serving photos instead. A matching Areca plate with food and a clean Sal bowl stack were not included in the uploads.
+Product cards, gallery captions, and enquiry dropdowns identify Areca leaf plates separately from Sal leaf plates and bowls. The homepage shows a three-photo hero, then a gallery with one card per product category, followed by “Why Choose Us.” Each card shows only one image at a time, rotates matching product photos every three seconds, and includes arrows, selectable dots, and a pause control. The full, enquiry-ready product cards are on the separate “Our Range” page and use the same carousel. The recently supplied bowl-stack photo had the embedded sparkle mark, so it was omitted; the bowl card uses the clean single-bowl and food-serving photos instead. A matching Areca plate with food and a clean Sal bowl stack were not included in the uploads.
 
 ## Campaign video
 

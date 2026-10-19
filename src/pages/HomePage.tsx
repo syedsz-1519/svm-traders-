@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, Check, Leaf, MapPin, PackageCheck, ShieldCheck, Truck } from 'lucide-react';
 import { ProductImage } from '../components/ProductImage';
+import { ProductPhotoGallery } from '../components/ProductPhotoGallery';
 import { FaqSection } from '../components/FaqSection';
 import { CONTACT_INFO, SITE_CONTENT, TRUST_BADGES } from '../data/siteContent';
 import { PageId } from '../components/Navbar';
@@ -87,23 +88,15 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
     <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
       <SectionHeading
         title={SITE_CONTENT.sectionTitles.gallery}
-        subtitle="Browse every product photo, including individual pieces, serving ideas and stacks."
+        subtitle="One clear view for each product. Each carousel rotates every 3 seconds, or choose a photo yourself."
       />
-      <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5 xl:grid-cols-4">
-        {SITE_CONTENT.galleryImages.map((image) => (
-          <figure key={image.src} className="overflow-hidden rounded-2xl border border-[#D5E6D3] bg-white shadow-sm dark:border-[#224e2f] dark:bg-[#13271A]">
-            <div className="aspect-[4/3] bg-[#F5F1E7] dark:bg-[#183622]">
-              <ProductImage
-                src={image.src}
-                alt={image.alt}
-                width={image.width}
-                height={image.height}
-                className="h-full w-full object-cover"
-              />
-            </div>
-            <figcaption className="px-3 py-3 sm:px-4">
-              <p className="text-sm font-bold text-[#0F4D26] dark:text-[#d7f9dc]">{image.productName}</p>
-              <p className="mt-1 text-xs font-semibold text-[#8A5A32] dark:text-[#d6a879]">{image.categoryLabel}</p>
+      <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {SITE_CONTENT.galleryImages.map((product) => (
+          <figure key={product.productName} className="overflow-hidden rounded-2xl border border-[#D5E6D3] bg-white p-3 shadow-sm dark:border-[#224e2f] dark:bg-[#13271A] sm:p-4">
+            <ProductPhotoGallery productName={product.productName} photos={product.photos} />
+            <figcaption className="px-1 pb-1 pt-4">
+              <p className="text-base font-bold text-[#0F4D26] dark:text-[#d7f9dc]">{product.productName}</p>
+              <p className="mt-1 text-sm font-semibold text-[#8A5A32] dark:text-[#d6a879]">{product.categoryLabel}</p>
             </figcaption>
           </figure>
         ))}

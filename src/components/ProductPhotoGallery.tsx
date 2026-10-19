@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
 import { ProductImage } from './ProductImage';
 
 interface ProductPhoto {
@@ -16,7 +16,20 @@ interface ProductPhotoGalleryProps {
 
 export const ProductPhotoGallery: React.FC<ProductPhotoGalleryProps> = ({ productName, photos }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const activePhoto = photos[activeIndex];
+
+  useEffect(() => {
+    if (photos.length < 2 || isPaused) {
+      return;
+    }
+
+    const intervalId = window.setInterval(() => {
+      setActiveIndex((index) => (index + 1) % photos.length);
+    }, 3000);
+
+    return () => window.clearInterval(intervalId);
+  }, [activeIndex, isPaused, photos.length]);
 
   return (
     <div role="group" aria-label={`${productName} photos`}>
@@ -46,36 +59,43 @@ export const ProductPhotoGallery: React.FC<ProductPhotoGalleryProps> = ({ produc
             >
               <ChevronRight aria-hidden="true" className="h-5 w-5" />
             </button>
-            <span className="sr-only" aria-live="polite">
+            <span className="sr-only" aria-live="off">
               Photo {activeIndex + 1} of {photos.length}
             </span>
           </>
         )}
       </div>
       {photos.length > 1 && (
-        <div className="mt-3 flex gap-2 overflow-x-auto pb-1" aria-label={`Choose a ${productName} photo`}>
-          {photos.map((photo, index) => (
-            <button
-              key={photo.src}
-              type="button"
-              aria-label={`Show photo ${index + 1} of ${photos.length} for ${productName}`}
-              aria-pressed={index === activeIndex}
-              onClick={() => setActiveIndex(index)}
-              className={`h-14 w-14 shrink-0 overflow-hidden rounded-lg border-2 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1F7A3A] ${
-                index === activeIndex
-                  ? 'border-[#1F7A3A] dark:border-[#82d991]'
-                  : 'border-transparent hover:border-[#9cc7a6] dark:hover:border-[#457a50]'
-              }`}
-            >
-              <ProductImage
-                src={photo.src}
-                alt=""
-                width={photo.width}
-                height={photo.height}
-                className="h-full w-full object-cover"
-              />
-            </button>
-          ))}
+        <div className="mt-3 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2" role="group" aria-label={`Choose a ${productName} photo`}>
+            {photos.map((photo, index) => (
+              <button
+                key={photo.src}
+                type="button"
+                aria-label={`Show photo ${index + 1} of ${photos.length} for ${productName}`}
+                aria-pressed={index === activeIndex}
+                onClick={() => setActiveIndex(index)}
+                className={`h-2.5 rounded-full transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1F7A3A] ${
+                  index === activeIndex
+                    ? 'w-6 bg-[#1F7A3A] dark:bg-[#82d991]'
+                    : 'w-2.5 bg-[#B9CDBB] hover:bg-[#6f9f78] dark:bg-[#457a50] dark:hover:bg-[#82d991]'
+                }`}
+              >
+                <span className="sr-only">{photo.alt}</span>
+              </button>
+            ))}
+          </div>
+          <button
+            type="button"
+            aria-label={isPaused ? `Play ${productName} slideshow` : `Pause ${productName} slideshow`}
+            aria-pressed={isPaused}
+            onClick={() => setIsPaused((paused) => !paused)}
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[#0F4D26] transition-colors hover:bg-[#EBF5EC] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1F7A3A] dark:text-[#d7f9dc] dark:hover:bg-[#183622]"
+          >
+            {isPaused
+              ? <Play aria-hidden="true" className="h-4 w-4" />
+              : <Pause aria-hidden="true" className="h-4 w-4" />}
+          </button>
         </div>
       )}
     </div>

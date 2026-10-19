@@ -143,7 +143,9 @@ test('keeps product and gallery image references unique and all public image fil
   const imageDirectory = new URL('../../public/images/', import.meta.url);
   const logoImage = new URL('../../public/images/svm-traders-logo.webp', import.meta.url);
   const productImages = PRODUCTS.flatMap((product) => product.images.map((image) => image.src));
-  const galleryImages = SITE_CONTENT.galleryImages.map((image) => image.src);
+  const galleryImages = SITE_CONTENT.galleryImages.flatMap((product) =>
+    product.photos.map((image) => image.src),
+  );
   const heroImages = SITE_CONTENT.hero.images.map((image) => image.src);
   const imageFiles = readdirSync(imageDirectory, { withFileTypes: true })
     .filter((entry) => entry.isFile())
@@ -170,10 +172,16 @@ test('keeps product and gallery image references unique and all public image fil
   assert.equal(new Set(productImages).size, productImages.length, 'product images must not repeat');
   assert.equal(new Set(galleryImages).size, galleryImages.length, 'gallery images must not repeat');
   assert.equal(new Set(heroImages).size, heroImages.length, 'hero collage images must not repeat');
+  assert.equal(SITE_CONTENT.galleryImages.length, PRODUCTS.length, 'the homepage gallery should have one card per product');
+  assert.deepEqual(
+    SITE_CONTENT.galleryImages.map((product) => product.productName),
+    PRODUCTS.map((product) => product.name),
+    'each product category should appear exactly once in the homepage gallery',
+  );
   assert.deepEqual(
     [...galleryImages].sort(),
     [...productImages].sort(),
-    'the home gallery must include each product category photo exactly once',
+    'each homepage carousel should use only the matching product photos',
   );
   assert.equal(new Set(fileHashes).size, fileHashes.length, 'public image files must not contain duplicates');
   assert.equal(existsSync(logoImage), true, 'SVM Traders brand logo must exist in public/images');
