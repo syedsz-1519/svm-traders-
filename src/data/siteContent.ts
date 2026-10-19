@@ -50,7 +50,7 @@ export const PRODUCTS = [
     categoryLabel: 'Sal leaf',
     images: [
       { src: '/images/tiffin-plate-8in.webp', alt: '8-inch Sal leaf tiffin plate prepared for serving', width: 1200, height: 896 },
-      { src: '/images/sal-tiffin-plates-stack.webp', alt: 'A stack of Sal leaf tiffin plates', width: 1024, height: 765 },
+      { src: '/images/sal-tiffin-plate-served.webp', alt: 'A Sal leaf tiffin plate served with food', width: 1024, height: 765 },
       { src: '/images/sal-tiffin-plate-single.webp', alt: 'A single Sal leaf tiffin plate with food', width: 1024, height: 765 },
     ],
   },
@@ -211,7 +211,7 @@ export const SITE_CONTENT = {
     { file: 'sal-sitting-plates-stack.webp', width: 1024, height: 765, subject: 'A stack of Sal leaf sitting plates' },
     { file: 'sal-sitting-plates-served.webp', width: 1024, height: 765, subject: 'A Sal leaf sitting plate served with food' },
     { file: 'sal-buffet-plate-served.webp', width: 1024, height: 765, subject: 'A Sal leaf buffet plate served with food' },
-    { file: 'sal-tiffin-plates-stack.webp', width: 1024, height: 765, subject: 'A stack of Sal leaf tiffin plates' },
+    { file: 'sal-tiffin-plate-served.webp', width: 1024, height: 765, subject: 'A Sal leaf tiffin plate served with food' },
     { file: 'sal-bowls-stack.webp', width: 1024, height: 764, subject: 'A group of Sal leaf bowls' },
   ],
 } as const;
