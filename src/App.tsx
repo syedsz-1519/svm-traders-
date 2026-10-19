@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Navbar, PageId } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { WhatsAppBubble } from './components/WhatsAppBubble';
@@ -11,15 +11,6 @@ import { ContactPage } from './pages/ContactPage';
 
 export default function App() {
   const [activePage, setActivePage] = useState<PageId>('home');
-  const [isDark, setIsDark] = useState<boolean>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('svm-theme');
-      if (saved) return saved === 'dark';
-      return false;
-    }
-    return false;
-  });
-
   const [modalState, setModalState] = useState<{
     isOpen: boolean;
     productName?: string;
@@ -27,20 +18,6 @@ export default function App() {
     isOpen: false,
     productName: undefined,
   });
-
-  useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('svm-theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('svm-theme', 'light');
-    }
-  }, [isDark]);
-
-  const toggleDark = () => {
-    setIsDark((prev) => !prev);
-  };
 
   const openEnquiryModal = (productName?: string) => {
     setModalState({
@@ -57,17 +34,12 @@ export default function App() {
   };
 
   return (
-    <div
-      className={`min-h-screen flex flex-col ${
-        isDark ? 'dark' : ''
-      } bg-[#F6FAEA] dark:bg-[#0C1A11] text-[#1F2A22] dark:text-[#E5EFE7] selection:bg-[#1F7A3A] selection:text-white transition-colors duration-200`}
-    >
+    <div className="min-h-screen flex flex-col bg-[#F6FAEA] text-[#1F2A22] selection:bg-[#1F7A3A] selection:text-white">
       {/* Sticky Header */}
       <Navbar
         activePage={activePage}
         setActivePage={setActivePage}
-        isDark={isDark}
-        toggleDark={toggleDark}
+        openEnquiryModal={openEnquiryModal}
       />
 
       {/* Main Content Area with Smooth Page Transitions */}
@@ -88,7 +60,7 @@ export default function App() {
       </main>
 
       {/* Footer with prominent Contact Us modal trigger */}
-      <Footer setActivePage={setActivePage} openEnquiryModal={openEnquiryModal} />
+      <Footer setActivePage={setActivePage} />
 
       {/* Floating WhatsApp Bubble Action Button on Right Side */}
       <WhatsAppBubble />

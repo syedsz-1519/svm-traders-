@@ -122,6 +122,12 @@ export const SITE_CONTENT = {
     subtitle: "Tell us what you need and we'll reply with a quote.",
     replyNote: 'We usually reply within a few hours on business days.',
   },
+  sectionTitles: {
+    whyChooseUs: 'Why Choose Us',
+    gallery: 'Product Gallery',
+    gallerySubtitle: 'A preview of the natural leaf tableware range.',
+    faq: 'Frequently Asked Questions',
+  },
   faq: [
     {
       question: 'What are the plates made from?',
@@ -165,4 +171,15 @@ export const SITE_CONTENT = {
     { src: '/images/neutral-placeholder.svg', alt: '' },
   ],
   testimonials: [],
+  imageRequirements: [
+    { file: 'hero-leaf-plates.webp', width: 1600, height: 1200, subject: 'A stack of leaf plates for the hero image' },
+    { file: 'areca-leaf-plates.webp', width: 1200, height: 900, subject: 'The standard areca leaf plate' },
+    { file: 'sitting-plate-14in.webp', width: 1200, height: 900, subject: 'The 14-inch sitting plate' },
+    { file: 'buffet-plate-12in.webp', width: 1200, height: 900, subject: 'The 12-inch buffet plate' },
+    { file: 'tiffin-plate-8in.webp', width: 1200, height: 900, subject: 'The 8-inch tiffin plate' },
+    { file: 'leaf-bowl-4-5in.webp', width: 1200, height: 900, subject: 'The 4.5-inch leaf bowl' },
+    { file: 'leaf-plate-detail.webp', width: 1200, height: 900, subject: 'A close-up of the natural leaf texture' },
+    { file: 'packed-orders.webp', width: 1200, height: 900, subject: 'Cleanly packed products ready for dispatch' },
+    { file: 'local-delivery.webp', width: 1200, height: 900, subject: 'A local order being delivered in Hyderabad' },
+  ],
 } as const;

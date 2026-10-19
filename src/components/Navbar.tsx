@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import { Phone, Menu, X } from 'lucide-react';
 import { ThreeLeafIcon } from './ThreeLeafIcon';
-import { CONTACT_INFO } from '../utils/enquiry';
+import { CONTACT_INFO } from '../data/siteContent';
 
 export type PageId = 'home' | 'products' | 'about' | 'contact';
 
 interface NavbarProps {
   activePage: PageId;
   setActivePage: (page: PageId) => void;
-  isDark?: boolean;
-  toggleDark?: () => void;
+  openEnquiryModal: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   activePage,
   setActivePage,
+  openEnquiryModal,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -31,11 +31,16 @@ export const Navbar: React.FC<NavbarProps> = ({
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleQuoteClick = () => {
+    setMobileMenuOpen(false);
+    openEnquiryModal();
+  };
+
   return (
     <header className="sticky top-0 z-50 bg-white dark:bg-[#102216] shadow-[0_2px_12px_rgba(15,77,38,0.06)] dark:shadow-[0_2px_12px_rgba(0,0,0,0.4)] border-b border-[#E3EDE1] dark:border-[#1c3825] transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Mobile: Hamburger left */}
-        <div className="flex md:hidden items-center shrink-0 w-10">
+        <div className="flex lg:hidden items-center shrink-0 w-10">
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -51,7 +56,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         <button
           type="button"
           onClick={() => handleNavClick('home')}
-          className="flex items-center gap-2 sm:gap-3 text-left group cursor-pointer md:mr-auto mx-auto md:mx-0"
+          className="flex items-center gap-2 sm:gap-3 text-left group cursor-pointer mr-auto"
         >
           <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#EBF5EC] dark:bg-[#1a3824] flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
             <ThreeLeafIcon size={26} className="text-[#1F7A3A] dark:text-[#52d274]" />
@@ -60,7 +65,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span className="font-serif-brand text-xl sm:text-2xl md:text-[26px] font-bold tracking-tight text-[#0F4D26] dark:text-[#d7f9dc] leading-tight">
               {CONTACT_INFO.business}
             </span>
-            <span className="text-[11px] sm:text-xs md:text-[13px] font-semibold text-[#1F7A3A] dark:text-[#88d982] tracking-normal -mt-0.5">
+            <span className="hidden text-[11px] font-semibold text-[#1F7A3A] dark:text-[#88d982] tracking-normal -mt-0.5 sm:block">
               {CONTACT_INFO.tagline}
             </span>
           </div>
@@ -68,7 +73,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Desktop Navigation */}
         <nav
-          className="hidden md:flex items-center gap-8 text-[16px] font-medium"
+          className="hidden lg:flex items-center gap-5 text-[15px] font-medium xl:gap-8"
           aria-label="Main Navigation"
         >
           {navLinks.map((link) => {
@@ -94,32 +99,38 @@ export const Navbar: React.FC<NavbarProps> = ({
           })}
         </nav>
 
-        {/* Right Actions: Call Now Button */}
+        {/* Right Actions */}
         <div className="flex items-center gap-3">
-          {/* Desktop "Call Now" Button */}
           <a
             href={`tel:${CONTACT_INFO.primaryPhone}`}
-            className="hidden sm:inline-flex items-center gap-2 h-[46px] px-5 rounded-xl bg-[#1F7A3A] hover:bg-[#17632E] text-white font-semibold text-[15px] shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98]"
+            className="hidden h-11 items-center gap-2 rounded-xl border border-[#1F7A3A] px-4 text-sm font-semibold text-[#0F4D26] transition-colors hover:bg-[#F6FAEA] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1F7A3A] dark:text-[#d7f9dc] dark:hover:bg-[#183321] sm:inline-flex"
             aria-label={`Call SVM Traders now at ${CONTACT_INFO.primaryPhone}`}
           >
             <Phone className="w-4 h-4 fill-current" />
-            <span>Call Now</span>
+            <span>Call</span>
           </a>
 
-          {/* Mobile: Call Icon */}
           <a
             href={`tel:${CONTACT_INFO.primaryPhone}`}
-            className="sm:hidden flex items-center justify-center w-10 h-10 rounded-xl bg-[#1F7A3A] text-white shadow-xs"
+            className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#1F7A3A] text-white shadow-xs focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1F7A3A] sm:hidden"
             aria-label={`Call SVM Traders at ${CONTACT_INFO.primaryPhone}`}
           >
             <Phone className="w-4 h-4 fill-current" />
           </a>
+
+          <button
+            type="button"
+            onClick={handleQuoteClick}
+            className="hidden min-h-11 items-center justify-center rounded-xl bg-[#1F7A3A] px-4 text-sm font-bold text-white shadow-sm transition-colors hover:bg-[#17632E] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1F7A3A] sm:inline-flex"
+          >
+            Request a Quote
+          </button>
         </div>
       </div>
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-[#E3EDE1] dark:border-[#1c3825] bg-white dark:bg-[#102216] px-5 py-4 space-y-2 shadow-lg animate-in slide-in-from-top duration-200">
+        <div className="lg:hidden border-t border-[#E3EDE1] dark:border-[#1c3825] bg-white dark:bg-[#102216] px-5 py-4 space-y-2 shadow-lg animate-in slide-in-from-top duration-200">
           {navLinks.map((link) => {
             const isActive = activePage === link.id;
             return (
@@ -143,18 +154,25 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="pt-3 border-t border-[#E3EDE1] dark:border-[#1c3825] flex flex-col gap-2">
             <a
               href={`tel:${CONTACT_INFO.primaryPhone}`}
-              className="w-full h-11 flex items-center justify-center gap-2 rounded-xl bg-[#1F7A3A] text-white font-semibold text-sm shadow-xs"
+              className="w-full h-12 flex items-center justify-center gap-2 rounded-xl bg-[#1F7A3A] text-white font-semibold text-sm shadow-xs"
             >
               <Phone className="w-4 h-4 fill-current" />
-              <span>Call {CONTACT_INFO.primaryPhone}</span>
+              <span>Call</span>
             </a>
             <a
               href={`tel:${CONTACT_INFO.secondaryPhone}`}
-              className="w-full h-11 flex items-center justify-center gap-2 rounded-xl bg-[#F6FAEA] dark:bg-[#163321] text-[#0F4D26] dark:text-[#a2f0b5] border border-[#D5E6D3] dark:border-[#204a2d] font-semibold text-sm"
+              className="w-full h-12 flex items-center justify-center gap-2 rounded-xl bg-[#F6FAEA] dark:bg-[#163321] text-[#0F4D26] dark:text-[#a2f0b5] border border-[#D5E6D3] dark:border-[#204a2d] font-semibold text-sm"
             >
               <Phone className="w-4 h-4" />
-              <span>Call {CONTACT_INFO.secondaryPhone}</span>
+              <span>Call</span>
             </a>
+            <button
+              type="button"
+              onClick={handleQuoteClick}
+              className="w-full min-h-12 rounded-xl bg-[#1F7A3A] px-4 text-white font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1F7A3A]"
+            >
+              Request a Quote
+            </button>
           </div>
         </div>
       )}

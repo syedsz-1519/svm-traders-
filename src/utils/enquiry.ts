@@ -70,7 +70,7 @@ export function createWhatsAppEnquiryUrl(data: EnquiryData): string {
 }
 
 export function createDirectWhatsAppChatUrl(customText?: string): string {
-  const defaultText = 'Hello SVM Traders, I would like to enquire about your leaf plate products and bulk pricing.';
+  const defaultText = 'Hello SVM Traders, I am interested in your eco friendly leaf plates in Hyderabad.';
   return `https://wa.me/91${CONTACT_INFO.primaryPhone}?text=${encodeURIComponent(customText || defaultText)}`;
 }
 

@@ -114,9 +114,6 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
           </article>
         ))}
       </div>
-      <p className="mt-6 text-center text-sm font-medium text-stone-600 dark:text-stone-300">
-        {SITE_CONTENT.products.pricingNote}
-      </p>
       <div className="mt-8 flex flex-col items-center justify-between gap-4 rounded-2xl border border-[#D5E6D3] bg-[#EBF5EC] p-6 dark:border-[#224e2f] dark:bg-[#13291b] sm:flex-row sm:p-8">
         <h3 className="font-serif-brand text-xl font-bold text-[#0F4D26] dark:text-[#d7f9dc]">
           {SITE_CONTENT.products.bulkHeading}
@@ -188,7 +185,7 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
       </div>
     </section>
 
-    <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8" aria-labelledby="gallery-heading">
+    <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
       <SectionHeading title="Product Gallery" subtitle="A preview of the natural leaf tableware range." />
       <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5">
         {SITE_CONTENT.galleryImages.map((image, index) => (
