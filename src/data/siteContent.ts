@@ -14,9 +14,9 @@ export const PRODUCTS = [
     id: 'areca-leaf-plates',
     name: 'Areca Leaf Plates',
     image: '/images/areca-leaf-plates.webp',
-    imageAlt: 'Natural Areca leaf plates stacked and displayed upright',
-    width: 1200,
-    height: 896,
+    imageAlt: 'Natural Areca leaf plates stacked on a wooden table',
+    width: 768,
+    height: 1024,
   },
   {
     id: '14-inch-sitting-plate',
@@ -191,7 +191,7 @@ export const SITE_CONTENT = {
   ],
   testimonials: TESTIMONIALS,
   imageRequirements: [
-    { file: 'areca-leaf-plates.webp', width: 1200, height: 900, subject: 'Natural Areca leaf plates stacked and displayed upright for the hero image' },
+    { file: 'areca-leaf-plates.webp', width: 768, height: 1024, subject: 'Natural Areca leaf plates stacked on a wooden table for the hero image' },
     { file: 'leaf-plate-detail.webp', width: 1200, height: 900, subject: 'A close-up of the natural areca leaf plate texture' },
     { file: 'sitting-plate-14in.webp', width: 1200, height: 900, subject: 'The 14-inch sitting plate' },
     { file: 'buffet-plate-12in.webp', width: 1200, height: 900, subject: 'The 12-inch buffet plate' },

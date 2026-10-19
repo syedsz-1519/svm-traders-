@@ -55,12 +55,12 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
         <div className="aspect-[4/3] overflow-hidden rounded-[2rem] border border-[#D5E6D3] bg-[#F5F1E7] shadow-xl dark:border-[#224e2f]">
           <ProductImage
             src="/images/areca-leaf-plates.webp"
-            alt="Natural Areca leaf plates stacked and displayed upright"
-            width={1200}
-            height={896}
+            alt="Natural Areca leaf plates stacked on a wooden table"
+            width={768}
+            height={1024}
             loading="eager"
             fetchPriority="high"
-            className="h-full w-full object-cover"
+            className="h-full w-full object-contain"
           />
         </div>
         <div className="absolute -bottom-5 left-4 right-4 flex items-center gap-3 rounded-2xl border border-[#D5E6D3] bg-white/95 p-4 shadow-lg backdrop-blur dark:border-[#224e2f] dark:bg-[#13271A]/95 sm:left-8 sm:right-8">
@@ -97,7 +97,7 @@ export const HomePage: React.FC<HomePageProps> = ({ setActivePage, openEnquiryMo
                 alt={product.imageAlt}
                 width={product.width}
                 height={product.height}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-contain"
               />
             </div>
             <h3 className="mt-5 font-serif-brand text-xl font-bold text-[#0F4D26] dark:text-[#d7f9dc]">
